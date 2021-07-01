@@ -6,8 +6,7 @@ const HeaderContainer = styled.div`
   text-align: left;
   padding: 3px 0px 3px 22px;
 `
-const HeaderTitle = styled.div`
-  display: inline-block;
+const HeaderTitle = styled.span`
   font-family: 'Homemade Apple', cursive;
   font-size: 36px;
   color: #fdb301;
