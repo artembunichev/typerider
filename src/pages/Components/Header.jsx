@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 
 const HeaderContainer = styled.div`
@@ -13,10 +14,10 @@ const HeaderTitle = styled.span`
   user-select: none;
 `
 
-export const Header = () => {
+export const Header = observer(() => {
   return (
     <HeaderContainer>
       <HeaderTitle>typerider</HeaderTitle>
     </HeaderContainer>
   )
-}
+})

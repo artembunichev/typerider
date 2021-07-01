@@ -4,10 +4,14 @@ export class AppStore {
   constructor() {
     makeAutoObservable(this)
   }
+  inputValue = ''
   userNickname = ''
-  bestScore = ''
+  bestScore = 0
 
-  setUserNickname (nickname) {
+  setInputValue(value) {
+    this.inputValue = value
+  }
+  setUserNickname(nickname) {
     this.userNickname = nickname
   }
 }

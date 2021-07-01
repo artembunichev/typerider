@@ -1,7 +1,9 @@
 import React from 'react'
+import { Switch, Route,Redirect } from 'react-router'
 import { Header } from './pages/Components/Header'
 import { Welcome } from './pages/Main/Welcome'
 import { css, Global } from '@emotion/react'
+import { Game } from './pages/Game/Game'
 export const App = () => {
   return (
     <>
@@ -22,7 +24,11 @@ export const App = () => {
         `}
       />
       <Header />
-      <Welcome />
+      <Switch>
+        <Route exact path='/' component={Welcome} />
+        <Route exact path='/game' component={Game} />
+        <Redirect to={'/'} />
+      </Switch>
     </>
   )
 }

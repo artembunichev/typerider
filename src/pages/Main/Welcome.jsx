@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { useStore } from '../../stores/RootStore/RootStoreContext'
+import { observer } from 'mobx-react-lite'
+import { useHistory } from 'react-router-dom'
 
 const WelcomeContainer = styled.div`
   flex: 1 0 auto;
@@ -33,13 +36,28 @@ const LetsGo = styled.button`
     cursor: pointer;
   }
 `
+export const Welcome = observer(() => {
+  const { AppStore } = useStore()
+  const history = useHistory()
 
-export const Welcome = () => {
+  const startGame = () => {
+    AppStore.setUserNickname(AppStore.inputValue)
+    history.push('/game')
+  }
+  const onInputChange = (e) => {
+    AppStore.setInputValue(e.target.value)
+  }
+  const onEnterPress = (e) => {
+    if (e.code === 'Enter') {
+      startGame()
+    }
+  }
+
   return (
     <WelcomeContainer>
       <WelcomeSubTitle>Your nickname for the next race?</WelcomeSubTitle>
-      <WelcomeInput />
-      <LetsGo>Let`s go!</LetsGo>
+      <WelcomeInput onChange={onInputChange} onKeyPress={onEnterPress} />
+      <LetsGo onClick={startGame}>Let`s go!</LetsGo>
     </WelcomeContainer>
   )
-}
+})
