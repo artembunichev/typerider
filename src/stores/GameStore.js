@@ -30,6 +30,9 @@ export class GameStore {
   updateInputValue(value) {
     this.inputValue = this.inputValue + value
   }
+  clearInputValue() {
+    this.inputValue = ''
+  }
   setGameMode(value) {
     this.gameMode = value
   }

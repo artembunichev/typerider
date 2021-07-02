@@ -36,6 +36,7 @@ export const Game = observer(() => {
   const updateWord = () => {
     GameStore.updateCurrentWordIndex()
     GameStore.clearCurrentLetterIndex()
+    GameStore.clearInputValue()
   }
   const updateLetter = () => {
     GameStore.updateCurrentLetterIndex()
