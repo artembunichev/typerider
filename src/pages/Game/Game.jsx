@@ -64,7 +64,6 @@ export const Game = observer(() => {
       </GameTitle>
       <Start onClick={onStartClick}>Start Game</Start>
       {GameStore.currentWord}
-      <button onClick={updateLetter}>next LETTERR</button>
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <GameInput disabled={!GameStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
     </GameContainer>
