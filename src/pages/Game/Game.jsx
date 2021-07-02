@@ -6,6 +6,7 @@ import { useStore } from '../../stores/RootStore/RootStoreContext'
 
 const GameContainer = styled.div`
   flex: 1 0 auto;
+  font-size: 50px;
   background-color: #ff0;
 `
 const GameTitle = styled.div`
@@ -48,12 +49,17 @@ export const Game = observer(() => {
     GameStore.updateInputValue(value)
   }
   const checkLetter = (e) => {
-    if (e.key === GameStore.currentLetter) {
+    if (!GameStore.gameMode) {
+      e.preventDefault()
+    } else if (e.key === GameStore.currentLetter) {
+      GameStore.setIsError(false)
       const value = e.key
       updateInputValue(value)
       updateLetter()
     } else {
-      console.log('error')
+      GameStore.setIsError(true)
+      GameStore.updateErrorsNumber()
+      GameStore.setErrorWords(GameStore.currentWord)
     }
   }
 
@@ -66,6 +72,15 @@ export const Game = observer(() => {
       {GameStore.currentWord}
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <GameInput disabled={!GameStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
+      {GameStore.isError ? <div className='error'>ошибка</div> : null}
+      {GameStore.errorWords.map((word) => {
+        return (
+          <div className='errors' key={word}>
+            {word}
+          </div>
+        )
+      })}
+      {GameStore.errorsNumber}
     </GameContainer>
   )
 })

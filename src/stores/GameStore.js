@@ -5,11 +5,14 @@ export class GameStore {
   constructor() {
     makeAutoObservable(this)
   }
+  gameMode = false
   words = []
   currentWordIndex = 0
   currentLetterIndex = 0
   inputValue = ''
-  gameMode = false
+  isError = false
+  errorsNumber = 0
+  errorWords = []
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
@@ -35,6 +38,17 @@ export class GameStore {
   }
   setGameMode(value) {
     this.gameMode = value
+  }
+  setIsError(value) {
+    this.isError = value
+  }
+  updateErrorsNumber() {
+    this.errorsNumber++
+  }
+  setErrorWords(word) {
+    if (!this.errorWords.some((w) => w === word)) {
+      this.errorWords.push(word)
+    }
   }
   get currentWord() {
     return this.words[this.currentWordIndex]
