@@ -10,7 +10,6 @@ export class GameSettingsStore {
     { label: '60sec', time: 60000, isActive: false },
     { label: '90sec', time: 90000, isActive: false },
   ]
-  activeTimeForRace = null
   setGameMode(value) {
     this.gameMode = value
   }
@@ -22,5 +21,14 @@ export class GameSettingsStore {
         t.isActive = false
       }
     })
+  }
+  get activeTimeForRace() {
+    const timeObject = this.timeForRace.reduce((acc, time) => {
+      if (time.isActive === true) {
+        acc = time
+      }
+      return acc
+    })
+    return timeObject.time
   }
 }
