@@ -8,6 +8,8 @@ export class GameStore {
   words = []
   currentWordIndex = 0
   currentLetterIndex = 0
+  inputValue = ''
+  gameMode = false
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
@@ -24,6 +26,12 @@ export class GameStore {
   }
   clearCurrentLetterIndex() {
     this.currentLetterIndex = 0
+  }
+  updateInputValue(value) {
+    this.inputValue = this.inputValue + value
+  }
+  setGameMode(value) {
+    this.gameMode = value
   }
   get currentWord() {
     return this.words[this.currentWordIndex]

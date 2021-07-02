@@ -15,6 +15,9 @@ const Start = styled.button`
   width: 150px;
   height: 45px;
 `
+const GameInput = styled.input`
+  width: 650px;
+`
 export const Bold = styled.span`
   font-weight: bold;
 `
@@ -27,6 +30,7 @@ export const Game = observer(() => {
   }
 
   const onStartClick = () => {
+    GameStore.setGameMode(true)
     GameStore.setRandomWords(20)
   }
   const updateWord = () => {
@@ -39,6 +43,18 @@ export const Game = observer(() => {
       updateWord()
     }
   }
+  const updateInputValue = (value) => {
+    GameStore.updateInputValue(value)
+  }
+  const checkLetter = (e) => {
+    if (e.key === GameStore.currentLetter) {
+      const value = e.key
+      updateInputValue(value)
+      updateLetter()
+    } else {
+      console.log('error')
+    }
+  }
 
   return (
     <GameContainer>
@@ -49,6 +65,7 @@ export const Game = observer(() => {
       {GameStore.currentWord}
       <button onClick={updateLetter}>next LETTERR</button>
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
+      <GameInput disabled={!GameStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
     </GameContainer>
   )
 })
