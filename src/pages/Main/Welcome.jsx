@@ -3,9 +3,9 @@ import styled from '@emotion/styled'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
+import { Container } from '../StyledComponents/StyledComponents'
 
-const WelcomeContainer = styled.div`
-  flex: 1 0 auto;
+const WelcomeContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
