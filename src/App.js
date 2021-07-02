@@ -20,7 +20,10 @@ export const App = () => {
           }
           button {
             border: 0;
-            margin: 20px;
+          }
+          input {
+            outline: none;
+            border: 0;
           }
         `}
       />
