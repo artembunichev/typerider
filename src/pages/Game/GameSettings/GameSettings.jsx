@@ -13,9 +13,9 @@ const Start = styled.button`
 `
 
 export const GameSettings = observer(() => {
-  const { GameStore } = useStore()
+  const { GameSettingsStore } = useStore()
   const onStartClick = () => {
-    GameStore.setGameMode(true)
+    GameSettingsStore.setGameMode(true)
   }
   return (
     <GameSettingsContainer>

@@ -58,7 +58,7 @@ export const Welcome = observer(() => {
     <WelcomeContainer>
       <WelcomeSubTitle>Your nickname for the next race?</WelcomeSubTitle>
       <WelcomeInput onChange={onInputChange} onKeyPress={onEnterPress} />
-      <LetsGo onClick={startGame}>Let`s go!</LetsGo>
+      <LetsGo onClick={startGame}>Let&apos;s go!</LetsGo>
     </WelcomeContainer>
   )
 })

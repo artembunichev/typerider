@@ -22,7 +22,7 @@ export const Game = observer(() => {
   useEffect(() => {
     GameStore.setRandomWords(150)
   }, [])
-  const { AppStore, GameStore } = useStore()
+  const { AppStore, GameStore,GameSettingsStore } = useStore()
   const history = useHistory()
   if (AppStore.userNickname.length === 0) {
     history.push('/')
@@ -33,7 +33,7 @@ export const Game = observer(() => {
       <GameTitle>
         Welcome to <Bold>typerider</Bold>, {AppStore.userNickname}!
       </GameTitle>
-      {GameStore.gameMode ? <PlayGame /> : <GameSettings />}
+      {GameSettingsStore.gameMode ? <PlayGame /> : <GameSettings />}
     </GameContainer>
   )
 })

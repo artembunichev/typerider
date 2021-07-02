@@ -5,7 +5,6 @@ export class GameStore {
   constructor() {
     makeAutoObservable(this)
   }
-  gameMode = false
   words = []
   currentWordIndex = 0
   currentLetterIndex = 0
@@ -35,9 +34,6 @@ export class GameStore {
   }
   clearInputValue() {
     this.inputValue = ''
-  }
-  setGameMode(value) {
-    this.gameMode = value
   }
   setIsError(value) {
     this.isError = value
