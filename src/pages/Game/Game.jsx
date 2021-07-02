@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 
@@ -11,19 +11,25 @@ const GameContainer = styled.div`
 `
 const GameTitle = styled.div`
   font-size: 56px;
+  text-align: center;
 `
 const Start = styled.button`
   width: 150px;
   height: 45px;
 `
 const GameInput = styled.input`
+  font-size: 45px;
   width: 650px;
+  height: 35px;
 `
 export const Bold = styled.span`
   font-weight: bold;
 `
 
 export const Game = observer(() => {
+  useEffect(() => {
+    GameStore.setRandomWords(150)
+  }, [])
   const { AppStore, GameStore } = useStore()
   const history = useHistory()
   if (AppStore.userNickname.length === 0) {
@@ -32,7 +38,6 @@ export const Game = observer(() => {
 
   const onStartClick = () => {
     GameStore.setGameMode(true)
-    GameStore.setRandomWords(20)
   }
   const updateWord = () => {
     GameStore.updateCurrentWordIndex()
@@ -68,19 +73,10 @@ export const Game = observer(() => {
       <GameTitle>
         Welcome to <Bold>typerider</Bold>, {AppStore.userNickname}!
       </GameTitle>
-      <Start onClick={onStartClick}>Start Game</Start>
+      {GameStore.gameMode ? null : <Start onClick={onStartClick}>Start Game</Start>}
       {GameStore.currentWord}
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <GameInput disabled={!GameStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
-      {GameStore.isError ? <div className='error'>ошибка</div> : null}
-      {GameStore.errorWords.map((word) => {
-        return (
-          <div className='errors' key={word}>
-            {word}
-          </div>
-        )
-      })}
-      {GameStore.errorsNumber}
     </GameContainer>
   )
 })
