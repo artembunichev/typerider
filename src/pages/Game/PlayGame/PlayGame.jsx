@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { Container } from '../../StyledComponents/StyledComponents'
 
@@ -14,8 +14,12 @@ const GameInput = styled.input`
 `
 
 export const PlayGame = observer(() => {
-  const { GameStore, GameSettingsStore, ResultStore } = useStore()
+  useEffect(() => {
+    const time = GameSettingsStore.activeTimeForRace / 1000
+    GameStore.setCurrentTime(time)
+  }, [])
 
+  const { GameStore, GameSettingsStore, ResultStore } = useStore()
   const updateWord = () => {
     GameStore.updateCurrentWordIndex()
     GameStore.clearCurrentLetterIndex()
@@ -50,6 +54,7 @@ export const PlayGame = observer(() => {
       {GameStore.currentWord}
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <GameInput disabled={!GameSettingsStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
+      {GameStore.currentTime}
     </PlayGameContainer>
   )
 })
