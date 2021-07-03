@@ -1,7 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 
 export class ResultStore {
-  constructor() {
+  constructor(gameSettingsStore) {
+    this.GameSettingsStore = gameSettingsStore
     makeAutoObservable(this)
   }
   isResultReady = false

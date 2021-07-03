@@ -7,5 +7,5 @@ export class RootStore {
   AppStore = new AppStore()
   GameStore = new GameStore()
   GameSettingsStore = new GameSettingsStore()
-  ResultStore = new ResultStore()
+  ResultStore = new ResultStore(this.GameSettingsStore)
 }
