@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { Container } from '../../StyledComponents/StyledComponents'
+import { useHistory } from 'react-router-dom'
 
 const GameSettingsContainer = styled(Container)`
   background-color: #ff0000;
@@ -22,11 +23,19 @@ const TimeForRaceItem = styled.li`
 
 export const GameSettings = observer(() => {
   const { GameSettingsStore } = useStore()
-  const onStartClick = () => {
+  const history = useHistory()
+  const startGame = () => {
     GameSettingsStore.setGameMode(true)
+    setTimer()
   }
   const setSelectedTime = (time) => {
     GameSettingsStore.setSelectedTime(time)
+  }
+  const setTimer = () => {
+    setTimeout(() => {
+      history.push('/results')
+      GameSettingsStore.setGameMode(false)
+    }, GameSettingsStore.activeTimeForRace)
   }
   return (
     <GameSettingsContainer>
@@ -42,7 +51,7 @@ export const GameSettings = observer(() => {
           })}
         </TimeForRace>
       </TimeForRaceContainer>
-      <Start onClick={onStartClick}>Start Game</Start>
+      <Start onClick={startGame}>Start Game</Start>
     </GameSettingsContainer>
   )
 })

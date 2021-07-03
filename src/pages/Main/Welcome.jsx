@@ -40,7 +40,7 @@ export const Welcome = observer(() => {
   const { AppStore } = useStore()
   const history = useHistory()
 
-  const startGame = () => {
+  const goToGame = () => {
     const nickname = AppStore.inputValue.trim()
     AppStore.setUserNickname(nickname)
     history.push('/game')
@@ -50,7 +50,7 @@ export const Welcome = observer(() => {
   }
   const onEnterPress = (e) => {
     if (e.code === 'Enter') {
-      startGame()
+      goToGame()
     }
   }
 
@@ -58,7 +58,7 @@ export const Welcome = observer(() => {
     <WelcomeContainer>
       <WelcomeSubTitle>Your nickname for the next race?</WelcomeSubTitle>
       <WelcomeInput maxLength='20' onChange={onInputChange} onKeyPress={onEnterPress} />
-      <LetsGo onClick={startGame}>Let&apos;s go!</LetsGo>
+      <LetsGo onClick={goToGame}>Let&apos;s go!</LetsGo>
     </WelcomeContainer>
   )
 })
