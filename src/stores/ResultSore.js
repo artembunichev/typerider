@@ -24,4 +24,8 @@ export class ResultStore {
   updateSymbolsCount() {
     this.symbolsCount++
   }
+  get typeSpeed() {
+    const rate = 60000 / this.GameSettingsStore.activeTimeForRace
+    return this.symbolsCount * rate
+  }
 }
