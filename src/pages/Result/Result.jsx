@@ -31,6 +31,7 @@ export const Results = observer(() => {
           })}
         </ErrorWordsContainer>
       ) : null}
+      {ResultStore.typeSpeed}
     </ResultContainer>
   )
 })
