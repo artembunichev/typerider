@@ -40,6 +40,9 @@ export class GameStore {
   setCurrentTime(time) {
     this.currentTime = time
   }
+  updateCurrentTime() {
+    this.currentTime--
+  }
   get currentWord() {
     return this.words[this.currentWordIndex]
   }

@@ -14,12 +14,18 @@ const GameInput = styled.input`
 `
 
 export const PlayGame = observer(() => {
+  const { GameStore, GameSettingsStore, ResultStore } = useStore()
   useEffect(() => {
     const time = GameSettingsStore.activeTimeForRace / 1000
     GameStore.setCurrentTime(time)
+    const timeInterval = setInterval(() => {
+      GameStore.updateCurrentTime()
+    }, 1000)
+    return () => {
+      clearInterval(timeInterval)
+    }
   }, [])
 
-  const { GameStore, GameSettingsStore, ResultStore } = useStore()
   const updateWord = () => {
     GameStore.updateCurrentWordIndex()
     GameStore.clearCurrentLetterIndex()
