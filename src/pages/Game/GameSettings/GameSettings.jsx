@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
-import { Container } from '../../StyledComponents/StyledComponents'
+import { Container } from '../../Components/Styled/StyledComponents'
 import { useHistory } from 'react-router-dom'
 
 const GameSettingsContainer = styled(Container)`

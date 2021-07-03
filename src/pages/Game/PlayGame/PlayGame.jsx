@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
-import { Container } from '../../StyledComponents/StyledComponents'
+import { Container } from '../../Components/Styled/StyledComponents'
 
 const PlayGameContainer = styled(Container)`
   background-color: #1100ff;

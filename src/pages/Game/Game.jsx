@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { GameSettings } from './GameSettings/GameSettings'
 import { PlayGame } from './PlayGame/PlayGame'
-import { Bold, Container } from '../StyledComponents/StyledComponents'
+import { Bold, Container } from '../Components/Styled/StyledComponents'
 
 const GameContainer = styled(Container)`
   display: flex;
