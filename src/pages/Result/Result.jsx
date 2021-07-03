@@ -23,12 +23,14 @@ export const Results = observer(() => {
       <ErrorsCountContainer>
         You got <Bold>{ResultStore.errorsCount}</Bold> mistakes
       </ErrorsCountContainer>
-      <ErrorWordsContainer>
-        You made a mistake in these words :{' '}
-        {ResultStore.errorWords.map((error) => {
-          return <ErrorWord key={error}>{error}</ErrorWord>
-        })}
-      </ErrorWordsContainer>
+      {ResultStore.errorsCount > 0 ? (
+        <ErrorWordsContainer>
+          You made a mistake in these words :{' '}
+          {ResultStore.errorWords.map((error) => {
+            return <ErrorWord key={error}>{error}</ErrorWord>
+          })}
+        </ErrorWordsContainer>
+      ) : null}
     </ResultContainer>
   )
 })
