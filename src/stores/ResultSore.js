@@ -7,6 +7,7 @@ export class ResultStore {
   isResultReady = false
   errorsCount = 0
   errorWords = []
+  symbolsCount = 0
 
   updateErrorsCount() {
     this.errorsCount++
@@ -18,5 +19,8 @@ export class ResultStore {
   }
   setIsResultReady(value) {
     this.isResultReady = value
+  }
+  updateSymbolsCount() {
+    this.symbolsCount++
   }
 }

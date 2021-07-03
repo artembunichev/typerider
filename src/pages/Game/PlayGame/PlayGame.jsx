@@ -42,6 +42,7 @@ export const PlayGame = observer(() => {
   }
   const updateLetter = () => {
     GameStore.updateCurrentLetterIndex()
+    ResultStore.updateSymbolsCount()
     if (GameStore.currentLetterIndex >= GameStore.currentWordLength) {
       updateWord()
     }
