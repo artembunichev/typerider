@@ -10,8 +10,6 @@ export class GameStore {
   currentLetterIndex = 0
   inputValue = ''
   isError = false
-  errorsNumber = 0
-  errorWords = []
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
@@ -37,14 +35,6 @@ export class GameStore {
   }
   setIsError(value) {
     this.isError = value
-  }
-  updateErrorsNumber() {
-    this.errorsNumber++
-  }
-  setErrorWords(word) {
-    if (!this.errorWords.some((w) => w === word)) {
-      this.errorWords.push(word)
-    }
   }
   get currentWord() {
     return this.words[this.currentWordIndex]
