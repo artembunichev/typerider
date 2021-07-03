@@ -5,11 +5,11 @@ export class ResultStore {
     makeAutoObservable(this)
   }
   isResultReady = false
-  errorsNumber = 0
+  errorsCount = 0
   errorWords = []
 
-  updateErrorsNumber() {
-    this.errorsNumber++
+  updateErrorsCount() {
+    this.errorsCount++
   }
   setErrorWords(word) {
     if (!this.errorWords.some((w) => w === word)) {

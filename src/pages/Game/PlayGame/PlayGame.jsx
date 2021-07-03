@@ -59,7 +59,7 @@ export const PlayGame = observer(() => {
       updateLetter()
     } else {
       GameStore.setIsError(true)
-      ResultStore.updateErrorsNumber()
+      ResultStore.updateErrorsCount()
       ResultStore.setErrorWords(GameStore.currentWord)
     }
   }
