@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
@@ -22,7 +22,7 @@ export const Game = observer(() => {
   useEffect(() => {
     GameStore.setRandomWords(150)
   }, [])
-  const { AppStore, GameStore,GameSettingsStore } = useStore()
+  const { AppStore, GameStore, GameSettingsStore } = useStore()
   const history = useHistory()
   if (AppStore.userNickname.length === 0) {
     history.push('/')
