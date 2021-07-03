@@ -12,6 +12,15 @@ const GameInput = styled.input`
   width: 650px;
   height: 35px;
 `
+const ErrorContainer = styled.div`
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const Error = styled.span`
+  font-size: 24px;
+`
 
 export const PlayGame = observer(() => {
   const { GameStore, GameSettingsStore, ResultStore } = useStore()
@@ -61,6 +70,11 @@ export const PlayGame = observer(() => {
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <GameInput disabled={!GameSettingsStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
       {GameStore.currentTime}
+      {GameStore.isError ? (
+        <ErrorContainer>
+          <Error>Error!</Error>
+        </ErrorContainer>
+      ) : null}
     </PlayGameContainer>
   )
 })
