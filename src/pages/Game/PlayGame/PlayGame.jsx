@@ -14,7 +14,7 @@ const GameInput = styled.input`
 `
 
 export const PlayGame = observer(() => {
-  const { GameStore, GameSettingsStore, ResultsStore } = useStore()
+  const { GameStore, GameSettingsStore, ResultStore } = useStore()
 
   const updateWord = () => {
     GameStore.updateCurrentWordIndex()
@@ -40,8 +40,8 @@ export const PlayGame = observer(() => {
       updateLetter()
     } else {
       GameStore.setIsError(true)
-      ResultsStore.updateErrorsNumber()
-      ResultsStore.setErrorWords(GameStore.currentWord)
+      ResultStore.updateErrorsNumber()
+      ResultStore.setErrorWords(GameStore.currentWord)
     }
   }
 

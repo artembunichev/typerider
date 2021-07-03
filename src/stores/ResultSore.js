@@ -4,6 +4,7 @@ export class ResultStore {
   constructor() {
     makeAutoObservable(this)
   }
+  isResultReady = false
   errorsNumber = 0
   errorWords = []
 
@@ -14,5 +15,8 @@ export class ResultStore {
     if (!this.errorWords.some((w) => w === word)) {
       this.errorWords.push(word)
     }
+  }
+  setIsResultReady(value) {
+    this.isResultReady = value
   }
 }

@@ -4,7 +4,7 @@ import { Header } from './pages/Components/Header'
 import { Welcome } from './pages/Main/Welcome'
 import { Game } from './pages/Game/Game'
 import { createGlobalStyle } from 'styled-components'
-import { Results } from './pages/Results/Results'
+import { Results } from './pages/Result/Result'
 
 const Global = createGlobalStyle`
   * {
@@ -33,7 +33,7 @@ export const App = () => {
       <Switch>
         <Route exact path='/' component={Welcome} />
         <Route exact path='/game' component={Game} />
-        <Route exact path ='/results' component={Results} />
+        <Route exact path='/result' component={Results} />
         <Redirect to={'/'} />
       </Switch>
     </>

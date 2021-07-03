@@ -22,7 +22,7 @@ const TimeForRaceItem = styled.li`
 `
 
 export const GameSettings = observer(() => {
-  const { GameSettingsStore } = useStore()
+  const { GameSettingsStore, ResultStore } = useStore()
   const history = useHistory()
   const startGame = () => {
     GameSettingsStore.setGameMode(true)
@@ -32,10 +32,12 @@ export const GameSettings = observer(() => {
     GameSettingsStore.setSelectedTime(time)
   }
   const setTimer = () => {
+    const time = GameSettingsStore.activeTimeForRace
     setTimeout(() => {
-      history.push('/results')
+      ResultStore.setIsResultReady(true)
+      history.push('/result')
       GameSettingsStore.setGameMode(false)
-    }, GameSettingsStore.activeTimeForRace)
+    }, time)
   }
   return (
     <GameSettingsContainer>
