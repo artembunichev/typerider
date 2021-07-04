@@ -1,7 +1,7 @@
 import { GameSettingsStore } from '../GameSettingsStore'
 import { GameStore } from '../GameStore'
 import { AppStore } from './../AppStore'
-import { ResultStore } from '../ResultSore'
+import { ResultStore } from '../ResultStore'
 
 export class RootStore {
   AppStore = new AppStore()
