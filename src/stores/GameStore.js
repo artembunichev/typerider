@@ -11,6 +11,7 @@ export class GameStore {
   inputValue = ''
   isError = false
   currentTime = null
+  vehiclePosition = 0
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
@@ -42,6 +43,9 @@ export class GameStore {
   }
   updateCurrentTime() {
     this.currentTime--
+  }
+  updateVehiclePosition(value) {
+    this.vehiclePosition = value
   }
   get currentWord() {
     return this.words[this.currentWordIndex]
