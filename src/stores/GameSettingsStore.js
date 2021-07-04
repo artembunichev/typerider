@@ -29,7 +29,7 @@ export class GameSettingsStore {
       }
     })
   }
-  setActiveVehicle(src) {
+  setSelectedVehicle(src) {
     this.vehicles.forEach((vehicle) => {
       if (src === vehicle.src) {
         vehicle.isActive = true

@@ -42,10 +42,13 @@ const VehicleForRaceButton = styled.button`
   width: 100px;
   height: 100px;
   padding: 10px;
-  margin: 0 5px 0 5px;  
+  margin: 0 5px 0 5px;
   &:hover {
     cursor: pointer;
   }
+  background-color: ${(props) => {
+    return props.active ? '#bebebe' : '#fff'
+  }};
 `
 const VehicleForRaceImg = styled.img``
 
@@ -58,6 +61,9 @@ export const GameSettings = observer(() => {
   }
   const setSelectedTime = (time) => {
     GameSettingsStore.setSelectedTime(time)
+  }
+  const setSelectedVehicle = (vehicle) => {
+    GameSettingsStore.setSelectedVehicle(vehicle)
   }
   const setTimer = () => {
     const time = GameSettingsStore.activeTimeForRace
@@ -85,7 +91,7 @@ export const GameSettings = observer(() => {
         <VehicleForRace>
           {GameSettingsStore.vehicles.map((v) => {
             return (
-              <VehicleForRaceButton key={v.src}>
+              <VehicleForRaceButton active={v.isActive} key={v.src} onClick={() => setSelectedVehicle(v.src)}>
                 <VehicleForRaceImg draggable='false' src={v.src} />
               </VehicleForRaceButton>
             )
