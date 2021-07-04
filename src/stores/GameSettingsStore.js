@@ -1,8 +1,7 @@
 import { makeAutoObservable } from 'mobx'
-import SportsCar from '../images/Vehicle/sportsCar.svg'
 import Motorbike from '../images/Vehicle/motorbike.svg'
+import SportsCar from '../images/Vehicle/sportsCar.svg'
 import Taxi from '../images/Vehicle/taxi.svg'
-
 export class GameSettingsStore {
   constructor() {
     makeAutoObservable(this)
@@ -14,9 +13,9 @@ export class GameSettingsStore {
     { label: '90sec', time: 90000, isActive: false },
   ]
   vehicles = [
-    { label: 'sports car', src: SportsCar, isActive: true },
-    { label: 'motorbike', src: Motorbike, isActive: false },
-    { label: 'taxi', src: Taxi, isActive: false },
+    { label: 'sports car', url: SportsCar, isActive: true },
+    { label: 'motorbike', url: Motorbike, isActive: false },
+    { label: 'taxi', url: Taxi, isActive: false },
   ]
   setGameMode(value) {
     this.gameMode = value
@@ -30,9 +29,9 @@ export class GameSettingsStore {
       }
     })
   }
-  setActiveVehicle(src) {
+  setActiveVehicle(url) {
     this.vehicles.forEach((vehicle) => {
-      if (src === vehicle.src) {
+      if (url === vehicle.url) {
         vehicle.isActive = true
       } else {
         vehicle.isActive = false
