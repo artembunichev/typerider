@@ -47,4 +47,19 @@ export class GameSettingsStore {
     })
     return timeObject.time
   }
+  get activeVehicle() {
+    const vehicleObject = this.vehicles.reduce((acc, time) => {
+      if (time.isActive === true) {
+        acc = time
+      }
+      return acc
+    })
+    return vehicleObject
+  }
+  get activeVehicleSrc() {
+    return this.activeVehicle.src
+  }
+  get activeVehicleLabel() {
+    return this.activeVehicle.label
+  }
 }
