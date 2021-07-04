@@ -18,11 +18,11 @@ const StyledTrack = styled.div`
 `
 
 export const Track = observer(() => {
-  const { GameStore } = useStore()
+  const { GameStore, GameSettingsStore } = useStore()
   return (
     <TrackContainer>
       <StyledTrack length={GameStore.trackLength}>
-        <Vehicle />
+        <Vehicle label={GameSettingsStore.activeVehicleLabel} />
       </StyledTrack>
     </TrackContainer>
   )
