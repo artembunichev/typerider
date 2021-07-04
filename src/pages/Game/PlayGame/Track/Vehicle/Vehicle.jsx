@@ -6,9 +6,9 @@ import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 const StyledVehicle = styled.div`
   position: relative;
   top: ${(props) => {
-    return props.label === 'motorbike'
+    return props.model === 'motorbike'
       ? `${props.width / 4.2}px`
-      : props.label === 'taxi'
+      : props.model === 'taxi'
       ? `${props.width / 3.2}px`
       : `${props.width / 2.87}px`
   }};
@@ -33,7 +33,7 @@ export const Vehicle = observer((props) => {
 
   return (
     <StyledVehicle
-      label={props.label}
+      model={props.model}
       src={GameSettingsStore.activeVehicleSrc}
       left={GameStore.vehiclePosition}
       width={GameStore.vehicleWidth}

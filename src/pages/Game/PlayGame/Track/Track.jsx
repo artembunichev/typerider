@@ -22,7 +22,7 @@ export const Track = observer(() => {
   return (
     <TrackContainer>
       <StyledTrack length={GameStore.trackLength}>
-        <Vehicle label={GameSettingsStore.activeVehicleLabel} />
+        <Vehicle model={GameSettingsStore.activeVehicleModel} />
       </StyledTrack>
     </TrackContainer>
   )
