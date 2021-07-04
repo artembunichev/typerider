@@ -13,9 +13,9 @@ export class GameSettingsStore {
     { label: '90sec', time: 90000, isActive: false },
   ]
   vehicles = [
-    { label: 'sports car', url: SportsCar, isActive: true },
-    { label: 'motorbike', url: Motorbike, isActive: false },
-    { label: 'taxi', url: Taxi, isActive: false },
+    { label: 'sports car', src: SportsCar, isActive: true },
+    { label: 'motorbike', src: Motorbike, isActive: false },
+    { label: 'taxi', src: Taxi, isActive: false },
   ]
   setGameMode(value) {
     this.gameMode = value
@@ -29,9 +29,9 @@ export class GameSettingsStore {
       }
     })
   }
-  setActiveVehicle(url) {
+  setActiveVehicle(src) {
     this.vehicles.forEach((vehicle) => {
-      if (url === vehicle.url) {
+      if (src === vehicle.src) {
         vehicle.isActive = true
       } else {
         vehicle.isActive = false

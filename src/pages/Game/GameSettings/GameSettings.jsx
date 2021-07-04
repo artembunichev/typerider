@@ -29,6 +29,25 @@ const TimeForRaceItem = styled.button`
     cursor: pointer;
   }
 `
+const VehicleForRaceContainer = styled.div`
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const VehicleForRace = styled.div`
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+`
+const VehicleForRaceButton = styled.button`
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+`
+const VehicleForRaceImg = styled.img`
+  pointer-events: none;
+`
 
 export const GameSettings = observer(() => {
   const { GameSettingsStore, ResultStore } = useStore()
@@ -62,6 +81,17 @@ export const GameSettings = observer(() => {
           })}
         </TimeForRace>
       </TimeForRaceContainer>
+      <VehicleForRaceContainer>
+        <VehicleForRace>
+          {GameSettingsStore.vehicles.map((v) => {
+            return (
+              <VehicleForRaceButton key={v.src}>
+                <VehicleForRaceImg src={v.src} />
+              </VehicleForRaceButton>
+            )
+          })}
+        </VehicleForRace>
+      </VehicleForRaceContainer>
       <Start onClick={startGame}>Start Game</Start>
     </GameSettingsContainer>
   )
