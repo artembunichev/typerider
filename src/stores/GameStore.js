@@ -1,8 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { WordApi } from '../API/WordApi'
-import SportsCar from '../images/Vehicle/sportsCar.svg'
-import Motorbike from '../images/Vehicle/motorbike.svg'
-import Taxi from '../images/Vehicle/taxi.svg'
+
 
 export class GameStore {
   constructor() {
@@ -22,11 +20,6 @@ export class GameStore {
 
   vehiclePosition = 0
   vehicleWidth = 50
-  vehicles = [
-    { label: 'sports car', src: SportsCar, isActive: true },
-    { label: 'motorbike', src: Motorbike, isActive: false },
-    { label: 'taxi', src: Taxi, isActive: false },
-  ]
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
@@ -64,15 +57,6 @@ export class GameStore {
   }
   clearVehiclePosition() {
     this.vehiclePosition = 0
-  }
-  setActiveVehicle(src) {
-    this.vehicles.forEach((vehicle) => {
-      if (src === vehicle.src) {
-        vehicle.isActive = true
-      } else {
-        vehicle.isActive = false
-      }
-    })
   }
   get currentWord() {
     return this.words[this.currentWordIndex]
