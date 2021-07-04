@@ -21,7 +21,7 @@ export const Results = observer(() => {
   return (
     <ResultContainer>
       <ErrorsCountContainer>
-        You got <Bold>{ResultStore.errorsCount}</Bold> mistakes
+        You got <Bold>{ResultStore.errorsCount}</Bold> mistakes ({ResultStore.errorsPercent}%)
       </ErrorsCountContainer>
       {ResultStore.errorsCount > 0 ? (
         <ErrorWordsContainer>
