@@ -51,7 +51,10 @@ export class GameStore {
     this.currentTime--
   }
   updateVehiclePosition(value) {
-    this.vehiclePosition = value
+    this.vehiclePosition += value
+  }
+  clearVehiclePosition() {
+    this.vehiclePosition = 0
   }
   get currentWord() {
     return this.words[this.currentWordIndex]
@@ -61,5 +64,8 @@ export class GameStore {
   }
   get currentLetter() {
     return this.words[this.currentWordIndex][this.currentLetterIndex]
+  }
+  get currentWordStep() {
+    return (this.trackLength - this.vehicleWidth) / this.currentWordLength
   }
 }

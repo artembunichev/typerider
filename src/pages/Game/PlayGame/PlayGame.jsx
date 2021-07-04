@@ -40,6 +40,7 @@ export const PlayGame = observer(() => {
   return (
     <PlayGameContainer>
       {GameStore.currentWord}
+      {GameStore.words.length > 0 ? GameStore.currentWordStep : null}
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <Track />
       <GameInput />

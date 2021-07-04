@@ -13,11 +13,13 @@ export const GameInput = observer(() => {
   const { GameSettingsStore, GameStore, ResultStore } = useStore()
 
   const updateWord = () => {
+    GameStore.clearVehiclePosition()
     GameStore.updateCurrentWordIndex()
     GameStore.clearCurrentLetterIndex()
     GameStore.clearInputValue()
   }
   const updateLetter = () => {
+    GameStore.updateVehiclePosition(GameStore.currentWordStep)
     GameStore.updateCurrentLetterIndex()
     ResultStore.updateSymbolsCount()
     if (GameStore.currentLetterIndex >= GameStore.currentWordLength) {
