@@ -36,18 +36,18 @@ const VehicleForRaceContainer = styled.div`
   align-items: center;
 `
 const VehicleForRace = styled.div`
-  width: 75%;
-  display: flex;
-  justify-content: space-between;
+  width: 95%;
 `
 const VehicleForRaceButton = styled.button`
   width: 100px;
   height: 100px;
   padding: 10px;
+  margin: 0 5px 0 5px;  
+  &:hover {
+    cursor: pointer;
+  }
 `
-const VehicleForRaceImg = styled.img`
-  pointer-events: none;
-`
+const VehicleForRaceImg = styled.img``
 
 export const GameSettings = observer(() => {
   const { GameSettingsStore, ResultStore } = useStore()
@@ -86,7 +86,7 @@ export const GameSettings = observer(() => {
           {GameSettingsStore.vehicles.map((v) => {
             return (
               <VehicleForRaceButton key={v.src}>
-                <VehicleForRaceImg src={v.src} />
+                <VehicleForRaceImg draggable='false' src={v.src} />
               </VehicleForRaceButton>
             )
           })}
