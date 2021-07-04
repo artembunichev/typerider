@@ -18,7 +18,7 @@ export class GameStore {
   trackLength = 1120
 
   vehiclePosition = 0
-  vehicleWidth = 80
+  vehicleWidth = 100
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
