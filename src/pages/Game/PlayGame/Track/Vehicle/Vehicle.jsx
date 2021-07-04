@@ -9,7 +9,9 @@ const StyledVehicle = styled.div`
   left: ${(props) => {
     return props.left + 'px'
   }};
-  width: 50px;
+  width: ${(props) => {
+    return props.width + 'px'
+  }};
   height: 50px;
   background-color: #ff9900;
 `
@@ -17,5 +19,5 @@ const StyledVehicle = styled.div`
 export const Vehicle = observer(() => {
   const { GameStore } = useStore()
 
-  return <StyledVehicle left={GameStore.vehiclePosition} />
+  return <StyledVehicle left={GameStore.vehiclePosition} width={GameStore.vehicleWidth} />
 })
