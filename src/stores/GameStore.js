@@ -1,7 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { WordApi } from '../API/WordApi'
 
-
 export class GameStore {
   constructor() {
     makeAutoObservable(this)
@@ -19,7 +18,7 @@ export class GameStore {
   trackLength = 1120
 
   vehiclePosition = 0
-  vehicleWidth = 50
+  vehicleWidth = 80
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {

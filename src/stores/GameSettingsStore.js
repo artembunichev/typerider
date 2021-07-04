@@ -48,9 +48,9 @@ export class GameSettingsStore {
     return timeObject.time
   }
   get activeVehicle() {
-    const vehicleObject = this.vehicles.reduce((acc, time) => {
-      if (time.isActive === true) {
-        acc = time
+    const vehicleObject = this.vehicles.reduce((acc, vehicle) => {
+      if (vehicle.isActive === true) {
+        acc = vehicle
       }
       return acc
     })
