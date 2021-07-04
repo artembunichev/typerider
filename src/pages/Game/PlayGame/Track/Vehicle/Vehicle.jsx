@@ -13,13 +13,13 @@ const StyledVehicle = styled.div`
       : `${props.width / 2.87}px`
   }};
   left: ${(props) => {
-    return props.left + 'px'
+    return `${props.left}px`
   }};
   width: ${(props) => {
-    return props.width + 'px'
+    return `${props.width}px`
   }};
   height: ${(props) => {
-    return props.width + 'px'
+    return `${props.width}px`
   }};
   background-image: ${(props) => {
     return `url('${props.src}')`

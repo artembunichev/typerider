@@ -12,7 +12,7 @@ const TrackContainer = styled.div`
 const StyledTrack = styled.div`
   position: relative;
   width: ${(props) => {
-    return props.length + 'px'
+    return `${props.length}px`
   }};
   border-bottom: 3px dashed #000000;
 `
