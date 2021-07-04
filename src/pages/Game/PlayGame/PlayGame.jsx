@@ -23,13 +23,18 @@ export const PlayGame = observer(() => {
   useEffect(() => {
     const time = GameSettingsStore.activeTimeForRace / 1000
     GameStore.setCurrentTime(time)
-    const timeInterval = setInterval(() => {
-      GameStore.updateCurrentTime()
-    }, 1000)
+  }, [GameSettingsStore.activeTimeForRace])
+  useEffect(() => {
+    let timeInterval
+    if (GameSettingsStore.gameMode) {
+      timeInterval = setInterval(() => {
+        GameStore.updateCurrentTime()
+      }, 1000)
+    }
     return () => {
       clearInterval(timeInterval)
     }
-  }, [])
+  }, [GameSettingsStore.gameMode])
 
   return (
     <PlayGameContainer>

@@ -33,7 +33,8 @@ export const Game = observer(() => {
       <GameTitle>
         Welcome to <Bold>typerider</Bold>, {AppStore.userNickname}!
       </GameTitle>
-      {GameSettingsStore.gameMode ? <PlayGame /> : <GameSettings />}
+      {GameSettingsStore.gameMode ? null : <GameSettings />}
+      <PlayGame />
     </GameContainer>
   )
 })
