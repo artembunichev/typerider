@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { GameInput } from './GameInput/GameInput'
+import { Track } from './Track/Track'
 
 const PlayGameContainer = styled.div`
   background-color: #1100ff;
@@ -40,6 +41,7 @@ export const PlayGame = observer(() => {
     <PlayGameContainer>
       {GameStore.currentWord}
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
+      <Track />
       <GameInput />
       {GameStore.currentTime}
       {GameStore.isError ? (
