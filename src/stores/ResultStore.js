@@ -26,7 +26,7 @@ export class ResultStore {
   }
   get typeSpeed() {
     const rate = 60000 / this.GameSettingsStore.activeTimeForRace
-    return this.symbolsCount * rate
+    return (this.symbolsCount * rate).toFixed(1)
   }
   get errorsPercent() {
     return Math.floor((this.errorsCount / this.symbolsCount) * 100)
