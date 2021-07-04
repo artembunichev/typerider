@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
+import { Vehicle } from './Vehicle/Vehicle'
 
 const TrackContainer = styled.div`
   padding: 50px;
@@ -15,7 +16,9 @@ const StyledTrack = styled.div`
 export const Track = observer(() => {
   return (
     <TrackContainer>
-      <StyledTrack />
+      <StyledTrack>
+        <Vehicle />
+      </StyledTrack>
     </TrackContainer>
   )
 })
