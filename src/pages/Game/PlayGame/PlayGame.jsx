@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
-import { Container } from '../../Components/Styled/StyledComponents'
 import { GameInput } from './GameInput/GameInput'
 
-const PlayGameContainer = styled(Container)`
+const PlayGameContainer = styled.div`
   background-color: #1100ff;
+  width: 78%;
 `
 const ErrorContainer = styled.div`
   background-color: #ff0000;

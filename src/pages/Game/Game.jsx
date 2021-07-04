@@ -13,6 +13,9 @@ const GameContainer = styled(Container)`
   font-size: 50px;
   background-color: #ff0;
 `
+const GameSectionContainer = styled(Container)`
+  display: flex;
+`
 const GameTitle = styled.div`
   font-size: 56px;
   text-align: center;
@@ -22,7 +25,7 @@ export const Game = observer(() => {
   useEffect(() => {
     GameStore.setRandomWords(150)
   }, [])
-  const { AppStore, GameStore, GameSettingsStore } = useStore()
+  const { AppStore, GameStore } = useStore()
   const history = useHistory()
   if (AppStore.userNickname.length === 0) {
     history.push('/')
@@ -33,8 +36,10 @@ export const Game = observer(() => {
       <GameTitle>
         Welcome to <Bold>typerider</Bold>, {AppStore.userNickname}!
       </GameTitle>
-      {GameSettingsStore.gameMode ? null : <GameSettings />}
-      <PlayGame />
+      <GameSectionContainer>
+        <GameSettings />
+        <PlayGame />
+      </GameSectionContainer>
     </GameContainer>
   )
 })

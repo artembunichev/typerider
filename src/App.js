@@ -23,9 +23,6 @@ const Global = createGlobalStyle`
     outline: none;
     border: 0;
   }
-  li {
-    list-style:none
-  }
 `
 
 export const App = () => {

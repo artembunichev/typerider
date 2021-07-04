@@ -2,19 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
-import { Container } from '../../Components/Styled/StyledComponents'
 import { useHistory } from 'react-router-dom'
 
-const GameSettingsContainer = styled(Container)`
+const GameSettingsContainer = styled.div`
+  width: 22%;
   background-color: #ff0000;
 `
 const Start = styled.button`
   width: 150px;
   height: 45px;
 `
-const TimeForRaceContainer = styled.div``
-const TimeForRace = styled.ul``
-const TimeForRaceItem = styled.li`
+const TimeForRaceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const TimeForRace = styled.div`
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+`
+const TimeForRaceItem = styled.button`
+  width: 50px;
   color: ${(props) => (props.active ? '#33ff00' : '#000000')};
   &:hover {
     cursor: pointer;
