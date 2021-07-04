@@ -36,7 +36,7 @@ export class GameStore {
     this.currentLetterIndex = 0
   }
   updateInputValue(value) {
-    this.inputValue = this.inputValue + value
+    this.inputValue += value
   }
   clearInputValue() {
     this.inputValue = ''
