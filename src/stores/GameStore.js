@@ -65,14 +65,23 @@ export class GameStore {
   clearVehiclePosition() {
     this.vehiclePosition = 0
   }
+  setActiveVehicle(src) {
+    this.vehicles.forEach((vehicle) => {
+      if (src === vehicle.src) {
+        vehicle.isActive = true
+      } else {
+        vehicle.isActive = false
+      }
+    })
+  }
   get currentWord() {
     return this.words[this.currentWordIndex]
   }
   get currentWordLength() {
-    return this.words[this.currentWordIndex].length
+    return this.currentWord.length
   }
   get currentLetter() {
-    return this.words[this.currentWordIndex][this.currentLetterIndex]
+    return this.currentWord[this.currentLetterIndex]
   }
   get currentWordStep() {
     return (this.trackLength - this.vehicleWidth) / this.currentWordLength
