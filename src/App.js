@@ -15,13 +15,16 @@ const Global = createGlobalStyle`
     height: 100vh;
     display: flex;
     flex-direction: column;
-}
+  }
   button {
-  border: 0;
+    border: 0;
   }
   input {
     outline: none;
     border: 0;
+  }
+  li {
+    list-style:none
   }
 `
 
