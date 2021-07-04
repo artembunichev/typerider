@@ -10,7 +10,7 @@ const TrackContainer = styled.div`
 `
 const StyledTrack = styled.div`
   position: relative;
-  width: 85%;
+  width: 1120px;
   border-bottom: 3px dashed #000000;
 `
 
