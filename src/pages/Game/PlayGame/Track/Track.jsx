@@ -9,6 +9,7 @@ const TrackContainer = styled.div`
   justify-content: center;
 `
 const StyledTrack = styled.div`
+  position: relative;
   width: 85%;
   border-bottom: 3px dashed #000000;
 `
