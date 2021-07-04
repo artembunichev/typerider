@@ -8,10 +8,15 @@ export class GameStore {
   words = []
   currentWordIndex = 0
   currentLetterIndex = 0
+
   inputValue = ''
+
   isError = false
+
   currentTime = null
+
   vehiclePosition = 0
+  vehicleWidth = 50
 
   setRandomWords(number) {
     WordApi.getRandomWords(number).then((words) => {
