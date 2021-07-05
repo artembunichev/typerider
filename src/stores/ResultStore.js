@@ -9,7 +9,7 @@ export class ResultStore {
   errorsCount = 0
   errorWords = []
   symbolsCount = 0
-
+  correctWordsCount = 0
   updateErrorsCount() {
     this.errorsCount++
   }
@@ -23,6 +23,9 @@ export class ResultStore {
   }
   updateSymbolsCount() {
     this.symbolsCount++
+  }
+  updateCorrectWordsCount() {
+    this.correctWordsCount++
   }
   get typeSpeed() {
     const rate = 60000 / this.GameSettingsStore.activeTimeForRace
