@@ -26,6 +26,7 @@ const StyledVehicle = styled.div`
   }};
   background-repeat: no-repeat;
   background-size: cover;
+  transition: 0.33s ease all;
 `
 
 export const Vehicle = observer((props) => {
