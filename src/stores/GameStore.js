@@ -60,6 +60,12 @@ export class GameStore {
   get currentWord() {
     return this.words[this.currentWordIndex]
   }
+  get currentWordLetters() {
+    if (this.words.length > 0) {
+      return this.currentWord.split('')
+    }
+    return []
+  }
   get currentWordLength() {
     return this.currentWord.length
   }
