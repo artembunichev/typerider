@@ -11,6 +11,7 @@ const ResultContainer = styled(Container)`
 const ErrorsCountContainer = styled.div``
 const ErrorWordsContainer = styled.div``
 const ErrorWord = styled.div``
+const CorrectWordsContainer = styled.div``
 export const Results = observer(() => {
   const { ResultStore } = useStore()
   const history = useHistory()
@@ -20,6 +21,9 @@ export const Results = observer(() => {
   }
   return (
     <ResultContainer>
+      <CorrectWordsContainer>
+        You got <Bold>{ResultStore.correctWordsCount}</Bold> correct words!
+      </CorrectWordsContainer>
       <ErrorsCountContainer>
         You got <Bold>{ResultStore.errorsCount}</Bold> mistakes ({ResultStore.errorsPercent}%)
       </ErrorsCountContainer>

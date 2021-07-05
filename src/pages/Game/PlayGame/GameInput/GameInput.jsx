@@ -16,6 +16,7 @@ export const GameInput = observer(() => {
     GameStore.clearVehiclePosition()
     GameStore.updateCurrentWordIndex()
     GameStore.clearCurrentLetterIndex()
+    ResultStore.updateCorrectWordsCount()
     GameStore.clearInputValue()
   }
   const updateLetter = () => {

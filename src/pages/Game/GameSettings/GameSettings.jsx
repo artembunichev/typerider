@@ -34,9 +34,9 @@ export const GameSettings = observer(() => {
 
   return (
     <GameSettingsContainer>
-      <Start onClick={startGame}>Start Game</Start>
       <TimeForRace />
       <VehicleForRace />
+      <Start onClick={startGame}>Start Game</Start>
     </GameSettingsContainer>
   )
 })
