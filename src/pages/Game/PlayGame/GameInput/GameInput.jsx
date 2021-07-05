@@ -11,7 +11,6 @@ const StyledGameInput = styled.input`
 
 export const GameInput = observer(() => {
   const { GameSettingsStore, GameStore, ResultStore } = useStore()
-
   const updateWord = () => {
     GameStore.clearVehiclePosition()
     GameStore.updateCurrentWordIndex()
@@ -33,9 +32,9 @@ export const GameInput = observer(() => {
   const checkLetter = (e) => {
     if (!GameSettingsStore.gameMode) {
       e.preventDefault()
-    } else if (e.key === GameStore.currentLetter) {
+    } else if (e.nativeEvent.data === GameStore.currentLetter) {
       GameStore.setIsError(false)
-      const value = e.key
+      const value = e.nativeEvent.data
       updateInputValue(value)
       updateLetter()
     } else {
@@ -45,5 +44,5 @@ export const GameInput = observer(() => {
     }
   }
 
-  return <StyledGameInput disabled={!GameSettingsStore.gameMode} onKeyPress={checkLetter} value={GameStore.inputValue} />
+  return <StyledGameInput onChange={checkLetter} disabled={!GameSettingsStore.gameMode} value={GameStore.inputValue} />
 })
