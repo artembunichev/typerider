@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { WordApi } from '../API/WordApi'
+import uniqid from 'uniqid'
 
 export class GameStore {
   constructor() {
@@ -62,7 +63,12 @@ export class GameStore {
   }
   get currentWordLetters() {
     if (this.words.length > 0) {
-      return this.currentWord.split('')
+      return this.currentWord.split('').map((letter) => {
+        return {
+          letter,
+          id: uniqid(),
+        }
+      })
     }
     return []
   }

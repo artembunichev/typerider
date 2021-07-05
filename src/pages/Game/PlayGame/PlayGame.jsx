@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { GameInput } from './GameInput/GameInput'
 import { Track } from './Track/Track'
-import uniqid from 'uniqid'
 import { Timer } from './Timer/Timer'
 
 const PlayGameContainer = styled.div`
@@ -27,8 +26,8 @@ export const PlayGame = observer(() => {
 
   return (
     <PlayGameContainer>
-      {GameStore.currentWordLetters.map((letter) => {
-        return <WordLetter key={uniqid()}>{letter}</WordLetter>
+      {GameStore.currentWordLetters.map((l) => {
+        return <WordLetter key={l.id}>{l.letter}</WordLetter>
       })}
       {GameStore.words.length > 0 ? GameStore.currentLetter : null}
       <Track />
