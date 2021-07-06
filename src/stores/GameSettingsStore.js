@@ -17,6 +17,8 @@ export class GameSettingsStore {
     { model: 'motorbike', src: Motorbike, isActive: false },
     { model: 'taxi', src: Taxi, isActive: false },
   ]
+  completedLettersColor = '#ffffff'
+
   setGameMode(value) {
     this.gameMode = value
   }
@@ -37,6 +39,9 @@ export class GameSettingsStore {
         vehicle.isActive = false
       }
     })
+  }
+  setCompletedLettersColor(color) {
+    this.completedLettersColor = color
   }
   get activeTimeForRace() {
     const timeObject = this.timeForRace.reduce((acc, time) => {
