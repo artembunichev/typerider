@@ -15,10 +15,7 @@ export const SCompletedLetters = observer(() => {
 
   return (
     <SCompletedLettersContainer>
-      <CompletedLettersColorInput
-        value={GameSettingsStore.completedLettersColor}
-        onChange={setCompletedLettersColor}
-        type='color'></CompletedLettersColorInput>
+      <CompletedLettersColorInput value={GameSettingsStore.completedLettersColor} onChange={setCompletedLettersColor} type='color' />
     </SCompletedLettersContainer>
   )
 })
