@@ -14,7 +14,12 @@ export const SLetters = observer(() => {
   }
   return (
     <SLettersContainer>
-      <SLettersInput type='color' onChange={setLettersColor} value={GameSettingsStore.lettersColor} />
+      <SLettersInput
+        disabled={GameSettingsStore.gameMode}
+        type='color'
+        onChange={setLettersColor}
+        value={GameSettingsStore.lettersColor}
+      />
     </SLettersContainer>
   )
 })
