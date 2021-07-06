@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
 const WordLetterContainer = styled.div`
   display: inline-block;
@@ -9,13 +11,18 @@ const WordLetterContainer = styled.div`
   }};
 `
 const WordLetterWrapper = styled.span`
-  color: #000000;
+  color: ${(props) => {
+    return props.completed ? `${props.completedLettersColor}` : '#000'
+  }};
 `
 
-export const WordLetter = (props) => {
+export const WordLetter = observer((props) => {
+  const { GameSettingsStore } = useStore()
   return (
     <WordLetterContainer completed={props.completed}>
-      <WordLetterWrapper>{props.letter}</WordLetterWrapper>
+      <WordLetterWrapper completed={props.completed} completedLettersColor={GameSettingsStore.completedLettersColor}>
+        {props.letter}
+      </WordLetterWrapper>
     </WordLetterContainer>
   )
-}
+})
