@@ -32,22 +32,20 @@ export const VehicleForRace = observer(() => {
   const setSelectedVehicle = (vehicle) => {
     GameSettingsStore.setSelectedVehicle(vehicle)
   }
-
+  const VehicleForRaceItems = GameSettingsStore.vehicles.map((v) => {
+    return (
+      <VehicleForRaceButton
+        disabled={GameSettingsStore.gameMode}
+        active={v.isActive}
+        key={v.src}
+        onClick={() => setSelectedVehicle(v.src)}>
+        <VehicleForRaceImg draggable='false' src={v.src} />
+      </VehicleForRaceButton>
+    )
+  })
   return (
     <VehicleForRaceContainer>
-      <VehicleForRaceList>
-        {GameSettingsStore.vehicles.map((v) => {
-          return (
-            <VehicleForRaceButton
-              disabled={GameSettingsStore.gameMode}
-              active={v.isActive}
-              key={v.src}
-              onClick={() => setSelectedVehicle(v.src)}>
-              <VehicleForRaceImg draggable='false' src={v.src} />
-            </VehicleForRaceButton>
-          )
-        })}
-      </VehicleForRaceList>
+      <VehicleForRaceList>{VehicleForRaceItems}</VehicleForRaceList>
     </VehicleForRaceContainer>
   )
 })

@@ -27,22 +27,17 @@ export const TimeForRace = observer(() => {
   const setSelectedTime = (time) => {
     GameSettingsStore.setSelectedTime(time)
   }
+  const TimeForRaceItems = GameSettingsStore.timeForRace.map((t) => {
+    return (
+      <TimeForRaceItem disabled={GameSettingsStore.gameMode} active={t.isActive} key={t.time} onClick={() => setSelectedTime(t.time)}>
+        {t.label}
+      </TimeForRaceItem>
+    )
+  })
   return (
     <TimeForRaceContainer>
       How long will your race last?
-      <TimeForRaceList>
-        {GameSettingsStore.timeForRace.map((t) => {
-          return (
-            <TimeForRaceItem
-              disabled={GameSettingsStore.gameMode}
-              active={t.isActive}
-              key={t.time}
-              onClick={() => setSelectedTime(t.time)}>
-              {t.label}
-            </TimeForRaceItem>
-          )
-        })}
-      </TimeForRaceList>
+      <TimeForRaceList>{TimeForRaceItems}</TimeForRaceList>
     </TimeForRaceContainer>
   )
 })
