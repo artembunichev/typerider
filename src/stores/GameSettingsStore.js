@@ -17,7 +17,8 @@ export class GameSettingsStore {
     { model: 'motorbike', src: Motorbike, isActive: false },
     { model: 'taxi', src: Taxi, isActive: false },
   ]
-  completedLettersColor = '#ffffff'
+  lettersColor = '#000000'
+  completedLettersColor = '#000000'
 
   setGameMode(value) {
     this.gameMode = value
@@ -39,6 +40,9 @@ export class GameSettingsStore {
         vehicle.isActive = false
       }
     })
+  }
+  setLettersColor(color) {
+    this.lettersColor = color
   }
   setCompletedLettersColor(color) {
     this.completedLettersColor = color
