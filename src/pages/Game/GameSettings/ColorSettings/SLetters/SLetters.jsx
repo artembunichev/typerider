@@ -10,7 +10,7 @@ export const SLetters = observer(() => {
   const { GameSettingsStore } = useStore()
 
   const setLettersColor = (e) => {
-    GameSettingsStore.setLettersColor(e.target.event)
+    GameSettingsStore.setLettersColor(e.target.value)
   }
   return (
     <SLettersContainer>
