@@ -20,6 +20,7 @@ export const GameInput = observer(() => {
   }
   const updateLetter = () => {
     GameStore.updateVehiclePosition(GameStore.currentWordStep)
+    GameStore.updateCompletedLetters(GameStore.currentWordLetters[GameStore.currentLetterIndex].id)
     GameStore.updateCurrentLetterIndex()
     ResultStore.updateSymbolsCount()
     if (GameStore.currentLetterIndex >= GameStore.currentWordLength) {
