@@ -10,6 +10,8 @@ export class GameStore {
   currentWordIndex = 0
   currentLetterIndex = 0
 
+  completedLetters = []
+
   inputValue = ''
 
   isError = false
@@ -57,6 +59,9 @@ export class GameStore {
   }
   clearVehiclePosition() {
     this.vehiclePosition = 0
+  }
+  updateCompletedLetters(id) {
+    this.completedLetters.push(id)
   }
   get currentWord() {
     return this.words[this.currentWordIndex]
