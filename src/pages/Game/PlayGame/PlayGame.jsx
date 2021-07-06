@@ -6,19 +6,11 @@ import { GameInput } from './GameInput/GameInput'
 import { Track } from './Track/Track'
 import { Timer } from './Timer/Timer'
 import { WordLetters } from './WordLetters/WordLetters'
+import { Error } from './Error/Error'
 
 const PlayGameContainer = styled.div`
   background-color: #1100ff;
   width: 78%;
-`
-const ErrorContainer = styled.div`
-  background-color: #ff0000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-const Error = styled.span`
-  font-size: 24px;
 `
 
 export const PlayGame = observer(() => {
@@ -30,11 +22,7 @@ export const PlayGame = observer(() => {
       <Track />
       <GameInput />
       <Timer />
-      {GameStore.isError ? (
-        <ErrorContainer>
-          <Error>Error!</Error>
-        </ErrorContainer>
-      ) : null}
+      {GameStore.isError ? <Error /> : null}
     </PlayGameContainer>
   )
 })
