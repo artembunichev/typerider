@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext';
 
 const TimeForRaceContainer = styled.div`
   display: flex;
