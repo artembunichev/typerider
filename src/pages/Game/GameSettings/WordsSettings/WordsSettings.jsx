@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ColorSettings } from './ColorSettings/ColorSettings'
-import { WordsSettingsExample } from './ColorSettings/WordsSettingsExample/WordsSettingsExample';
+import { WordsSettingsExample } from './WordsSettingsExample/WordsSettingsExample';
 
 const WordsSettingsContainer = styled.div``
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import { WordLettersContainer } from '../../../../PlayGame/WordLetters/WordLetters'
-import { useStore } from '../../../../../../stores/RootStore/RootStoreContext'
-import { WordLetter } from '../../../../PlayGame/WordLetters/WordLetter/WordLetter'
+import { WordLettersContainer } from '../../../PlayGame/WordLetters/WordLetters'
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
+import { WordLetter } from '../../../PlayGame/WordLetters/WordLetter/WordLetter'
 
 export const WordsSettingsExample = () => {
   const { GameSettingsStore } = useStore()
