@@ -2,6 +2,8 @@ import { makeAutoObservable } from 'mobx'
 import Motorbike from '../images/Vehicle/motorbike.svg'
 import SportsCar from '../images/Vehicle/sportsCar.svg'
 import Taxi from '../images/Vehicle/taxi.svg'
+import uniqid from 'uniqid'
+
 export class GameSettingsStore {
   constructor() {
     makeAutoObservable(this)
@@ -19,6 +21,18 @@ export class GameSettingsStore {
   ]
   lettersColor = '#000000'
   completedLettersColor = '#000000'
+
+  exampleWord = [
+    { letter: 't', isCompleted: true, id: uniqid() },
+    { letter: 'y', isCompleted: true, id: uniqid() },
+    { letter: 'p', isCompleted: true, id: uniqid() },
+    { letter: 'e', isCompleted: true, id: uniqid() },
+    { letter: 'r', isCompleted: false, id: uniqid() },
+    { letter: 'i', isCompleted: false, id: uniqid() },
+    { letter: 'd', isCompleted: false, id: uniqid() },
+    { letter: 'e', isCompleted: false, id: uniqid() },
+    { letter: 'r', isCompleted: false, id: uniqid() },
+  ]
 
   setGameMode(value) {
     this.gameMode = value

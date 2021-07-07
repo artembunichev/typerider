@@ -5,7 +5,7 @@ import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { useHistory } from 'react-router-dom'
 import { TimeForRace } from './TimeForRace/TimeForRace'
 import { VehicleForRace } from './VehicleForRace/VehicleForRace'
-import { ColorSettings } from './ColorSettings/ColorSettings'
+import { WordsSettings } from './WordsSettings/WordsSettings'
 
 const GameSettingsContainer = styled.div`
   width: 22%;
@@ -37,7 +37,7 @@ export const GameSettings = observer(() => {
     <GameSettingsContainer>
       <TimeForRace />
       <VehicleForRace />
-      <ColorSettings />
+      <WordsSettings />
       <Start onClick={startGame}>Start Game</Start>
     </GameSettingsContainer>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SCompletedLetters } from '../SCompletedLetters/SCompletedLetters'
+import { SCompletedLetters } from './SCompletedLetters/SCompletedLetters'
 import { SLetters } from './SLetters/SLetters'
 
 const ColorSettingsContainer = styled.div``
