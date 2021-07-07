@@ -14,11 +14,11 @@ const PlayGameContainer = styled.div`
 `
 
 export const PlayGame = observer(() => {
-  const { GameStore } = useStore()
+  const { GameStore, GameSettingsStore } = useStore()
 
   return (
     <PlayGameContainer>
-      <WordLetters />
+      {GameSettingsStore.gameMode ? <WordLetters /> : 'Words are hidden before the race'}
       <Track />
       <GameInput />
       <Timer />
