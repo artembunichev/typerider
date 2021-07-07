@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { useHistory } from 'react-router-dom'
-import { TimeForRace } from './TimeForRace/TimeForRace'
-import { VehicleForRace } from './VehicleForRace/VehicleForRace'
 import { WordsSettings } from './WordsSettings/WordsSettings'
+import { GlobalSettings } from './GlobalSettings/GlobalSettings'
 
 const GameSettingsContainer = styled.div`
   width: 22%;
@@ -35,8 +34,7 @@ export const GameSettings = observer(() => {
 
   return (
     <GameSettingsContainer>
-      <TimeForRace />
-      <VehicleForRace />
+      <GlobalSettings />
       <WordsSettings />
       <Start onClick={startGame}>Start Game</Start>
     </GameSettingsContainer>
