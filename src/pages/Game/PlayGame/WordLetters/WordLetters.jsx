@@ -4,7 +4,11 @@ import styled from 'styled-components'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { WordLetter } from './WordLetter/WordLetter'
 
-export const WordLettersContainer = styled.div``
+export const WordLettersContainer = styled.div`
+  border: 6px solid #ffa600;
+  border-radius: 10px;
+  text-align: center;
+`
 
 export const WordLetters = observer(() => {
   const { GameStore } = useStore()
