@@ -6,8 +6,6 @@ import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 
 const TrackContainer = styled.div`
   padding: 50px;
-  display: flex;
-  justify-content: center;
 `
 const StyledTrack = styled.div`
   position: relative;
