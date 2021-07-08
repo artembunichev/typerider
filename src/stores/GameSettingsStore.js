@@ -20,7 +20,8 @@ export class GameSettingsStore {
     { model: 'taxi', src: Taxi, isActive: false },
   ]
   lettersColor = '#000000'
-  completedLettersColor = '#000000'
+  completedLettersColor = '#ffffff'
+  wordBorder = '#000000'
 
   exampleWord = [
     { letter: 't', isCompleted: true, id: uniqid() },
@@ -60,6 +61,9 @@ export class GameSettingsStore {
   }
   setCompletedLettersColor(color) {
     this.completedLettersColor = color
+  }
+  setWordBorder(color) {
+    this.wordBorder = color
   }
   get activeTimeForRace() {
     const timeObject = this.timeForRace.reduce((acc, time) => {

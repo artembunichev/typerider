@@ -12,13 +12,13 @@ const WordLetterContainer = styled.div`
 `
 const WordLetterWrapper = styled.span`
   color: ${(props) => {
-    return props.completed ? `${props.completedLettersColor}` : `${props.lettersColor}`
+    return props.completed ? props.completedLettersColor : props.lettersColor
   }};
 `
 
 export const WordLetter = observer((props) => {
   const { GameSettingsStore } = useStore()
-  
+
   return (
     <WordLetterContainer completed={props.completed}>
       <WordLetterWrapper
