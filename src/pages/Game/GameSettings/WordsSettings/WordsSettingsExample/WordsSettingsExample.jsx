@@ -5,10 +5,5 @@ import { observer } from 'mobx-react-lite'
 
 export const WordsSettingsExample = observer(() => {
   const { GameSettingsStore } = useStore()
-  return (
-    <WordLetters
-      wordLetters={GameSettingsStore.exampleWordLetters}
-      arrayOfCompletedLetters={GameSettingsStore.exmapleCompletedLetters}
-    />
-  )
+  return <WordLetters wordObject={GameSettingsStore.exampleWordObject} />
 })

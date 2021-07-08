@@ -86,4 +86,10 @@ export class GameStore {
   get currentWordStep() {
     return (this.trackLength - this.vehicleWidth) / this.currentWordLength
   }
+  get currentWordObject() {
+    return {
+      wordLetters: this.currentWordLetters,
+      arrayOfCompletedLetters: this.completedLetters,
+    }
+  }
 }

@@ -19,9 +19,11 @@ export class GameSettingsStore {
     { model: 'motorbike', src: Motorbike, isActive: false },
     { model: 'taxi', src: Taxi, isActive: false },
   ]
+
   lettersColor = '#000000'
   completedLettersColor = '#ffffff'
   wordBorder = '#000000'
+  wordBgcColor = '#33ff'
 
   exampleWordLetters = [
     { letter: 't', id: uniqid() },
@@ -97,5 +99,11 @@ export class GameSettingsStore {
       return acc
     }, [])
     return completedLetters
+  }
+  get exampleWordObject() {
+    return {
+      wordLetters: this.exampleWordLetters,
+      arrayOfCompletedLetters: this.exmapleCompletedLetters,
+    }
   }
 }

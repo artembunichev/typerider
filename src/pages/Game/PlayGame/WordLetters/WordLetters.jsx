@@ -21,8 +21,9 @@ export const WordLettersContainer = styled.div`
 
 export const WordLetters = observer((props) => {
   const { GameSettingsStore } = useStore()
-  const WordLettersList = props.wordLetters.map((letter) => {
-    const isLetterCompleted = props.arrayOfCompletedLetters.some((id) => id === letter.id)
+  const wordObject = props.wordObject
+  const WordLettersList = wordObject.wordLetters.map((letter) => {
+    const isLetterCompleted = wordObject.arrayOfCompletedLetters.some((id) => id === letter.id)
     return <WordLetter completed={isLetterCompleted} key={letter.id} letter={letter.letter} />
   })
   return (
