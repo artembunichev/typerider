@@ -19,10 +19,10 @@ export const WordLettersContainer = styled.div`
   text-align: center;
 `
 
-export const WordLetters = observer(() => {
-  const { GameStore, GameSettingsStore } = useStore()
-  const WordLettersList = GameStore.currentWordLetters.map((letter) => {
-    const isLetterCompleted = GameStore.completedLetters.some((id) => id === letter.id)
+export const WordLetters = observer((props) => {
+  const { GameSettingsStore } = useStore()
+  const WordLettersList = props.wordLetters.map((letter) => {
+    const isLetterCompleted = props.arrayOfCompletedLetters.some((id) => id === letter.id)
     return <WordLetter completed={isLetterCompleted} key={letter.id} letter={letter.letter} />
   })
   return (

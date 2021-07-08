@@ -23,16 +23,16 @@ export class GameSettingsStore {
   completedLettersColor = '#ffffff'
   wordBorder = '#000000'
 
-  exampleWord = [
-    { letter: 't', isCompleted: true, id: uniqid() },
-    { letter: 'y', isCompleted: true, id: uniqid() },
-    { letter: 'p', isCompleted: true, id: uniqid() },
-    { letter: 'e', isCompleted: true, id: uniqid() },
-    { letter: 'r', isCompleted: false, id: uniqid() },
-    { letter: 'i', isCompleted: false, id: uniqid() },
-    { letter: 'd', isCompleted: false, id: uniqid() },
-    { letter: 'e', isCompleted: false, id: uniqid() },
-    { letter: 'r', isCompleted: false, id: uniqid() },
+  exampleWordLetters = [
+    { letter: 't', id: uniqid() },
+    { letter: 'y', id: uniqid() },
+    { letter: 'p', id: uniqid() },
+    { letter: 'e', id: uniqid() },
+    { letter: 'r', id: uniqid() },
+    { letter: 'i', id: uniqid() },
+    { letter: 'd', id: uniqid() },
+    { letter: 'e', id: uniqid() },
+    { letter: 'r', id: uniqid() },
   ]
 
   setGameMode(value) {
@@ -88,5 +88,14 @@ export class GameSettingsStore {
   }
   get activeVehicleModel() {
     return this.activeVehicle.model
+  }
+  get exmapleCompletedLetters() {
+    const completedLetters = this.exampleWordLetters.reduce((acc, letter, index) => {
+      if (index < 4) {
+        acc.push(letter.id)
+      }
+      return acc
+    }, [])
+    return completedLetters
   }
 }

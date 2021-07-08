@@ -18,7 +18,11 @@ export const PlayGame = observer(() => {
 
   return (
     <PlayGameContainer>
-      {GameSettingsStore.gameMode ? <WordLetters /> : 'Words are hidden before the race'}
+      {GameSettingsStore.gameMode ? (
+        <WordLetters wordLetters={GameStore.currentWordLetters} arrayOfCompletedLetters={GameStore.completedLetters} />
+      ) : (
+        'Words are hidden before the race'
+      )}
       <Track />
       <GameInput />
       <Timer />
