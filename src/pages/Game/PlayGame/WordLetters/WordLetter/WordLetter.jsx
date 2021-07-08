@@ -7,7 +7,7 @@ import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 const WordLetterContainer = styled.div`
   display: inline-block;
   background-color: ${(props) => {
-    return props.completed ? '#15ff00' : 'transparent'
+    return props.completed ? `${props.letterBgc}` : 'transparent'
   }};
 `
 const WordLetterWrapper = styled.span`
@@ -18,9 +18,9 @@ const WordLetterWrapper = styled.span`
 
 export const WordLetter = observer((props) => {
   const { GameSettingsStore } = useStore()
-
+  console.log(GameSettingsStore.letterBgcColor)
   return (
-    <WordLetterContainer completed={props.completed}>
+    <WordLetterContainer completed={props.completed} letterBgc={GameSettingsStore.letterBgcColor}>
       <WordLetterWrapper
         completed={props.completed}
         lettersColor={GameSettingsStore.lettersColor}

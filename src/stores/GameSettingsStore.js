@@ -23,7 +23,7 @@ export class GameSettingsStore {
   lettersColor = '#000000'
   completedLettersColor = '#ffffff'
   wordBorder = '#000000'
-  wordBgcColor = '#33ff'
+  letterBgcColor = '#33ffff'
 
   exampleWordLetters = [
     { letter: 't', id: uniqid() },
@@ -66,6 +66,9 @@ export class GameSettingsStore {
   }
   setWordBorder(color) {
     this.wordBorder = color
+  }
+  setLetterBgcColor(color) {
+    this.letterBgcColor = color
   }
   get activeTimeForRace() {
     const timeObject = this.timeForRace.reduce((acc, time) => {
