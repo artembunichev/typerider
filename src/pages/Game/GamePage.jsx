@@ -10,7 +10,7 @@ export const GamePage = observer(() => {
   const { AppStore } = useStore()
   const [gameStore] = useState(() => new GameStore())
   useEffect(() => {
-    gameStore.setRandomWords(150)
+    gameStore.PlayGameState.setRandomWords(150)
   }, [])
   const history = useHistory()
   if (AppStore.userNickname.length === 0) {
@@ -18,7 +18,9 @@ export const GamePage = observer(() => {
   }
   return (
     <>
-      <GameStoreContext.Provider value={gameStore}>{gameStore.isResultReady ? <Result /> : <Game />}</GameStoreContext.Provider>
+      <GameStoreContext.Provider value={gameStore}>
+        {gameStore.ResultState.isResultReady ? <Result /> : <Game />}
+      </GameStoreContext.Provider>
     </>
   )
 })

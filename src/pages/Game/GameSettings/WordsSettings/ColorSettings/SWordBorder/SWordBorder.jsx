@@ -7,17 +7,17 @@ const WordBorderContainer = styled.div``
 const WordBorderInput = styled.input``
 
 export const SWordBorder = observer(() => {
-  const GameStore = useContext(GameStoreContext)
+  const {GameSettingsState} = useContext(GameStoreContext)
   
   const setWordBorder = (e) => {
-    GameStore.setWordBorder(e.target.value)
+    GameSettingsState.setWordBorder(e.target.value)
   }
   return (
     <WordBorderContainer>
       <WordBorderInput
         onChange={setWordBorder}
-        disabled={GameStore.gameMode}
-        value={GameStore.wordsBgcColor}
+        disabled={GameSettingsState.gameMode}
+        value={GameSettingsState.wordsBgcColor}
         type='color'
       />
     </WordBorderContainer>

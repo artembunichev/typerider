@@ -7,14 +7,19 @@ const SLettersContainer = styled.div``
 const SLettersInput = styled.input``
 
 export const SLetters = observer(() => {
-  const GameStore = useContext(GameStoreContext)
+  const { GameSettingsState } = useContext(GameStoreContext)
 
   const setLettersColor = (e) => {
-    GameStore.setLettersColor(e.target.value)
+    GameSettingsState.setLettersColor(e.target.value)
   }
   return (
     <SLettersContainer>
-      <SLettersInput disabled={GameStore.gameMode} type='color' onChange={setLettersColor} value={GameStore.lettersColor} />
+      <SLettersInput
+        disabled={GameSettingsState.gameMode}
+        type='color'
+        onChange={setLettersColor}
+        value={GameSettingsState.lettersColor}
+      />
     </SLettersContainer>
   )
 })

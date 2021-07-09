@@ -22,14 +22,18 @@ const TimeForRaceItem = styled.button`
 `
 
 export const TimeForRace = observer(() => {
-  const GameStore = useContext(GameStoreContext)
+  const { GameSettingsState } = useContext(GameStoreContext)
 
   const setSelectedTime = (time) => {
-    GameStore.setSelectedTime(time)
+    GameSettingsState.setSelectedTime(time)
   }
-  const TimeForRaceItems = GameStore.timeForRace.map((t) => {
+  const TimeForRaceItems = GameSettingsState.timeForRace.map((t) => {
     return (
-      <TimeForRaceItem disabled={GameStore.gameMode} active={t.isActive} key={t.time} onClick={() => setSelectedTime(t.time)}>
+      <TimeForRaceItem
+        disabled={GameSettingsState.gameMode}
+        active={t.isActive}
+        key={t.time}
+        onClick={() => setSelectedTime(t.time)}>
         {t.label}
       </TimeForRaceItem>
     )

@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext';
-
+import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext'
 
 const StyledGameInput = styled.input`
   font-size: 45px;
@@ -11,40 +10,42 @@ const StyledGameInput = styled.input`
 `
 
 export const GameInput = observer(() => {
-  const GameStore = useContext(GameStoreContext)
+  const { PlayGameState, GameSettingsState, ResultState } = useContext(GameStoreContext)
   const updateWord = () => {
-    GameStore.clearVehiclePosition()
-    GameStore.updateCurrentWordIndex()
-    GameStore.clearCurrentLetterIndex()
-    GameStore.updateCorrectWordsCount()
-    GameStore.clearInputValue()
+    PlayGameState.clearVehiclePosition()
+    PlayGameState.updateCurrentWordIndex()
+    PlayGameState.clearCurrentLetterIndex()
+    ResultState.updateCorrectWordsCount()
+    PlayGameState.clearInputValue()
   }
   const updateLetter = () => {
-    GameStore.updateVehiclePosition(GameStore.currentWordStep)
-    GameStore.updateCompletedLetters(GameStore.currentWordLetters[GameStore.currentLetterIndex].id)
-    GameStore.updateCurrentLetterIndex()
-    GameStore.updateSymbolsCount()
-    if (GameStore.currentLetterIndex >= GameStore.currentWordLength) {
+    PlayGameState.updateVehiclePosition(PlayGameState.currentWordStep)
+    PlayGameState.updateCompletedLetters(PlayGameState.currentWordLetters[PlayGameState.currentLetterIndex].id)
+    PlayGameState.updateCurrentLetterIndex()
+    ResultState.updateSymbolsCount()
+    if (PlayGameState.currentLetterIndex >= PlayGameState.currentWordLength) {
       updateWord()
     }
   }
   const updateInputValue = (value) => {
-    GameStore.updateInputValue(value)
+    PlayGameState.updateInputValue(value)
   }
   const checkLetter = (e) => {
-    if (!GameStore.gameMode) {
+    if (!GameSettingsState.gameMode) {
       e.preventDefault()
-    } else if (e.nativeEvent.data === GameStore.currentLetter) {
-      GameStore.setIsError(false)
+    } else if (e.nativeEvent.data === PlayGameState.currentLetter) {
+      PlayGameState.setIsError(false)
       const value = e.nativeEvent.data
       updateInputValue(value)
       updateLetter()
     } else {
-      GameStore.setIsError(true)
-      GameStore.updateErrorsCount()
-      GameStore.setErrorWords(GameStore.currentWord)
+      PlayGameState.setIsError(true)
+      ResultState.updateErrorsCount()
+      ResultState.setErrorWords(PlayGameState.currentWord)
     }
   }
 
-  return <StyledGameInput onChange={checkLetter} disabled={!GameStore.gameMode} value={GameStore.inputValue} />
+  return (
+    <StyledGameInput onChange={checkLetter} disabled={!GameSettingsState.gameMode} value={PlayGameState.inputValue} />
+  )
 })

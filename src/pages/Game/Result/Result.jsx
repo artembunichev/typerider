@@ -14,15 +14,15 @@ const ErrorWord = styled.div``
 const CorrectWordsContainer = styled.div``
 export const Result = observer(() => {
   const { AppStore } = useStore()
-  const GameStore = useContext(GameStoreContext)
+  const {ResultState} = useContext(GameStoreContext)
+
   const history = useHistory()
 
-  if (!GameStore.isResultReady) {
+  if (!ResultState.isResultReady) {
     history.push('/')
   }
-  console.log(typeof GameStore.typeSpeed)
-  if (GameStore.typeSpeed > AppStore.bestScore) {
-    AppStore.updateBestScore(GameStore.typeSpeed)
+  if (ResultState.typeSpeed > AppStore.bestScore) {
+    AppStore.updateBestScore(ResultState.typeSpeed)
   }
 
   const goAgain = () => {
@@ -32,20 +32,20 @@ export const Result = observer(() => {
   return (
     <ResultContainer>
       <CorrectWordsContainer>
-        You got <Bold>{GameStore.correctWordsCount}</Bold> correct words!
+        You got <Bold>{ResultState.correctWordsCount}</Bold> correct words!
       </CorrectWordsContainer>
       <ErrorsCountContainer>
-        You got <Bold>{GameStore.errorsCount}</Bold> mistakes ({GameStore.errorsPercent}%)
+        You got <Bold>{ResultState.errorsCount}</Bold> mistakes ({ResultState.errorsPercent}%)
       </ErrorsCountContainer>
-      {GameStore.errorsCount > 0 ? (
+      {ResultState.errorsCount > 0 ? (
         <ErrorWordsContainer>
           You made a mistake in these words :{' '}
-          {GameStore.errorWords.map((error) => {
+          {ResultState.errorWords.map((error) => {
             return <ErrorWord key={error}>{error}</ErrorWord>
           })}
         </ErrorWordsContainer>
       ) : null}
-      {GameStore.typeSpeed}
+      {ResultState.typeSpeed}
       <button onClick={goAgain}>GO</button>
     </ResultContainer>
   )

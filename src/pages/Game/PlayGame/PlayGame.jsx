@@ -14,15 +14,15 @@ const PlayGameContainer = styled.div`
 `
 
 export const PlayGame = observer(() => {
-  const GameStore = useContext(GameStoreContext)
+  const {PlayGameState,GameSettingsState} = useContext(GameStoreContext)
 
   return (
     <PlayGameContainer>
-      {GameStore.gameMode ? <WordLetters wordObject={GameStore.currentWordObject} /> : 'Words are hidden before the race'}
+      {GameSettingsState.gameMode ? <WordLetters wordObject={PlayGameState.currentWordObject} /> : 'Words are hidden before the race'}
       <Track />
       <GameInput />
       <Timer />
-      {GameStore.isError ? <Error /> : null}
+      {PlayGameState.isError ? <Error /> : null}
     </PlayGameContainer>
   )
 })

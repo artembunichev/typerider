@@ -2,7 +2,7 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext';
+import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
 
 const WordLetterContainer = styled.div`
   display: inline-block;
@@ -17,13 +17,13 @@ const WordLetterWrapper = styled.span`
 `
 
 export const WordLetter = observer((props) => {
-  const GameStore = useContext(GameStoreContext)
+  const { GameSettingsState } = useContext(GameStoreContext)
   return (
-    <WordLetterContainer completed={props.completed} letterBgc={GameStore.letterBgcColor}>
+    <WordLetterContainer completed={props.completed} letterBgc={GameSettingsState.letterBgcColor}>
       <WordLetterWrapper
         completed={props.completed}
-        lettersColor={GameStore.lettersColor}
-        completedLettersColor={GameStore.completedLettersColor}>
+        lettersColor={GameSettingsState.lettersColor}
+        completedLettersColor={GameSettingsState.completedLettersColor}>
         {props.letter}
       </WordLetterWrapper>
     </WordLetterContainer>
