@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext';
+
 
 const StyledGameInput = styled.input`
   font-size: 45px;
@@ -10,19 +11,19 @@ const StyledGameInput = styled.input`
 `
 
 export const GameInput = observer(() => {
-  const { GameSettingsStore, GameStore, ResultStore } = useStore()
+  const GameStore = useContext(GameStoreContext)
   const updateWord = () => {
     GameStore.clearVehiclePosition()
     GameStore.updateCurrentWordIndex()
     GameStore.clearCurrentLetterIndex()
-    ResultStore.updateCorrectWordsCount()
+    GameStore.updateCorrectWordsCount()
     GameStore.clearInputValue()
   }
   const updateLetter = () => {
     GameStore.updateVehiclePosition(GameStore.currentWordStep)
     GameStore.updateCompletedLetters(GameStore.currentWordLetters[GameStore.currentLetterIndex].id)
     GameStore.updateCurrentLetterIndex()
-    ResultStore.updateSymbolsCount()
+    GameStore.updateSymbolsCount()
     if (GameStore.currentLetterIndex >= GameStore.currentWordLength) {
       updateWord()
     }
@@ -31,7 +32,7 @@ export const GameInput = observer(() => {
     GameStore.updateInputValue(value)
   }
   const checkLetter = (e) => {
-    if (!GameSettingsStore.gameMode) {
+    if (!GameStore.gameMode) {
       e.preventDefault()
     } else if (e.nativeEvent.data === GameStore.currentLetter) {
       GameStore.setIsError(false)
@@ -40,10 +41,10 @@ export const GameInput = observer(() => {
       updateLetter()
     } else {
       GameStore.setIsError(true)
-      ResultStore.updateErrorsCount()
-      ResultStore.setErrorWords(GameStore.currentWord)
+      GameStore.updateErrorsCount()
+      GameStore.setErrorWords(GameStore.currentWord)
     }
   }
 
-  return <StyledGameInput onChange={checkLetter} disabled={!GameSettingsStore.gameMode} value={GameStore.inputValue} />
+  return <StyledGameInput onChange={checkLetter} disabled={!GameStore.gameMode} value={GameStore.inputValue} />
 })

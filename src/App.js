@@ -2,9 +2,8 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
 import { Header } from './pages/Components/Common/Header'
 import { Welcome } from './pages/Main/Welcome'
-import { Game } from './pages/Game/Game'
 import { createGlobalStyle } from 'styled-components'
-import { Results } from './pages/Result/Result'
+import { GamePage } from './pages/Game/GamePage'
 
 const Global = createGlobalStyle`
   * {
@@ -32,8 +31,7 @@ export const App = () => {
       <Header />
       <Switch>
         <Route exact path='/' component={Welcome} />
-        <Route exact path='/game' component={Game} />
-        <Route exact path='/result' component={Results} />
+        <Route exact path='/game' component={GamePage} />
         <Redirect to={'/'} />
       </Switch>
     </>

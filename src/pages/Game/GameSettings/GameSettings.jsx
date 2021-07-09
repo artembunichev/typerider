@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../../stores/RootStore/RootStoreContext'
-import { useHistory } from 'react-router-dom'
 import { WordsSettings } from './WordsSettings/WordsSettings'
 import { GlobalSettings } from './GlobalSettings/GlobalSettings'
+import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
 
 const GameSettingsContainer = styled.div`
   width: 22%;
@@ -16,19 +15,17 @@ const Start = styled.button`
 `
 
 export const GameSettings = observer(() => {
-  const { GameSettingsStore, ResultStore } = useStore()
-  const history = useHistory()
+  const GameStore = useContext(GameStoreContext)
 
   const startGame = () => {
-    GameSettingsStore.setGameMode(true)
+    GameStore.setGameMode(true)
     setTimer()
   }
   const setTimer = () => {
-    const time = GameSettingsStore.activeTimeForRace
+    const time = GameStore.activeTimeForRace
     setTimeout(() => {
-      ResultStore.setIsResultReady(true)
-      history.push('/result')
-      GameSettingsStore.setGameMode(false)
+      GameStore.setGameMode(false)
+      GameStore.setIsResultReady(true)
     }, time)
   }
 

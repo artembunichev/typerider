@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { WordLetters } from '../../../PlayGame/WordLetters/WordLetters'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
+import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext';
 
 export const WordsSettingsExample = observer(() => {
-  const { GameSettingsStore } = useStore()
-  return <WordLetters wordObject={GameSettingsStore.exampleWordObject} />
+  const GameStore = useContext(GameStoreContext)
+  return <WordLetters wordObject={GameStore.exampleWordObject} />
 })

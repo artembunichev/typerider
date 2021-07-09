@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext';
 
 export const Timer = observer(() => {
-  const { GameStore, GameSettingsStore } = useStore()
+  const GameStore = useContext(GameStoreContext)
+
   useEffect(() => {
-    const time = GameSettingsStore.activeTimeForRace / 1000
+    const time = GameStore.activeTimeForRace / 1000
     GameStore.setCurrentTime(time)
-  }, [GameSettingsStore.activeTimeForRace])
+  }, [GameStore.activeTimeForRace])
+
   useEffect(() => {
     let timeInterval
-    if (GameSettingsStore.gameMode) {
+    if (GameStore.gameMode) {
       timeInterval = setInterval(() => {
         GameStore.updateCurrentTime()
       }, 1000)
@@ -18,7 +20,7 @@ export const Timer = observer(() => {
     return () => {
       clearInterval(timeInterval)
     }
-  }, [GameSettingsStore.gameMode])
+  }, [GameStore.gameMode])
+
   return <>{GameStore.currentTime}</>
 })
-

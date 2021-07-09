@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext';
 
 const StyledVehicle = styled.div`
   position: relative;
@@ -30,12 +30,12 @@ const StyledVehicle = styled.div`
 `
 
 export const Vehicle = observer((props) => {
-  const { GameStore, GameSettingsStore } = useStore()
+  const GameStore = useContext(GameStoreContext)
 
   return (
     <StyledVehicle
       model={props.model}
-      src={GameSettingsStore.activeVehicleSrc}
+      src={GameStore.activeVehicleSrc}
       left={GameStore.vehiclePosition}
       width={GameStore.vehicleWidth}
     />

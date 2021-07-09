@@ -1,11 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import React, { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
+import { Bold, Container } from '../Components/Styled/StyledComponents'
 import { GameSettings } from './GameSettings/GameSettings'
 import { PlayGame } from './PlayGame/PlayGame'
-import { Bold, Container } from '../Components/Styled/StyledComponents'
 
 const GameContainer = styled(Container)`
   display: flex;
@@ -20,17 +19,8 @@ const GameTitle = styled.div`
   font-size: 56px;
   text-align: center;
 `
-
 export const Game = observer(() => {
-  useEffect(() => {
-    GameStore.setRandomWords(150)
-  }, [])
-  const { AppStore, GameStore } = useStore()
-  const history = useHistory()
-  if (AppStore.userNickname.length === 0) {
-    history.push('/')
-  }
-
+  const { AppStore } = useStore()
   return (
     <GameContainer>
       <GameTitle>
