@@ -10,7 +10,7 @@ export const GamePage = observer(() => {
   const { AppStore } = useStore()
   const [gameStore] = useState(() => new GameStore())
   useEffect(() => {
-    gameStore.PlayGameState.setRandomWords(150)
+    gameStore.PlayGameState.setRandomWords()
   }, [])
   const history = useHistory()
   if (AppStore.userNickname.length === 0) {

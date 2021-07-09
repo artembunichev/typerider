@@ -1,8 +1,8 @@
-import { makeAutoObservable, runInAction } from 'mobx'
-import { WordApi } from '../API/WordApi'
+import { makeAutoObservable } from 'mobx'
 import Motorbike from '../images/Vehicle/motorbike.svg'
 import SportsCar from '../images/Vehicle/sportsCar.svg'
 import Taxi from '../images/Vehicle/taxi.svg'
+import randomWords from 'random-words'
 import uniqid from 'uniqid'
 
 export class GameStore {
@@ -52,12 +52,8 @@ export class GameStore {
       }
     },
 
-    setRandomWords(number) {
-      WordApi.getRandomWords(number).then((words) => {
-        runInAction(() => {
-          this.words = words
-        })
-      })
+    setRandomWords() {
+      this.words = randomWords(150)
     },
     updateCurrentWordIndex() {
       this.currentWordIndex++
