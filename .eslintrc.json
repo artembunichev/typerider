@@ -15,6 +15,7 @@
   "plugins": ["react", "import"],
   "rules": {
     "import/no-default-export": "error",
+    "no-global-assign": 0,
     "react/prop-types": [2, { "ignore": ["children"] }]
   }
 }
