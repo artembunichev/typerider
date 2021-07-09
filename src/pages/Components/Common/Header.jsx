@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import React from 'react'
+import { useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const HeaderContainer = styled.div`
   background-color: #161414;
@@ -13,11 +14,16 @@ const HeaderTitle = styled.span`
   color: #ff820d;
   user-select: none;
 `
+const BestScoreContainer = styled.span`
+  color: #ff820d;
+`
 
 export const Header = observer(() => {
+  const { AppStore } = useStore()
   return (
     <HeaderContainer>
       <HeaderTitle>typerider</HeaderTitle>
+      <BestScoreContainer>Best Score : {AppStore.bestScore}</BestScoreContainer>
     </HeaderContainer>
   )
 })

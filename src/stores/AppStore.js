@@ -14,4 +14,7 @@ export class AppStore {
   setUserNickname(nickname) {
     this.userNickname = nickname
   }
+  updateBestScore(score) {
+    this.bestScore = score
+  }
 }

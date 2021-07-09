@@ -198,7 +198,7 @@ export class GameStore {
   correctWordsCount = 0
   get typeSpeed() {
     const rate = 60000 / this.activeTimeForRace
-    return (this.symbolsCount * rate).toFixed(1)
+    return Math.round(this.symbolsCount * rate)
   }
   get errorsPercent() {
     return Math.floor((this.errorsCount / this.symbolsCount) * 100)
