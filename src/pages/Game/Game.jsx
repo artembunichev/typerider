@@ -24,7 +24,7 @@ export const Game = observer(() => {
   const { GameSettingsState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     return () => {
-      AppStore.setOnGamePage(false)
+      AppStore.setOnPlayGamePage(false)
       if (ResultState.isResultReady) {
         const GameForHistory = {
           userNickname: AppStore.userNickname,

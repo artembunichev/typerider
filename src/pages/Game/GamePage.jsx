@@ -10,7 +10,7 @@ export const GamePage = observer(() => {
   const { AppStore } = useStore()
   const [gameStore] = useState(() => new GameStore())
   useEffect(() => {
-    AppStore.setOnGamePage(true)
+    AppStore.setOnPlayGamePage(true)
     gameStore.PlayGameState.setRandomWords()
   }, [])
   const history = useHistory()

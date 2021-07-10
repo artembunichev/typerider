@@ -57,7 +57,7 @@ export const Header = observer(() => {
           <HeaderButton onClick={goToHomePage}>
             <Bold>Start New Game</Bold>
           </HeaderButton>
-        ) : AppStore.onGamePage ? (
+        ) : AppStore.onPlayGamePage ? (
           <HeaderButton onClick={goToHomePage}>
             <Bold>Go To Main Page</Bold>
           </HeaderButton>
