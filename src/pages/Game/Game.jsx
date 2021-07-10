@@ -23,6 +23,7 @@ export const Game = observer(() => {
   const { AppStore } = useStore()
   const { GameSettingsState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
+    AppStore.setOnPlayGamePage(true)
     return () => {
       AppStore.setOnPlayGamePage(false)
       if (ResultState.isResultReady) {
