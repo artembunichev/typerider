@@ -57,7 +57,7 @@ export const Header = observer(() => {
             <Bold>Start New Game</Bold>
           </HeaderButton>
         ) : (
-          <HeaderButton onClick={goToHistoryPage}>
+          <HeaderButton onClick={goToHistoryPage} disabled={AppStore.gameMode}>
             <Bold>Game History</Bold>
           </HeaderButton>
         )}
