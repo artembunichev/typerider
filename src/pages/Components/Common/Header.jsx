@@ -42,6 +42,7 @@ export const Header = observer(() => {
 
   const goToHistoryPage = () => {
     history.push('/history')
+    AppStore.setUserNickname('')
     setOnHistoryPage(true)
   }
   const goToHomePage = () => {
