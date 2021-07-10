@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { useState } from 'react'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { useHistory } from 'react-router-dom'
 import { Bold } from '../Styled/StyledComponents'
@@ -24,7 +24,7 @@ const HeaderExtraSection = styled.div`
 const BestScoreContainer = styled.span`
   color: #ff820d;
 `
-const GoToHistory = styled.button`
+const HeaderButton = styled.button`
   font-size: 21px;
   background-color: #ff820d;
   color: #161414;
@@ -37,19 +37,30 @@ const GoToHistory = styled.button`
 
 export const Header = observer(() => {
   const { AppStore } = useStore()
-
+  const [onHistoryPage, setOnHistoryPage] = useState(false)
   const history = useHistory()
 
-  const goToHistory = () => {
+  const goToHistoryPage = () => {
     history.push('/history')
+    setOnHistoryPage(true)
+  }
+  const goToHomePage = () => {
+    history.push('/')
+    setOnHistoryPage(false)
   }
   return (
     <HeaderContainer>
       <HeaderTitle>typerider</HeaderTitle>
       <HeaderExtraSection>
-        <GoToHistory onClick={goToHistory}>
-          <Bold>Game History</Bold>
-        </GoToHistory>
+        {onHistoryPage ? (
+          <HeaderButton onClick={goToHomePage}>
+            <Bold>Start New Game</Bold>
+          </HeaderButton>
+        ) : (
+          <HeaderButton onClick={goToHistoryPage}>
+            <Bold>Game History</Bold>
+          </HeaderButton>
+        )}
         <BestScoreContainer>Best Score : {AppStore.bestScore}</BestScoreContainer>
       </HeaderExtraSection>
     </HeaderContainer>
