@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
 
 const StyledGameInput = styled.input`
   font-size: 45px;
@@ -10,7 +10,8 @@ const StyledGameInput = styled.input`
 `
 
 export const GameInput = observer(() => {
-  const { PlayGameState, GameSettingsState, ResultState } = useContext(GameStoreContext)
+  const { AppStore } = useStore()
+  const { PlayGameState, ResultState } = useContext(GameStoreContext)
   const updateWord = () => {
     PlayGameState.clearVehiclePosition()
     PlayGameState.updateCurrentWordIndex()
@@ -31,7 +32,7 @@ export const GameInput = observer(() => {
     PlayGameState.updateInputValue(value)
   }
   const checkLetter = (e) => {
-    if (!GameSettingsState.gameMode) {
+    if (!AppStore.gameMode) {
       e.preventDefault()
     } else if (e.nativeEvent.data === PlayGameState.currentLetter) {
       PlayGameState.setIsError(false)
@@ -45,7 +46,5 @@ export const GameInput = observer(() => {
     }
   }
 
-  return (
-    <StyledGameInput onChange={checkLetter} disabled={!GameSettingsState.gameMode} value={PlayGameState.inputValue} />
-  )
+  return <StyledGameInput onChange={checkLetter} disabled={!AppStore.gameMode} value={PlayGameState.inputValue} />
 })

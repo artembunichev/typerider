@@ -6,7 +6,7 @@ import { Track } from './Track/Track'
 import { Timer } from './Timer/Timer'
 import { WordLetters } from './WordLetters/WordLetters'
 import { Error } from './Error/Error'
-import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext';
+import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const PlayGameContainer = styled.div`
   background-color: #1100ff;
@@ -14,11 +14,16 @@ const PlayGameContainer = styled.div`
 `
 
 export const PlayGame = observer(() => {
-  const {PlayGameState,GameSettingsState} = useContext(GameStoreContext)
+  const { AppStore } = useStore()
+  const { PlayGameState } = useContext(GameStoreContext)
 
   return (
     <PlayGameContainer>
-      {GameSettingsState.gameMode ? <WordLetters wordObject={PlayGameState.currentWordObject} /> : 'Words are hidden before the race'}
+      {AppStore.gameMode ? (
+        <WordLetters wordObject={PlayGameState.currentWordObject} />
+      ) : (
+        'Words are hidden before the race'
+      )}
       <Track />
       <GameInput />
       <Timer />

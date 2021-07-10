@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { WordsSettings } from './WordsSettings/WordsSettings'
 import { GlobalSettings } from './GlobalSettings/GlobalSettings'
-import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const GameSettingsContainer = styled.div`
   width: 22%;
@@ -15,16 +15,17 @@ const Start = styled.button`
 `
 
 export const GameSettings = observer(() => {
-  const {GameSettingsState,ResultState} = useContext(GameStoreContext)
+  const { AppStore } = useStore()
+  const { GameSettingsState, ResultState } = useContext(GameStoreContext)
 
   const startGame = () => {
-    GameSettingsState.setGameMode(true)
+    AppStore.setGameMode(true)
     setTimer()
   }
   const setTimer = () => {
     const time = GameSettingsState.activeTimeForRace
     setTimeout(() => {
-      GameSettingsState.setGameMode(false)
+      AppStore.setGameMode(false)
       ResultState.setIsResultReady(true)
     }, time)
   }

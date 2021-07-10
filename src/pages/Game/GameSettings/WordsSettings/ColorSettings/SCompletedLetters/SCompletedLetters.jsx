@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../../../../stores/RootStore/RootStoreContext'
 
 export const SCompletedLettersContainer = styled.div``
 export const CompletedLettersColorInput = styled.input``
 
 export const SCompletedLetters = observer(() => {
+  const { AppStore } = useStore()
   const { GameSettingsState } = useContext(GameStoreContext)
 
   const setCompletedLettersColor = (e) => {
@@ -16,7 +17,7 @@ export const SCompletedLetters = observer(() => {
   return (
     <SCompletedLettersContainer>
       <CompletedLettersColorInput
-        disabled={GameSettingsState.gameMode}
+        disabled={AppStore.gameMode}
         value={GameSettingsState.completedLettersColor}
         onChange={setCompletedLettersColor}
         type='color'

@@ -4,12 +4,16 @@ export class AppStore {
   constructor() {
     makeAutoObservable(this)
   }
-
+  
+  gameMode = false
   inputValue = ''
   userNickname = ''
   bestScore = 0
   gameHistory = []
 
+  setGameMode(value) {
+    this.gameMode = value
+  }
   setInputValue(value) {
     this.inputValue = value
   }

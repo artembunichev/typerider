@@ -91,7 +91,6 @@ export class GameStore {
   }
   //GameSettings
   GameSettingsState = {
-    gameMode: false,
     timeForRace: [
       { label: '30sec', time: 30000, isActive: true },
       { label: '60sec', time: 60000, isActive: false },
@@ -157,9 +156,6 @@ export class GameStore {
       }
     },
 
-    setGameMode(value) {
-      this.gameMode = value
-    },
     setSelectedTime(time) {
       this.timeForRace.forEach((t) => {
         if (t.time === time) {

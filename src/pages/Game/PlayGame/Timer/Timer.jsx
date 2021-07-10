@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
 
 export const Timer = observer(() => {
+  const { AppStore } = useStore()
   const { PlayGameState, GameSettingsState } = useContext(GameStoreContext)
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export const Timer = observer(() => {
 
   useEffect(() => {
     let timeInterval
-    if (GameSettingsState.gameMode) {
+    if (AppStore.gameMode) {
       timeInterval = setInterval(() => {
         PlayGameState.updateCurrentTime()
       }, 1000)
@@ -20,7 +21,7 @@ export const Timer = observer(() => {
     return () => {
       clearInterval(timeInterval)
     }
-  }, [GameSettingsState.gameMode])
+  }, [AppStore.gameMode])
 
   return <>{PlayGameState.currentTime}</>
 })

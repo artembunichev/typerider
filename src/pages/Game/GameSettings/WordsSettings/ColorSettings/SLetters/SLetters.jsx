@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../../../../stores/RootStore/RootStoreContext'
 
 const SLettersContainer = styled.div``
 const SLettersInput = styled.input``
 
 export const SLetters = observer(() => {
+  const { AppStore } = useStore()
   const { GameSettingsState } = useContext(GameStoreContext)
 
   const setLettersColor = (e) => {
@@ -15,7 +16,7 @@ export const SLetters = observer(() => {
   return (
     <SLettersContainer>
       <SLettersInput
-        disabled={GameSettingsState.gameMode}
+        disabled={AppStore.gameMode}
         type='color'
         onChange={setLettersColor}
         value={GameSettingsState.lettersColor}

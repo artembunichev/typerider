@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../../../stores/RootStore/RootStoreContext';
+import { GameStoreContext, useStore } from '../../../../../../stores/RootStore/RootStoreContext';
 
 const WordBorderContainer = styled.div``
 const WordBorderInput = styled.input``
 
 export const SWordBorder = observer(() => {
+  const {AppStore} = useStore()
   const {GameSettingsState} = useContext(GameStoreContext)
   
   const setWordBorder = (e) => {
@@ -16,7 +17,7 @@ export const SWordBorder = observer(() => {
     <WordBorderContainer>
       <WordBorderInput
         onChange={setWordBorder}
-        disabled={GameSettingsState.gameMode}
+        disabled={AppStore.gameMode}
         value={GameSettingsState.wordsBgcColor}
         type='color'
       />

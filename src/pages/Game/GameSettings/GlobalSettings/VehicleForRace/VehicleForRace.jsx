@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
 const VehicleForRaceContainer = styled.div`
   padding: 25px;
@@ -27,6 +27,7 @@ const VehicleForRaceButton = styled.button`
 const VehicleForRaceImg = styled.img``
 
 export const VehicleForRace = observer(() => {
+  const { AppStore } = useStore()
   const { GameSettingsState } = useContext(GameStoreContext)
 
   const setSelectedVehicle = (vehicle) => {
@@ -35,7 +36,7 @@ export const VehicleForRace = observer(() => {
   const VehicleForRaceItems = GameSettingsState.vehicles.map((v) => {
     return (
       <VehicleForRaceButton
-        disabled={GameSettingsState.gameMode}
+        disabled={AppStore.gameMode}
         active={v.isActive}
         key={v.src}
         onClick={() => setSelectedVehicle(v.src)}>
