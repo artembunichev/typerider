@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { Container, Bold } from '../../Components/Styled/StyledComponents'
 import { useHistory } from 'react-router-dom'
-import { useStore, GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
 
 const ResultContainer = styled(Container)`
   background-color: #ff00f2;
@@ -13,16 +13,12 @@ const ErrorWordsContainer = styled.div``
 const ErrorWord = styled.div``
 const CorrectWordsContainer = styled.div``
 export const Result = observer(() => {
-  const { AppStore } = useStore()
   const {ResultState} = useContext(GameStoreContext)
 
   const history = useHistory()
 
   if (!ResultState.isResultReady) {
     history.push('/')
-  }
-  if (ResultState.typeSpeed > AppStore.bestScore) {
-    AppStore.updateBestScore(ResultState.typeSpeed)
   }
 
   const goAgain = () => {

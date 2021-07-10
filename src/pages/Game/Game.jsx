@@ -32,6 +32,9 @@ export const Game = observer(() => {
         typeSpeed: ResultState.typeSpeed,
       }
       AppStore.updateGameHistory(GameForHistory)
+      if (ResultState.typeSpeed > AppStore.bestScore) {
+        AppStore.updateBestScore(ResultState.typeSpeed)
+      }
     }
   })
   return (
