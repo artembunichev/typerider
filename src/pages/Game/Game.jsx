@@ -24,16 +24,18 @@ export const Game = observer(() => {
   const { GameSettingsState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     return () => {
-      const GameForHistory = {
-        userNickname: AppStore.userNickname,
-        vehicle: GameSettingsState.activeVehicleSrc,
-        errorsCount: ResultState.errorsCount,
-        correctWordsCount: ResultState.correctWordsCount,
-        typeSpeed: ResultState.typeSpeed,
-      }
-      AppStore.updateGameHistory(GameForHistory)
-      if (ResultState.typeSpeed > AppStore.bestScore) {
-        AppStore.updateBestScore(ResultState.typeSpeed)
+      if (ResultState.isResultReady) {
+        const GameForHistory = {
+          userNickname: AppStore.userNickname,
+          vehicle: GameSettingsState.activeVehicleSrc,
+          errorsCount: ResultState.errorsCount,
+          correctWordsCount: ResultState.correctWordsCount,
+          typeSpeed: ResultState.typeSpeed,
+        }
+        AppStore.updateGameHistory(GameForHistory)
+        if (ResultState.typeSpeed > AppStore.bestScore) {
+          AppStore.updateBestScore(ResultState.typeSpeed)
+        }
       }
     }
   })
