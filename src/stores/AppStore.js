@@ -4,13 +4,16 @@ export class AppStore {
   constructor() {
     makeAutoObservable(this)
   }
-  
+  onGamePage = false
   gameMode = false
   inputValue = ''
   userNickname = ''
   bestScore = 0
   gameHistory = []
 
+  setOnGamePage(value) {
+    this.onGamePage = value
+  }
   setGameMode(value) {
     this.gameMode = value
   }
