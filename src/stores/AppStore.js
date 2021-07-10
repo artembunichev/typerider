@@ -4,9 +4,11 @@ export class AppStore {
   constructor() {
     makeAutoObservable(this)
   }
+  
   inputValue = ''
   userNickname = ''
   bestScore = 0
+  gameHistory = []
 
   setInputValue(value) {
     this.inputValue = value
@@ -16,5 +18,8 @@ export class AppStore {
   }
   updateBestScore(score) {
     this.bestScore = score
+  }
+  updateGameHistory(game) {
+    this.gameHistory.push(game)
   }
 }
