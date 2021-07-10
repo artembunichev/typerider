@@ -4,7 +4,7 @@ export class AppStore {
   constructor() {
     makeAutoObservable(this)
   }
-  
+
   inputValue = ''
   userNickname = ''
   bestScore = 0
@@ -20,6 +20,10 @@ export class AppStore {
     this.bestScore = score
   }
   updateGameHistory(game) {
-    this.gameHistory.push(game)
+    const gameWithDate = {
+      ...game,
+      date: new Date().getTime(),
+    }
+    this.gameHistory.push(gameWithDate)
   }
 }
