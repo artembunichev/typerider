@@ -42,8 +42,11 @@ export const Welcome = observer(() => {
 
   const goToGame = () => {
     const nickname = AppStore.inputValue.trim()
-    AppStore.setUserNickname(nickname)
-    history.push('/game')
+    if (nickname) {
+      AppStore.setUserNickname(nickname)
+      history.push('/game')
+      AppStore.setInputValue('')
+    }
   }
   const onInputChange = (e) => {
     AppStore.setInputValue(e.target.value)
