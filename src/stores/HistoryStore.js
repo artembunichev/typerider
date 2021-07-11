@@ -1,11 +1,17 @@
-import { makeAutoObservable } from "mobx"
+import { makeAutoObservable } from 'mobx'
 
 export class HistoryStore {
-  constructor(){
+  constructor() {
     makeAutoObservable(this)
   }
 
   gameHistory = []
+
+  filters = [
+    { name: 'By type speed', filter: 'typeSpeed' },
+    { name: 'By date', filter: 'date' },
+  ]
+  activeFilter = 'date'
 
   updateGameHistory(game) {
     const gameWithDate = {
@@ -13,5 +19,8 @@ export class HistoryStore {
       date: new Date().getTime(),
     }
     this.gameHistory.push(gameWithDate)
+  }
+  setActiveFilter(filter) {
+    this.activeFilter = filter
   }
 }
