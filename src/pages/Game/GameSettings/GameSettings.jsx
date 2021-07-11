@@ -25,8 +25,8 @@ export const GameSettings = observer(() => {
   const setTimer = () => {
     const time = GameSettingsState.activeTimeForRace
     setTimeout(() => {
-      AppStore.setGameMode(false)
       ResultState.setIsResultReady(true)
+      AppStore.setGameMode(false)
     }, time)
   }
 
