@@ -92,9 +92,9 @@ export class GameStore {
   //GameSettings
   GameSettingsState = {
     timeForRace: [
-      { label: '30sec', time: 30000, isActive: true },
-      { label: '60sec', time: 60000, isActive: false },
-      { label: '90sec', time: 90000, isActive: false },
+      { name: '30sec', time: 30000, isActive: true },
+      { name: '60sec', time: 60000, isActive: false },
+      { name: '90sec', time: 90000, isActive: false },
     ],
     vehicles: [
       { model: 'sports car', src: SportsCar, isActive: true },

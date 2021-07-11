@@ -35,7 +35,7 @@ export const TimeForRace = observer(() => {
         active={t.isActive}
         key={t.time}
         onClick={() => setSelectedTime(t.time)}>
-        {t.label}
+        {t.name}
       </TimeForRaceItem>
     )
   })
