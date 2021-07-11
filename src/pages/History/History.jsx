@@ -23,6 +23,9 @@ export const History = observer(() => {
 
   const filter = HistoryStore.activeFilter
   const sortedHistory = HistoryStore.gameHistory.slice().sort((a, b) => {
+    if (filter === 'errorsCount') {
+      return a[filter] - b[filter]
+    }
     return b[filter] - a[filter]
   })
   return (

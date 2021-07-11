@@ -10,6 +10,7 @@ export class HistoryStore {
   filters = [
     { name: 'By type speed', filter: 'typeSpeed' },
     { name: 'By date', filter: 'date' },
+    { name: 'By errors count', filter: 'errorsCount' },
   ]
   activeFilter = 'date'
 
