@@ -11,7 +11,6 @@ export class AppStore {
   inputValue = ''
   userNickname = ''
   bestScore = 0
-  gameHistory = []
 
   setOnPlayGamePage(value) {
     this.onPlayGamePage = value
@@ -30,12 +29,5 @@ export class AppStore {
   }
   updateBestScore(score) {
     this.bestScore = score
-  }
-  updateGameHistory(game) {
-    const gameWithDate = {
-      ...game,
-      date: new Date().getTime(),
-    }
-    this.gameHistory.push(gameWithDate)
   }
 }

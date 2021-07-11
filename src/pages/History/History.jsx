@@ -8,6 +8,7 @@ const HistoryContainer = styled(Container)`
   background-color: #e7e7e7;
 `
 const HistoryTitle = styled.span``
+
 export const History = () => {
   const { AppStore } = useStore()
 

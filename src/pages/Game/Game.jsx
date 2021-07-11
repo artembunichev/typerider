@@ -20,7 +20,7 @@ const GameTitle = styled.div`
   text-align: center;
 `
 export const Game = observer(() => {
-  const { AppStore } = useStore()
+  const { AppStore, HistoryStore } = useStore()
   const { GameSettingsState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     AppStore.setOnPlayGamePage(true)
@@ -34,7 +34,7 @@ export const Game = observer(() => {
           correctWordsCount: ResultState.correctWordsCount,
           typeSpeed: ResultState.typeSpeed,
         }
-        AppStore.updateGameHistory(GameForHistory)
+        HistoryStore.updateGameHistory(GameForHistory)
         if (ResultState.typeSpeed > AppStore.bestScore) {
           AppStore.updateBestScore(ResultState.typeSpeed)
         }

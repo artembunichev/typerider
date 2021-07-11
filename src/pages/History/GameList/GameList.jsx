@@ -6,9 +6,9 @@ import { GameBlock } from './GameBlock/GameBlock'
 const GameListContainer = styled.div``
 
 export const GameList = () => {
-  const { AppStore } = useStore()
+  const { HistoryStore } = useStore()
 
-  const GameListItems = AppStore.gameHistory.map((game) => {
+  const GameListItems = HistoryStore.gameHistory.map((game) => {
     return <GameBlock key={game.date} game={game} />
   })
 
