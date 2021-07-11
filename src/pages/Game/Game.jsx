@@ -24,6 +24,7 @@ export const Game = observer(() => {
   const { GameSettingsState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     AppStore.setOnPlayGamePage(true)
+    const gameDate = new Date().getTime()
     return () => {
       AppStore.setOnPlayGamePage(false)
       if (ResultState.isResultReady) {
@@ -33,6 +34,7 @@ export const Game = observer(() => {
           errorsCount: ResultState.errorsCount,
           correctWordsCount: ResultState.correctWordsCount,
           typeSpeed: ResultState.typeSpeed,
+          date: gameDate,
         }
         HistoryStore.updateGameHistory(GameForHistory)
         if (ResultState.typeSpeed > AppStore.bestScore) {
@@ -40,7 +42,7 @@ export const Game = observer(() => {
         }
       }
     }
-  })
+  }, [])
   return (
     <GameContainer>
       <GameTitle>

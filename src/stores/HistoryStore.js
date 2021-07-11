@@ -15,11 +15,7 @@ export class HistoryStore {
   activeFilter = 'date'
 
   updateGameHistory(game) {
-    const gameWithDate = {
-      ...game,
-      date: new Date().getTime(),
-    }
-    this.gameHistory.push(gameWithDate)
+    this.gameHistory.push(game)
   }
   setActiveFilter(filter) {
     this.activeFilter = filter
