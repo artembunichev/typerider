@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Container } from '../Components/Styled/StyledComponents'
-import { GameList } from './GameList/HistoryList'
+import { GameList } from './GameList/GameList'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 
 const HistoryContainer = styled(Container)`
