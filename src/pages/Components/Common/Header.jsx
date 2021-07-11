@@ -1,6 +1,6 @@
+import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import React, { useState } from 'react'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { useHistory } from 'react-router-dom'
 import { Bold } from '../Styled/StyledComponents'
@@ -37,23 +37,20 @@ const HeaderButton = styled.button`
 
 export const Header = observer(() => {
   const { AppStore } = useStore()
-  const [onHistoryPage, setOnHistoryPage] = useState(false)
   const history = useHistory()
 
   const goToHistoryPage = () => {
     history.push('/history')
     AppStore.setUserNickname('')
-    setOnHistoryPage(true)
   }
   const goToHomePage = () => {
     history.push('/')
-    setOnHistoryPage(false)
   }
   return (
     <HeaderContainer>
       <HeaderTitle>typerider</HeaderTitle>
       <HeaderExtraSection>
-        {onHistoryPage ? (
+        {AppStore.onHistoryPage ? (
           <HeaderButton onClick={goToHomePage}>
             <Bold>Start New Game</Bold>
           </HeaderButton>

@@ -4,7 +4,9 @@ export class AppStore {
   constructor() {
     makeAutoObservable(this)
   }
+  onHistoryPage = false
   onPlayGamePage = false
+
   gameMode = false
   inputValue = ''
   userNickname = ''
@@ -13,6 +15,9 @@ export class AppStore {
 
   setOnPlayGamePage(value) {
     this.onPlayGamePage = value
+  }
+  setOnHistoryPage(value) {
+    this.onHistoryPage = value
   }
   setGameMode(value) {
     this.gameMode = value
