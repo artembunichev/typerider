@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
-import Motorbike from '../images/Vehicle/motorbike.svg'
-import SportsCar from '../images/Vehicle/sportsCar.svg'
-import Taxi from '../images/Vehicle/taxi.svg'
+import Motorbike from '../assets/images/Vehicle/motorbike.svg'
+import SportsCar from '../assets/images/Vehicle/sportsCar.svg'
+import Taxi from '../assets/images/Vehicle/taxi.svg'
 import randomWords from 'random-words'
 import uniqid from 'uniqid'
 
