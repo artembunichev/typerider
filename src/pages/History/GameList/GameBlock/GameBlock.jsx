@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
+import { dateConverter } from '../../../../assets/functions/dateConverter'
 
 const GameBlockContainer = styled.div`
   display: flex;
@@ -21,15 +22,8 @@ const GameBlockInfoItem = styled.div``
 
 export const GameBlock = (props) => {
   const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
-  const gameDate = new Date(date)
-  const day = gameDate.getDate()
-  const month = gameDate.getMonth() + 1
-  const year = gameDate.getFullYear()
-  const hours = gameDate.getHours()
-  const minutes = gameDate.getMinutes()
-  const dateofTheGame = `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}.${year},${
-    hours < 10 ? `0${hours}` : hours
-  }:${minutes < 10 ? `0${minutes}` : minutes}`
+
+  const gameDate = dateConverter(date)
 
   return (
     <GameBlockContainer>
@@ -40,7 +34,7 @@ export const GameBlock = (props) => {
         <GameBlockInfo>corrent words count: {correctWordsCount}</GameBlockInfo>
         <GameBlockInfo>errors count: {errorsCount}</GameBlockInfo>
         <GameBlockInfo>Race time: {raceTime} seconds</GameBlockInfo>
-        <GameBlockInfo>Game date: {dateofTheGame}</GameBlockInfo>
+        <GameBlockInfo>Game date: {gameDate}</GameBlockInfo>
       </GameBlockInfo>
     </GameBlockContainer>
   )
