@@ -125,6 +125,9 @@ export class GameStore {
       })
       return timeObject.time
     },
+    get activeTimeForRaceInSeconds() {
+      return this.activeTimeForRace / 1000
+    },
     get activeVehicle() {
       const vehicleObject = this.vehicles.reduce((acc, vehicle) => {
         if (vehicle.isActive === true) {

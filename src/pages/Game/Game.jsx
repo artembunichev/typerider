@@ -34,6 +34,7 @@ export const Game = observer(() => {
           errorsCount: ResultState.errorsCount,
           correctWordsCount: ResultState.correctWordsCount,
           typeSpeed: ResultState.typeSpeed,
+          raceTime: GameSettingsState.activeTimeForRaceInSeconds,
           date: gameDate,
         }
         HistoryStore.updateGameHistory(GameForHistory)

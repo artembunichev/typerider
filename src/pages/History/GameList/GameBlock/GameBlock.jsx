@@ -20,7 +20,7 @@ const GameBlockInfo = styled.div`
 const GameBlockInfoItem = styled.div``
 
 export const GameBlock = (props) => {
-  const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, date } = props.game
+  const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
   const gameDate = new Date(date)
   const day = gameDate.getDate()
   const month = gameDate.getMonth() + 1
@@ -39,6 +39,7 @@ export const GameBlock = (props) => {
         <GameBlockInfo>type speed: {typeSpeed}</GameBlockInfo>
         <GameBlockInfo>corrent words count: {correctWordsCount}</GameBlockInfo>
         <GameBlockInfo>errors count: {errorsCount}</GameBlockInfo>
+        <GameBlockInfo>Race time: {raceTime} seconds</GameBlockInfo>
         <GameBlockInfo>Game date: {dateofTheGame}</GameBlockInfo>
       </GameBlockInfo>
     </GameBlockContainer>
