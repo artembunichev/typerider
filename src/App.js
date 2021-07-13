@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
-import { Header } from './pages/Components/Common/Header'
+import { Header } from './Components/Common/Header'
 import { Welcome } from './pages/Main/Welcome'
 import { createGlobalStyle } from 'styled-components'
 import { GamePage } from './pages/Game/GamePage'

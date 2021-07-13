@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore, GameStoreContext } from '../../stores/RootStore/RootStoreContext'
-import { Bold, Container } from '../Components/Styled/StyledComponents'
+import { Bold, Container } from '../../Components/Styled/StyledComponents'
 import { GameSettings } from './GameSettings/GameSettings'
 import { PlayGame } from './PlayGame/PlayGame'
 

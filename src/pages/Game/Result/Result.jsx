@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { Container, Bold } from '../../Components/Styled/StyledComponents'
+import { Container, Bold } from '../../../Components/Styled/StyledComponents'
 import { useHistory } from 'react-router-dom'
 import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
 
@@ -13,7 +13,7 @@ const ErrorWordsContainer = styled.div``
 const ErrorWord = styled.div``
 const CorrectWordsContainer = styled.div``
 export const Result = observer(() => {
-  const {ResultState} = useContext(GameStoreContext)
+  const { ResultState } = useContext(GameStoreContext)
 
   const history = useHistory()
 
