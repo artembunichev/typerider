@@ -24,7 +24,7 @@ export const Game = observer(() => {
   const { GameSettingsState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     AppStore.setOnPlayGamePage(true)
-    const gameDate = new Date().getTime()
+    const gameDate = Date.now()
     return () => {
       AppStore.setOnPlayGamePage(false)
       if (ResultState.isResultReady) {
