@@ -20,7 +20,9 @@ const SelectValue = styled.div`
   justify-content: space-between;
   padding: 0 6px;
 `
-const SelectValueText = styled.span``
+const SelectValueText = styled.span`
+  user-select: none;
+`
 const SelectArrow = styled.div`
   display: flex;
   align-items: center;
@@ -37,6 +39,7 @@ const Option = styled.div`
   background-color: #ffc;
   width: 210px;
   font-size: 21px;
+  user-select: none;
   transition: background-color 0.2s;
   background-color: ${(props) => {
     return props.isUserIdle ? (props.isSelected ? `#ff820d` : `#ffc`) : `#ffc`
