@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { Bold } from '../../../../Components/Styled/StyledComponents'
 
 const SelectContainer = styled.div`
   background-color: #ffc;
@@ -36,11 +37,10 @@ const OptionsContainer = styled.div`
 `
 const Option = styled.div`
   display: ${(props) => (props.visible ? 'flex' : 'none')};
-  background-color: #ffc;
   width: 210px;
   font-size: 21px;
   user-select: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.33s;
   background-color: ${(props) => {
     return props.isUserIdle ? (props.isSelected ? `#ff820d` : `#ffc`) : `#ffc`
   }};
@@ -64,19 +64,19 @@ export const FiltersSelect = observer(() => {
   const onSelectBlur = () => {
     setIsOptionsVisible(false)
   }
-  const onOptionsLeave = () => {
-    setIsUserIdle(true)
-  }
-  const setActiveFilter = (filter) => {
-    HistoryStore.setActiveFilter(filter)
-    setIsOptionsVisible(false)
-  }
   const onOptionHover = (filter) => {
     if (filter === HistoryStore.activeFilterValue) {
       setIsUserIdle(true)
     } else {
       setIsUserIdle(false)
     }
+  }
+  const onOptionsLeave = () => {
+    setIsUserIdle(true)
+  }
+  const setActiveFilter = (filter) => {
+    HistoryStore.setActiveFilter(filter)
+    setIsOptionsVisible(false)
   }
 
   const optionsList = HistoryStore.filters.map((filter) => {
@@ -89,7 +89,9 @@ export const FiltersSelect = observer(() => {
         isUserIdle={isUserIdle}
         onMouseEnter={() => onOptionHover(filter.filter)}
         onClick={() => setActiveFilter(filter)}>
-        <OptionValue>{filter.name}</OptionValue>
+        <OptionValue>
+          <Bold>{filter.name}</Bold>
+        </OptionValue>
       </Option>
     )
   })
@@ -98,7 +100,9 @@ export const FiltersSelect = observer(() => {
     <SelectContainer>
       <Select onClick={onSelectClick} tabIndex='1' onBlur={onSelectBlur}>
         <SelectValue>
-          <SelectValueText>{HistoryStore.activeFilterName}</SelectValueText>
+          <SelectValueText>
+            <Bold>{HistoryStore.activeFilterName}</Bold>
+          </SelectValueText>
           <SelectArrow onDown={isOptionsVisible}>
             <i className='fa fa-caret-down' aria-hidden='true'></i>
           </SelectArrow>
