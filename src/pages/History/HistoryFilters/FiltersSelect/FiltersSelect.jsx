@@ -38,6 +38,9 @@ const Option = styled.div`
   width: 210px;
   font-size: 21px;
   transition: background-color 0.2s;
+  background-color: ${(props) => {
+    return props.isUserIdle ? (props.isSelected ? `#ff820d` : `#ffc`) : `#ffc`
+  }};
   &:hover {
     cursor: pointer;
     background-color: #ff820d;
@@ -50,28 +53,47 @@ const OptionValue = styled.span`
 export const FiltersSelect = observer(() => {
   const { HistoryStore } = useStore()
   const [isOptionsVisible, setIsOptionsVisible] = useState(false)
+  const [isUserIdle, setIsUserIdle] = useState(true)
 
+  const onSelectClick = () => {
+    setIsOptionsVisible(!isOptionsVisible)
+  }
+  const onSelectBlur = () => {
+    setIsOptionsVisible(false)
+  }
+  const onSelectLeave = () => {
+    setIsUserIdle(true)
+  }
   const setActiveFilter = (filter) => {
     HistoryStore.setActiveFilter(filter)
     setIsOptionsVisible(false)
   }
+  const onOptionHover = (filter) => {
+    if (filter === HistoryStore.activeFilterValue) {
+      setIsUserIdle(true)
+    } else {
+      setIsUserIdle(false)
+    }
+  }
 
   const optionsList = HistoryStore.filters.map((filter) => {
+    const isOptionSelected = HistoryStore.activeFilterValue === filter.filter
     return (
-      <Option key={filter.name} visible={isOptionsVisible} onClick={() => setActiveFilter(filter)}>
+      <Option
+        key={filter.name}
+        visible={isOptionsVisible}
+        isSelected={isOptionSelected}
+        isUserIdle={isUserIdle}
+        onMouseEnter={() => onOptionHover(filter.filter)}
+        onClick={() => setActiveFilter(filter)}>
         <OptionValue>{filter.name}</OptionValue>
       </Option>
     )
   })
 
-  const onSelectClick = () => {
-    setIsOptionsVisible(!isOptionsVisible)
-  }
-  const onSelectBlur = () => [setIsOptionsVisible(false)]
-
   return (
     <SelectContainer>
-      <Select onClick={onSelectClick} tabIndex='1' onBlur={onSelectBlur}>
+      <Select onClick={onSelectClick} tabIndex='1' onBlur={onSelectBlur} onMouseLeave={onSelectLeave}>
         <SelectValue>
           <SelectValueText>{HistoryStore.activeFilterName}</SelectValueText>
           <SelectArrow onDown={isOptionsVisible}>
