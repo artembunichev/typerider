@@ -61,7 +61,7 @@ export const FiltersSelect = observer(() => {
   const onSelectBlur = () => {
     setIsOptionsVisible(false)
   }
-  const onSelectLeave = () => {
+  const onOptionsLeave = () => {
     setIsUserIdle(true)
   }
   const setActiveFilter = (filter) => {
@@ -93,14 +93,14 @@ export const FiltersSelect = observer(() => {
 
   return (
     <SelectContainer>
-      <Select onClick={onSelectClick} tabIndex='1' onBlur={onSelectBlur} onMouseLeave={onSelectLeave}>
+      <Select onClick={onSelectClick} tabIndex='1' onBlur={onSelectBlur}>
         <SelectValue>
           <SelectValueText>{HistoryStore.activeFilterName}</SelectValueText>
           <SelectArrow onDown={isOptionsVisible}>
             <i className='fa fa-caret-down' aria-hidden='true'></i>
           </SelectArrow>
         </SelectValue>
-        <OptionsContainer>{optionsList}</OptionsContainer>
+        <OptionsContainer onMouseLeave={onOptionsLeave}>{optionsList}</OptionsContainer>
       </Select>
     </SelectContainer>
   )
