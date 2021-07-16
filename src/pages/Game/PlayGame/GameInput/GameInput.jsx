@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
@@ -12,6 +12,12 @@ const StyledGameInput = styled.input`
 export const GameInput = observer(() => {
   const { AppStore } = useStore()
   const { PlayGameState, ResultState } = useContext(GameStoreContext)
+  const inputRef = useRef()
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [AppStore.gameMode])
+
   const updateWord = () => {
     PlayGameState.clearVehiclePosition()
     PlayGameState.updateCurrentWordIndex()
@@ -46,5 +52,13 @@ export const GameInput = observer(() => {
     }
   }
 
-  return <StyledGameInput onChange={checkLetter} disabled={!AppStore.gameMode} value={PlayGameState.inputValue} />
+  return (
+    <StyledGameInput
+      ref={inputRef}
+      onChange={checkLetter}
+      disabled={!AppStore.gameMode}
+      value={PlayGameState.inputValue}
+      autoFocus={AppStore.gameMode}
+    />
+  )
 })
