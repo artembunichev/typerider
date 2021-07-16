@@ -7,7 +7,8 @@ const FiltersContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 31px;
+  font-size: 36px;
+  padding: 5px;
 `
 
 export const HistoryFilters = observer(() => {

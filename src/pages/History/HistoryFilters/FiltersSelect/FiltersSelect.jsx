@@ -5,8 +5,9 @@ import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { Bold } from '../../../../Components/Styled/StyledComponents'
 
 const SelectContainer = styled.div`
-  background-color: #ffc;
   position: relative;
+  background-color: #ffc;
+  border-radius: 6px 6px 0px 0px;
 `
 const Select = styled.div`
   width: 210px;
@@ -27,13 +28,14 @@ const SelectValueText = styled.span`
 const SelectArrow = styled.div`
   display: flex;
   align-items: center;
-  transform: ${(props) => (props.onDown ? `rotate(180deg)` : `none`)};
+  transform: ${(props) => (props.directionDown ? `rotate(180deg)` : `none`)};
   transition: transform ease-out 0.33s;
 `
 
 const OptionsContainer = styled.div`
   position: absolute;
   z-index: 10;
+  margin-top: 6px;
 `
 const Option = styled.div`
   display: ${(props) => (props.visible ? 'flex' : 'none')};
@@ -47,6 +49,9 @@ const Option = styled.div`
   &:hover {
     cursor: pointer;
     background-color: #ff820d;
+  }
+  &:last-child {
+    border-radius: 0px 0px 6px 6px;
   }
 `
 const OptionValue = styled.span`
@@ -103,7 +108,7 @@ export const FiltersSelect = observer(() => {
           <SelectValueText>
             <Bold>{HistoryStore.activeFilterName}</Bold>
           </SelectValueText>
-          <SelectArrow onDown={isOptionsVisible}>
+          <SelectArrow directionDown={isOptionsVisible}>
             <i className='fa fa-caret-down' aria-hidden='true'></i>
           </SelectArrow>
         </SelectValue>

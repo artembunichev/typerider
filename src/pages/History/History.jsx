@@ -17,8 +17,10 @@ const HistoryWrapper = styled.div`
   background-color: #e7e7e7;
 `
 const HistoryTitle = styled.div`
-  font-size: 42px;
+  font-size: 48px;
   text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #b1b1b1;
 `
 
 export const History = observer(() => {
