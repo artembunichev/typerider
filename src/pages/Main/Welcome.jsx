@@ -22,7 +22,7 @@ const WelcomeInput = styled.input`
   border-radius: 9px;
   padding: 9px;
   width: 500px;
-  height: 32px;
+  height: 46px;
   border: none;
   outline: none;
 `
