@@ -4,11 +4,24 @@ import styled from 'styled-components'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { Bold } from '../../../../Components/Styled/StyledComponents'
 
+const SelectWrapper = styled.div`
+  position: relative;
+  z-index: ${(props) => (props.isWrapperHigher ? 10 : 1)};
+  margin: 8px;
+`
+const PlaceForOptions = styled.div`
+  position: absolute;
+  z-index: -1;
+  top: 33px;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+`
 const SelectContainer = styled.div`
   position: relative;
+  z-index: 10;
   background-color: #ffc;
   border-radius: 6px 6px 0px 0px;
-  margin: 8px;
 `
 const Select = styled.div`
   width: 210px;
@@ -36,21 +49,22 @@ const SelectArrow = styled.div`
   transform: ${(props) => (props.directionDown ? `rotate(180deg)` : `none`)};
   transition: transform ease-out 0.33s;
 `
-
 const OptionsContainer = styled.div`
   position: absolute;
-  z-index: 10;
+  z-index: -1;
+  top: ${(props) => (props.isVisible ? '-6px' : '-122px')};
   margin-top: 6px;
+  transition: 0.33s;
 `
 const Option = styled.div`
-  display: ${(props) => (props.visible ? 'flex' : 'none')};
+  display: flex;
   width: 210px;
   font-size: 23px;
   user-select: none;
-  transition: background-color 0.33s;
   background-color: ${(props) => {
     return props.isUserIdle ? (props.isSelected ? `#ff820d` : `#ffc`) : `#ffc`
   }};
+  transition: background-color 0.33s;
   &:hover {
     cursor: pointer;
     background-color: #ff820d;
@@ -66,13 +80,24 @@ const OptionValue = styled.span`
 export const FiltersSelect = observer(() => {
   const { HistoryStore } = useStore()
   const [isOptionsVisible, setIsOptionsVisible] = useState(false)
+  const [isWrapperHigher, setIsWrapperHigher] = useState(false)
   const [isUserIdle, setIsUserIdle] = useState(true)
 
+  const updateIsOptionsVisible = (value) => {
+    setIsOptionsVisible(value)
+    if (value === false) {
+      setTimeout(() => {
+        setIsWrapperHigher(value)
+      }, 330)
+    } else {
+      setIsWrapperHigher(value)
+    }
+  }
   const onSelectClick = () => {
-    setIsOptionsVisible(!isOptionsVisible)
+    updateIsOptionsVisible(!isOptionsVisible)
   }
   const onSelectBlur = () => {
-    setIsOptionsVisible(false)
+    updateIsOptionsVisible(false)
   }
   const onOptionHover = (filter) => {
     if (filter === HistoryStore.activeFilterValue) {
@@ -86,7 +111,10 @@ export const FiltersSelect = observer(() => {
   }
   const setActiveFilter = (filter) => {
     HistoryStore.setActiveFilter(filter)
-    setIsOptionsVisible(false)
+    updateIsOptionsVisible(false)
+  }
+  const onOptionClick = (filter) => {
+    setActiveFilter(filter)
   }
 
   const optionsList = HistoryStore.filters.map((filter) => {
@@ -94,11 +122,10 @@ export const FiltersSelect = observer(() => {
     return (
       <Option
         key={filter.name}
-        visible={isOptionsVisible}
         isSelected={isOptionSelected}
         isUserIdle={isUserIdle}
         onMouseEnter={() => onOptionHover(filter.filter)}
-        onClick={() => setActiveFilter(filter)}>
+        onClick={() => onOptionClick(filter)}>
         <OptionValue>
           <Bold>{filter.name}</Bold>
         </OptionValue>
@@ -107,18 +134,24 @@ export const FiltersSelect = observer(() => {
   })
 
   return (
-    <SelectContainer>
-      <Select onClick={onSelectClick} tabIndex='1' onBlur={onSelectBlur}>
-        <SelectValue>
-          <SelectValueText>
-            <Bold>{HistoryStore.activeFilterName}</Bold>
-          </SelectValueText>
-          <SelectArrow directionDown={isOptionsVisible}>
-            <i className='fa fa-caret-down' aria-hidden='true'></i>
-          </SelectArrow>
-        </SelectValue>
-        <OptionsContainer onMouseLeave={onOptionsLeave}>{optionsList}</OptionsContainer>
-      </Select>
-    </SelectContainer>
+    <SelectWrapper tabIndex='1' onBlur={onSelectBlur} isWrapperHigher={isWrapperHigher}>
+      <SelectContainer>
+        <Select onClick={onSelectClick}>
+          <SelectValue>
+            <SelectValueText>
+              <Bold>{HistoryStore.activeFilterName}</Bold>
+            </SelectValueText>
+            <SelectArrow directionDown={isOptionsVisible}>
+              <i className='fa fa-caret-down' aria-hidden='true'></i>
+            </SelectArrow>
+          </SelectValue>
+        </Select>
+      </SelectContainer>
+      <PlaceForOptions>
+        <OptionsContainer isVisible={isOptionsVisible} onMouseLeave={onOptionsLeave}>
+          {optionsList}
+        </OptionsContainer>
+      </PlaceForOptions>
+    </SelectWrapper>
   )
 })

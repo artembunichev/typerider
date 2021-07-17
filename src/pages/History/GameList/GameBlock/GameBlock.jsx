@@ -5,6 +5,8 @@ import { dateConverter } from '../../../../assets/functions/dateConverter'
 import { Bold } from '../../../../Components/Styled/StyledComponents'
 
 const GameBlockContainer = styled.div`
+  position: relative;
+  z-index: 5;
   display: flex;
   padding: 6px;
   margin: 9px 0px;
