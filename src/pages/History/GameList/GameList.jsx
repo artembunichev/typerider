@@ -14,9 +14,10 @@ const GameListWrapper = styled.div`
 `
 const StyledGameList = styled.div`
   width: 68%;
-  max-height: 670px;
-  overflow-y: ${(props) => (props.listHeight > 670 ? 'scroll' : 'none')};
+  max-height: 671px;
+  overflow-y: ${(props) => (props.listHeight > 670 ? 'scroll' : 'auto')};
   padding: 5px;
+  border-radius: 6px;
 `
 
 export const GameList = (props) => {

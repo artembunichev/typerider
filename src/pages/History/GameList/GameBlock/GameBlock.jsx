@@ -9,7 +9,13 @@ const GameBlockContainer = styled.div`
   padding: 6px;
   margin: 9px 0px;
   background-color: #9780fb;
-  border-radius: 5px;
+  border-radius: 7px;
+  &:first-child {
+    margin-top: 0px;
+  }
+  &:last-child {
+    margin-bottom: 0px;
+  }
 `
 const GameVehicleImgContainer = styled.div`
   display: flex;
@@ -18,8 +24,8 @@ const GameVehicleImgContainer = styled.div`
 const GameVehicle = styled.div`
   width: 140px;
   height: 140px;
-  background-color: #e4e4e4;
-  padding: 4px;
+  background-color: #c5ddf0;
+  padding: 5px;
   border-radius: 5px;
 `
 const GameVehicleImg = styled.img`
@@ -31,7 +37,7 @@ const GameBlockInfo = styled.div`
   padding: 5px 0px 5px 20px;
 `
 const GameBlockInfoItem = styled.div`
-  font-size: 24px;
+  font-size: 25px;
   margin-bottom: 4px;
 `
 

@@ -10,17 +10,21 @@ const HistoryContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e7e7e7;
+  background-color: #e0e3e8;
 `
-const HistoryWrapper = styled.div`
-  width: 1000px;
-  background-color: #e7e7e7;
+const HistoryWrapper = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e0e3e8;
 `
 const HistoryTitle = styled.div`
   font-size: 48px;
   text-align: center;
-  padding: 5px;
-  border-bottom: 1px solid #b1b1b1;
+  color: #ff820d;
+  padding: 0 8px 8px 8px;
+  background-color: #000000;
+  border-radius: 0px 0px 7px 7px;
 `
 
 export const History = observer(() => {
@@ -42,10 +46,10 @@ export const History = observer(() => {
   })
   return (
     <HistoryContainer>
+      <HistoryTitle>
+        <Bold>Your Game History</Bold>
+      </HistoryTitle>
       <HistoryWrapper>
-        <HistoryTitle>
-          <Bold>Your Game History</Bold>
-        </HistoryTitle>
         <HistoryFilters />
         <GameList sortedHistory={sortedHistory} />
       </HistoryWrapper>

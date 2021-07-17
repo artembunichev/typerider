@@ -8,13 +8,13 @@ const FiltersContainer = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 36px;
-  padding: 5px;
 `
+const FiltersTitle = styled.div``
 
 export const HistoryFilters = observer(() => {
   return (
     <FiltersContainer>
-      Choose Filter
+      <FiltersTitle>Choose Filter</FiltersTitle>
       <FiltersSelect />
     </FiltersContainer>
   )

@@ -8,6 +8,7 @@ const SelectContainer = styled.div`
   position: relative;
   background-color: #ffc;
   border-radius: 6px 6px 0px 0px;
+  margin: 8px;
 `
 const Select = styled.div`
   width: 210px;
@@ -23,9 +24,13 @@ const SelectValue = styled.div`
   padding: 0 6px;
 `
 const SelectValueText = styled.span`
+  font-size: 25px;
   user-select: none;
 `
 const SelectArrow = styled.div`
+  position: absolute;
+  right: 6px;
+  top: 2.5px;
   display: flex;
   align-items: center;
   transform: ${(props) => (props.directionDown ? `rotate(180deg)` : `none`)};
@@ -40,7 +45,7 @@ const OptionsContainer = styled.div`
 const Option = styled.div`
   display: ${(props) => (props.visible ? 'flex' : 'none')};
   width: 210px;
-  font-size: 21px;
+  font-size: 23px;
   user-select: none;
   transition: background-color 0.33s;
   background-color: ${(props) => {
