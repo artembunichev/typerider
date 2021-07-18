@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { dateConverter } from '../../../../assets/functions/dateConverter'
 import { TrashIcon } from '../../../../assets/images/iconComponents/Trash'
+import { ConfirmPopup } from '../../../../Components/Common/ConfirmPopup'
 import { Bold, Container } from '../../../../Components/Styled/StyledComponents'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 
@@ -53,7 +54,7 @@ const DeleteGameContainer = styled(Container)`
   justify-content: center;
   align-items: center;
   border-radius: 0 12px 12px 0;
-  border-left: 3px solid #000000;
+  border-left: 1px solid #000000;
   transition: background-color 0.2s;
   &:hover {
     cursor: pointer;
@@ -66,46 +67,72 @@ const DeleteGameContainer = styled(Container)`
 
 export const GameBlock = (props) => {
   const { HistoryStore } = useStore()
+  const [isPopup, setIsPopup] = useState(false)
+  const [gameForDelete, setGameForDelete] = useState(null)
   const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
 
   const gameDate = dateConverter(date)
 
+  const onDeleteClick = (gameDate) => {
+    setGameForDelete(gameDate)
+    setIsPopup(true)
+  }
   const deleteGame = (gameDate) => {
     HistoryStore.deleteCurrentGame(gameDate)
   }
 
+  const titleForPopup = `Do you want to want to delete this game?`
+  const yesFunction = () => {
+    deleteGame(gameForDelete)
+    setIsPopup(false)
+    setGameForDelete(null)
+  }
+  const noFunction = () => {
+    setIsPopup(false)
+    setGameForDelete(null)
+  }
+  const configForPopup = {
+    isPopup: isPopup,
+    title: titleForPopup,
+    yesFunction: yesFunction,
+    noFunction: noFunction,
+  }
+
   return (
-    <GameBlockContainer>
-      <GameBlockMain>
-        <GameVehicleImgContainer>
-          <GameVehicle>
-            <GameVehicleImg src={vehicle} />
-          </GameVehicle>
-        </GameVehicleImgContainer>
-        <GameBlockInfo>
-          <GameBlockInfoItem>
-            <Bold>Your Nickname:</Bold> {userNickname}
-          </GameBlockInfoItem>
-          <GameBlockInfoItem>
-            <Bold>type speed:</Bold> {typeSpeed}
-          </GameBlockInfoItem>
-          <GameBlockInfoItem>
-            <Bold>corrent words count:</Bold> {correctWordsCount}
-          </GameBlockInfoItem>
-          <GameBlockInfoItem>
-            <Bold>errors count:</Bold> {errorsCount}
-          </GameBlockInfoItem>
-          <GameBlockInfoItem>
-            <Bold>Race time:</Bold> {raceTime} seconds
-          </GameBlockInfoItem>
-          <GameBlockInfoItem>
-            <Bold>Game date:</Bold> {gameDate}
-          </GameBlockInfoItem>
-        </GameBlockInfo>
-      </GameBlockMain>
-      <DeleteGameContainer onClick={() => deleteGame(date)}>
-        <TrashIcon />
-      </DeleteGameContainer>
-    </GameBlockContainer>
+    <>
+      <GameBlockContainer>
+        <GameBlockMain>
+          <GameVehicleImgContainer>
+            <GameVehicle>
+              <GameVehicleImg src={vehicle} />
+            </GameVehicle>
+          </GameVehicleImgContainer>
+          <GameBlockInfo>
+            <GameBlockInfoItem>
+              <Bold>Your Nickname:</Bold> {userNickname}
+            </GameBlockInfoItem>
+            <GameBlockInfoItem>
+              <Bold>type speed:</Bold> {typeSpeed}
+            </GameBlockInfoItem>
+            <GameBlockInfoItem>
+              <Bold>corrent words count:</Bold> {correctWordsCount}
+            </GameBlockInfoItem>
+            <GameBlockInfoItem>
+              <Bold>errors count:</Bold> {errorsCount}
+            </GameBlockInfoItem>
+            <GameBlockInfoItem>
+              <Bold>Race time:</Bold> {raceTime} seconds
+            </GameBlockInfoItem>
+            <GameBlockInfoItem>
+              <Bold>Game date:</Bold> {gameDate}
+            </GameBlockInfoItem>
+          </GameBlockInfo>
+        </GameBlockMain>
+        <DeleteGameContainer onClick={() => onDeleteClick(date)}>
+          <TrashIcon />
+        </DeleteGameContainer>
+      </GameBlockContainer>
+      <ConfirmPopup {...configForPopup} />
+    </>
   )
 }
