@@ -29,6 +29,7 @@ const GameVehicle = styled.div`
   background-color: #c5ddf0;
   padding: 5px;
   border-radius: 5px;
+  user-select: none;
 `
 const GameVehicleImg = styled.img`
   pointer-events: none;
