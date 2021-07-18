@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GameStoreContext, useStore } from '../../stores/RootStore/RootStoreContext'
 import { useHistory } from 'react-router-dom'
 import { Result } from './Result/Result'
 import { Game } from './Game'
-import { observer, useLocalObservable } from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite'
 
 export const GamePage = observer(() => {
   const { AppStore, createGameStore } = useStore()
-  const gameStore = useLocalObservable(createGameStore)
+  const [gameStore] = useState(createGameStore)
   useEffect(() => {
     gameStore.PlayGameState.setRandomWords()
   }, [])
