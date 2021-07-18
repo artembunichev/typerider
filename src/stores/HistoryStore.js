@@ -35,7 +35,7 @@ export class HistoryStore {
   ]
 
   activeFilter = { name: 'By date', filter: 'date' }
-    
+
   updateGameHistory(game) {
     this.gameHistory.push(game)
   }
@@ -45,6 +45,10 @@ export class HistoryStore {
   clearHistory() {
     this.gameHistory = []
   }
+  deleteCurrentGame(gameDate) {
+    this.gameHistory = this.gameHistory.filter((game) => game.date !== gameDate)
+  }
+
   get activeFilterValue() {
     return this.activeFilter.filter
   }

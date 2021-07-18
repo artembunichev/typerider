@@ -2,7 +2,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { dateConverter } from '../../../../assets/functions/dateConverter'
-import { Bold } from '../../../../Components/Styled/StyledComponents'
+import { TrashIcon } from '../../../../assets/images/iconComponents/Trash'
+import { Bold, Container } from '../../../../Components/Styled/StyledComponents'
+import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 
 const GameBlockContainer = styled.div`
   position: relative;
@@ -37,17 +39,28 @@ const GameVehicleImg = styled.img`
 const GameBlockInfo = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5px 0px 5px 20px;
+  padding: 5px 5px 5px 20px;
+  border-right: 3px solid #000000;
 `
 const GameBlockInfoItem = styled.div`
   font-size: 25px;
   margin-bottom: 4px;
 `
+const DeleteGameContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 export const GameBlock = (props) => {
+  const { HistoryStore } = useStore()
   const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
 
   const gameDate = dateConverter(date)
+
+  const deleteGame = (gameDate) => {
+    HistoryStore.deleteCurrentGame(gameDate)
+  }
 
   return (
     <GameBlockContainer>
@@ -76,6 +89,9 @@ export const GameBlock = (props) => {
           <Bold>Game date:</Bold> {gameDate}
         </GameBlockInfoItem>
       </GameBlockInfo>
+      <DeleteGameContainer onClick={() => deleteGame(date)}>
+        <TrashIcon />
+      </DeleteGameContainer>
     </GameBlockContainer>
   )
 }
