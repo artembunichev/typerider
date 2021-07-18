@@ -26,6 +26,9 @@ const HistoryTitle = styled.div`
   background-color: #000000;
   border-radius: 0px 0px 7px 7px;
 `
+const NoGameHistory = styled.div`
+  font-size: 32px;
+`
 
 export const History = observer(() => {
   const { AppStore, HistoryStore } = useStore()
@@ -44,15 +47,22 @@ export const History = observer(() => {
     }
     return b[filter] - a[filter]
   })
+  
   return (
     <HistoryContainer>
       <HistoryTitle>
         <Bold>Your Game History</Bold>
       </HistoryTitle>
-      <HistoryWrapper>
-        <HistoryFilters />
-        <GameList sortedHistory={sortedHistory} />
-      </HistoryWrapper>
+      {HistoryStore.gameHistory.length ? (
+        <HistoryWrapper>
+          <HistoryFilters />
+          <GameList sortedHistory={sortedHistory} />
+        </HistoryWrapper>
+      ) : (
+        <NoGameHistory>
+          <Bold>Your game history is empty</Bold>
+        </NoGameHistory>
+      )}
     </HistoryContainer>
   )
 })
