@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { GameBlock } from './GameBlock/GameBlock'
 
@@ -14,29 +14,23 @@ const GameListWrapper = styled.div`
 `
 const StyledGameList = styled.div`
   width: 100%;
-  max-height: 671px;
-  overflow-y: ${(props) => (props.listHeight > 670 ? 'scroll' : 'auto')};
+  height: 674px;
+  overflow-y: ${(props) => (props.listLength > 3 ? 'scroll' : 'hidden')};
   padding: 5px;
   border-radius: 6px;
 `
 
 export const GameList = (props) => {
-  const [listHeight, setListHeight] = useState(0)
-  const gameListRef = useRef(null)
-  useEffect(() => {
-    setListHeight(gameListRef.current.offsetHeight)
-  }, [gameListRef.current])
-
   const GameListItems = props.sortedHistory.map((game) => {
     return <GameBlock key={game.date} game={game} />
   })
 
+  const listLength = props.sortedHistory.length
+
   return (
     <GameListContainer>
       <GameListWrapper>
-        <StyledGameList ref={gameListRef} listHeight={listHeight}>
-          {GameListItems}
-        </StyledGameList>
+        <StyledGameList listLength={listLength}>{GameListItems}</StyledGameList>
       </GameListWrapper>
     </GameListContainer>
   )

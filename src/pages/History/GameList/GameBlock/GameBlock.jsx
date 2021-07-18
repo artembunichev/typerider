@@ -7,19 +7,21 @@ import { ConfirmPopup } from '../../../../Components/Common/ConfirmPopup'
 import { Bold, Container } from '../../../../Components/Styled/StyledComponents'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 
-const GameBlockContainer = styled.div`
-  position: relative;
-  z-index: 5;
-  display: flex;
+const GameBlockWithPopup = styled.div`
   margin: 9px 0px;
-  background-color: #9780fb;
-  border-radius: 12px;
   &:first-child {
     margin-top: 0px;
   }
   &:last-child {
     margin-bottom: 0px;
   }
+`
+const GameBlockContainer = styled.div`
+  position: relative;
+  z-index: 5;
+  display: flex;
+  background-color: #9780fb;
+  border-radius: 12px;
 `
 const GameBlockMain = styled.div`
   display: flex;
@@ -99,7 +101,8 @@ export const GameBlock = (props) => {
   }
 
   return (
-    <>
+    <GameBlockWithPopup>
+      <ConfirmPopup {...configForPopup} />
       <GameBlockContainer>
         <GameBlockMain>
           <GameVehicleImgContainer>
@@ -132,7 +135,6 @@ export const GameBlock = (props) => {
           <TrashIcon />
         </DeleteGameContainer>
       </GameBlockContainer>
-      <ConfirmPopup {...configForPopup} />
-    </>
+    </GameBlockWithPopup>
   )
 }

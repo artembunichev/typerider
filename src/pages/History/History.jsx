@@ -47,7 +47,7 @@ export const History = observer(() => {
     }
     return b[filter] - a[filter]
   })
-  
+
   return (
     <HistoryContainer>
       <HistoryTitle>
