@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { FiltersSelect } from './FiltersSelect/FiltersSelect'
-import { ClearIcon } from '../../../assets/images/iconComponents/ClearIcon'
+import { ClearIcon } from '../../../assets/images/iconComponents/Clear'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const FiltersContainer = styled.div`

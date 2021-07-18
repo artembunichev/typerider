@@ -35,7 +35,7 @@ export class HistoryStore {
   ]
 
   activeFilter = { name: 'By date', filter: 'date' }
-
+    
   updateGameHistory(game) {
     this.gameHistory.push(game)
   }

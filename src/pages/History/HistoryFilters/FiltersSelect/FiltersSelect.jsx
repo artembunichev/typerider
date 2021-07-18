@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { Bold } from '../../../../Components/Styled/StyledComponents'
+import { ArrowIcon } from '../../../../assets/images/iconComponents/Arrow'
 
 const SelectWrapper = styled.div`
   position: relative;
@@ -43,7 +44,7 @@ const SelectValueText = styled.span`
 const SelectArrow = styled.div`
   position: absolute;
   right: 6px;
-  top: 2.5px;
+  top: 4px;
   display: flex;
   align-items: center;
   transform: ${(props) => (props.directionDown ? `rotate(180deg)` : `none`)};
@@ -142,7 +143,7 @@ export const FiltersSelect = observer(() => {
               <Bold>{HistoryStore.activeFilterName}</Bold>
             </SelectValueText>
             <SelectArrow directionDown={isOptionsVisible}>
-              <i className='fa fa-caret-down' aria-hidden='true'></i>
+              <ArrowIcon />
             </SelectArrow>
           </SelectValue>
         </Select>
