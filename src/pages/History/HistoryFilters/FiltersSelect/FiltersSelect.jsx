@@ -94,8 +94,12 @@ export const FiltersSelect = observer(() => {
       setIsWrapperHigher(value)
     }
   }
-  const onSelectClick = () => {
-    updateIsOptionsVisible(!isOptionsVisible)
+  const onSelectClick = (e) => {
+    if (!isOptionsVisible && isWrapperHigher) {
+      e.preventDefault()
+    } else {
+      updateIsOptionsVisible(!isOptionsVisible)
+    }
   }
   const onSelectBlur = () => {
     updateIsOptionsVisible(false)
