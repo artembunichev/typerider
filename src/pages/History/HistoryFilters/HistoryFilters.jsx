@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { FiltersSelect } from './FiltersSelect/FiltersSelect'
 import { ClearIcon } from '../../../assets/images/iconComponents/Clear'
+import { ConfirmPopup } from '../../../Components/Common/ConfirmPopup'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const FiltersContainer = styled.div`
@@ -24,16 +25,35 @@ const ClearHistoryIcon = styled.div`
 
 export const HistoryFilters = observer(() => {
   const { HistoryStore } = useStore()
-  const clearHistory = () => {
-    HistoryStore.clearHistory()
+  const [isPopup, setIsPopup] = useState(false)
+  const showPopup = () => {
+    setIsPopup(true)
   }
+  const yesFunction = () => {
+    HistoryStore.clearHistory()
+    setIsPopup(false)
+  }
+  const noFunction = () => {
+    setIsPopup(false)
+  }
+  const titleForPopup = `Do you want to clear your game history (${HistoryStore.gameHistory.length} games)?`
+  const configForPopup = {
+    isPopup: isPopup,
+    title: titleForPopup,
+    yesFunction: yesFunction,
+    noFunction: noFunction,
+  }
+
   return (
-    <FiltersContainer>
-      <FiltersTitle>Choose Filter</FiltersTitle>
-      <FiltersSelect />
-      <ClearHistoryIcon onClick={clearHistory}>
-        <ClearIcon />
-      </ClearHistoryIcon>
-    </FiltersContainer>
+    <>
+      <FiltersContainer>
+        <FiltersTitle>Choose Filter</FiltersTitle>
+        <FiltersSelect />
+        <ClearHistoryIcon onClick={showPopup}>
+          <ClearIcon />
+        </ClearHistoryIcon>
+      </FiltersContainer>
+      <ConfirmPopup {...configForPopup} />
+    </>
   )
 })
