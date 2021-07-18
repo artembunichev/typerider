@@ -42,6 +42,9 @@ export class HistoryStore {
   setActiveFilter(filter) {
     this.activeFilter = filter
   }
+  clearHistory() {
+    this.gameHistory = []
+  }
   get activeFilterValue() {
     return this.activeFilter.filter
   }

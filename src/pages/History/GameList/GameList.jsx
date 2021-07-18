@@ -8,12 +8,12 @@ const GameListContainer = styled.div`
   justify-content: center;
 `
 const GameListWrapper = styled.div`
-  width: 860px;
+  width: 584px;
   display: flex;
   justify-content: center;
 `
 const StyledGameList = styled.div`
-  width: 68%;
+  width: 100%;
   max-height: 671px;
   overflow-y: ${(props) => (props.listHeight > 670 ? 'scroll' : 'auto')};
   padding: 5px;
