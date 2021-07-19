@@ -47,7 +47,7 @@ const GameBlockInfo = styled.div`
   flex-direction: column;
   padding: 5px 5px 5px 20px;
 `
-const GameBlockInfoItem = styled.div`
+const GameBlockInfoItem = styled.span`
   font-size: 25px;
   margin-bottom: 4px;
 `
@@ -112,7 +112,7 @@ export const GameBlock = (props) => {
           </GameVehicleImgContainer>
           <GameBlockInfo>
             <GameBlockInfoItem>
-              <Bold>Your Nickname:</Bold> {userNickname}
+              <Bold>nickname:</Bold> {userNickname}
             </GameBlockInfoItem>
             <GameBlockInfoItem>
               <Bold>type speed:</Bold> {typeSpeed}

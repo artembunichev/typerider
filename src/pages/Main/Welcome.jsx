@@ -60,7 +60,7 @@ export const Welcome = observer(() => {
   return (
     <WelcomeContainer>
       <WelcomeSubTitle>Your nickname for the next race?</WelcomeSubTitle>
-      <WelcomeInput autoFocus={true} maxLength='20' onChange={onInputChange} onKeyPress={onEnterPress} />
+      <WelcomeInput autoFocus={true} maxLength='16' onChange={onInputChange} onKeyPress={onEnterPress} />
       <LetsGo onClick={goToGame}>Let&apos;s go!</LetsGo>
     </WelcomeContainer>
   )
