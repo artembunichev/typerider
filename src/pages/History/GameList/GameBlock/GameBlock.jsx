@@ -68,7 +68,7 @@ const DeleteGameContainer = styled(Container)`
 `
 
 export const GameBlock = (props) => {
-  const { HistoryStore } = useStore()
+  const { AppStore, HistoryStore } = useStore()
   const [isPopup, setIsPopup] = useState(false)
   const [gameForDelete, setGameForDelete] = useState(null)
   const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
@@ -78,6 +78,7 @@ export const GameBlock = (props) => {
   const onDeleteClick = (gameDate) => {
     setGameForDelete(gameDate)
     setIsPopup(true)
+    AppStore.setIsAnyPopupOpen(true)
   }
   const deleteGame = (gameDate) => {
     HistoryStore.deleteCurrentGame(gameDate)
@@ -87,10 +88,12 @@ export const GameBlock = (props) => {
   const yesFunction = () => {
     deleteGame(gameForDelete)
     setIsPopup(false)
+    AppStore.setIsAnyPopupOpen(false)
     setGameForDelete(null)
   }
   const noFunction = () => {
     setIsPopup(false)
+    AppStore.setIsAnyPopupOpen(false)
     setGameForDelete(null)
   }
   const configForPopup = {

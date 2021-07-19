@@ -24,17 +24,20 @@ const ClearHistoryIcon = styled.div`
 `
 
 export const HistoryFilters = observer(() => {
-  const { HistoryStore } = useStore()
+  const { AppStore, HistoryStore } = useStore()
   const [isPopup, setIsPopup] = useState(false)
   const showPopup = () => {
     setIsPopup(true)
+    AppStore.setIsAnyPopupOpen(true)
   }
   const yesFunction = () => {
     HistoryStore.clearHistory()
     setIsPopup(false)
+    AppStore.setIsAnyPopupOpen(false)
   }
   const noFunction = () => {
     setIsPopup(false)
+    AppStore.setIsAnyPopupOpen(false)
   }
   const titleForPopup = `Do you want to clear your game history (${HistoryStore.gameHistory.length} games)?`
   const configForPopup = {

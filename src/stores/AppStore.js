@@ -12,6 +12,8 @@ export class AppStore {
   userNickname = ''
   bestScore = 0
 
+  isAnyPopupOpen = false
+
   setOnPlayGamePage(value) {
     this.onPlayGamePage = value
   }
@@ -29,5 +31,8 @@ export class AppStore {
   }
   updateBestScore(score) {
     this.bestScore = score
+  }
+  setIsAnyPopupOpen(value) {
+    this.isAnyPopupOpen = value
   }
 }

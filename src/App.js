@@ -5,12 +5,17 @@ import { Welcome } from './pages/Main/Welcome'
 import { createGlobalStyle } from 'styled-components'
 import { GamePage } from './pages/Game/GamePage'
 import { History } from './pages/History/History'
+import { useStore } from './stores/RootStore/RootStoreContext'
+import { observer } from 'mobx-react-lite'
 
 const Global = createGlobalStyle`
   * {
     margin: 0px;
     padding: 0px;
     box-sizing:border-box;
+  }
+  body{
+    overflow:${(props) => props.isAnyPopupOpen && 'hidden'};
   }
   body > #root {
     height: 100vh;
@@ -26,10 +31,11 @@ const Global = createGlobalStyle`
   }
 `
 
-export const App = () => {
+export const App = observer(() => {
+  const { AppStore } = useStore()
   return (
     <>
-      <Global />
+      <Global isAnyPopupOpen={AppStore.isAnyPopupOpen} />
       <Header />
       <Switch>
         <Route exact path='/' component={Welcome} />
@@ -39,4 +45,4 @@ export const App = () => {
       </Switch>
     </>
   )
-}
+})
