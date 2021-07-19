@@ -67,8 +67,8 @@ const PopupButton = styled.button`
   }
   @media (min-width: 2000px) {
     font-size: 0.7vw;
-    width: 5vw;
-    height: 4vh;
+    width: 7vw;
+    height: 6vh;
   }
   width: 200px;
   height: 70px;
