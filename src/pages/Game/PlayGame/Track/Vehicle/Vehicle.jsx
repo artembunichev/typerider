@@ -3,7 +3,11 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
 
-const StyledVehicle = styled.div`
+const StyledVehicle = styled.div.attrs((props) => ({
+  style: {
+    left: props.left,
+  },
+}))`
   position: relative;
   top: ${(props) => {
     return props.model === 'motorbike'
@@ -11,9 +15,6 @@ const StyledVehicle = styled.div`
       : props.model === 'taxi'
       ? `${props.width / 3.2}px`
       : `${props.width / 2.87}px`
-  }};
-  left: ${(props) => {
-    return `${props.left}px`
   }};
   width: ${(props) => {
     return `${props.width}px`

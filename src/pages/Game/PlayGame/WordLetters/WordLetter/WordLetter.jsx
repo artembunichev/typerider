@@ -4,17 +4,18 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
 
-const WordLetterContainer = styled.div`
+const WordLetterContainer = styled.div.attrs((props) => ({
+  style: {
+    background: props.completed ? `${props.letterBgc}` : 'transparent',
+  },
+}))`
   display: inline-block;
-  background-color: ${(props) => {
-    return props.completed ? `${props.letterBgc}` : 'transparent'
-  }};
 `
-const WordLetterWrapper = styled.span`
-  color: ${(props) => {
-    return props.completed ? props.completedLettersColor : props.lettersColor
-  }};
-`
+const WordLetterWrapper = styled.span.attrs((props) => ({
+  style: {
+    color: props.completed ? props.completedLettersColor : props.lettersColor,
+  },
+}))``
 
 export const WordLetter = observer((props) => {
   const { GameSettingsState } = useContext(GameStoreContext)
