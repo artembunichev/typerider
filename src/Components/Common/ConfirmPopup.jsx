@@ -6,8 +6,8 @@ import { Bold } from '../Styled/StyledComponents'
 const PopupContainer = styled.div`
   position: fixed;
   z-index: 9999;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
@@ -26,12 +26,17 @@ const PopupBlock = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  @media (min-width: 1950px) {
+    min-width: 30%;
+    min-height: 20%;
+  }
   width: 920px;
   height: 380px;
   max-width: 90%;
   max-height: 90%;
   background-color: #ffffff;
   border-radius: 6px;
+  box-shadow: 0px 0px 17px -1px rgba(50, 50, 50, 0.75);
   transform: ${(props) => (props.isPopup ? 'scale(1)' : 'scale(0)')};
   transition: transform 0.4s;
 `
@@ -41,12 +46,12 @@ const PopupBlockContent = styled.div`
 `
 const PopupTitle = styled.div`
   @media (max-width: 768px) {
-    font-size: 2.5vw;
+    font-size: 4vw;
   }
   @media (min-width: 2000px) {
-    font-size: 1vw;
+    font-size: 1.6vw;
   }
-  font-size: 32px;
+  font-size: 40px;
   text-align: center;
   margin-bottom: 25px;
 `
@@ -61,12 +66,12 @@ const PopupButtons = styled.div`
 `
 const PopupButton = styled.button`
   @media (max-width: 768px) {
-    font-size: 1.9vw;
+    font-size: 2.5vw;
     width: 20vw;
-    height: 10vh;
+    height: 15vh;
   }
   @media (min-width: 2000px) {
-    font-size: 0.7vw;
+    font-size: 1.3vw;
     width: 7vw;
     height: 6vh;
   }
@@ -95,8 +100,12 @@ export const ConfirmPopup = ({ isPopup, title, yesFunction, noFunction }) => {
           </PopupTitle>
           <PopupButtonsContainer>
             <PopupButtons>
-              <PopupYesButton onClick={yesFunction}>YES</PopupYesButton>
-              <PopupNoButton onClick={noFunction}>NO</PopupNoButton>
+              <PopupYesButton onClick={yesFunction}>
+                <Bold>YES</Bold>
+              </PopupYesButton>
+              <PopupNoButton onClick={noFunction}>
+                <Bold>NO</Bold>
+              </PopupNoButton>
             </PopupButtons>
           </PopupButtonsContainer>
         </PopupBlockContent>
