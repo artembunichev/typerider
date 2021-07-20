@@ -8,7 +8,6 @@ export class AppStore {
   onPlayGamePage = false
 
   gameMode = false
-  inputValue = ''
   userNickname = ''
   bestScore = 0
 
@@ -22,9 +21,6 @@ export class AppStore {
   }
   setGameMode(value) {
     this.gameMode = value
-  }
-  setInputValue(value) {
-    this.inputValue = value
   }
   setUserNickname(nickname) {
     this.userNickname = nickname

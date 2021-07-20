@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
@@ -38,18 +38,19 @@ const LetsGo = styled.button`
 `
 export const Welcome = observer(() => {
   const { AppStore } = useStore()
+  const [inputValue, setInputValue] = useState('')
   const history = useHistory()
 
   const goToGame = () => {
-    const nickname = AppStore.inputValue.trim()
+    const nickname = inputValue.trim()
     if (nickname) {
       AppStore.setUserNickname(nickname)
       history.push('/game')
-      AppStore.setInputValue('')
+      setInputValue('')
     }
   }
   const onInputChange = (e) => {
-    AppStore.setInputValue(e.target.value)
+    setInputValue(e.target.value)
   }
   const onEnterPress = (e) => {
     if (e.code === 'Enter') {
@@ -60,7 +61,13 @@ export const Welcome = observer(() => {
   return (
     <WelcomeContainer>
       <WelcomeSubTitle>Your nickname for the next race?</WelcomeSubTitle>
-      <WelcomeInput autoFocus={true} maxLength='16' onChange={onInputChange} onKeyPress={onEnterPress} />
+      <WelcomeInput
+        autoFocus={true}
+        maxLength='16'
+        onChange={onInputChange}
+        onKeyPress={onEnterPress}
+        value={inputValue}
+      />
       <LetsGo onClick={goToGame}>Let&apos;s go!</LetsGo>
     </WelcomeContainer>
   )
