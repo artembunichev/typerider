@@ -16,6 +16,7 @@ const Global = createGlobalStyle`
   }
   body{
     overflow:${(props) => props.isAnyPopupOpen && 'hidden'};
+    background-color: #bdbdbd;
   }
   body > #root {
     height: 100vh;
@@ -28,6 +29,18 @@ const Global = createGlobalStyle`
   input {
     outline: none;
     border: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #bdbdbd;
+    border-radius: 10px;
+  }
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px #ffc;
+    background-color: #ffc;
   }
 `
 
