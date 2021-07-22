@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import styled from 'styled-components'
 import { dateConverter } from '../../../../assets/functions/dateConverter'
 import { TrashIcon } from '../../../../assets/images/iconComponents/Trash'
@@ -67,7 +67,7 @@ const DeleteGameContainer = styled(Container)`
   }
 `
 
-export const GameBlock = (props) => {
+export const GameBlock = memo((props) => {
   const { AppStore, HistoryStore } = useStore()
   const [isPopup, setIsPopup] = useState(false)
   const [gameForDelete, setGameForDelete] = useState(null)
@@ -140,4 +140,5 @@ export const GameBlock = (props) => {
       </GameBlockContainer>
     </GameBlockWithPopup>
   )
-}
+})
+GameBlock.displayName = 'GameBlock'
