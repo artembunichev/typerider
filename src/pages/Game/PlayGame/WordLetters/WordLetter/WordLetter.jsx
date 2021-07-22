@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext';
 
 const WordLetterContainer = styled.div.attrs((props) => ({
   style: {
@@ -18,13 +18,14 @@ const WordLetterWrapper = styled.span.attrs((props) => ({
 }))``
 
 export const WordLetter = observer((props) => {
-  const { GameSettingsState } = useContext(GameStoreContext)
+  const { GameSettingsStore } = useStore()
+
   return (
-    <WordLetterContainer completed={props.completed} letterBgc={GameSettingsState.letterBgcColor}>
+    <WordLetterContainer completed={props.completed} letterBgc={GameSettingsStore.letterBgcColor}>
       <WordLetterWrapper
         completed={props.completed}
-        lettersColor={GameSettingsState.lettersColor}
-        completedLettersColor={GameSettingsState.completedLettersColor}>
+        lettersColor={GameSettingsStore.lettersColor}
+        completedLettersColor={GameSettingsStore.completedLettersColor}>
         {props.letter}
       </WordLetterWrapper>
     </WordLetterContainer>

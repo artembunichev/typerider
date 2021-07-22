@@ -20,8 +20,8 @@ const GameTitle = styled.div`
   text-align: center;
 `
 export const Game = observer(() => {
-  const { AppStore, HistoryStore } = useStore()
-  const { GameSettingsState, ResultState } = useContext(GameStoreContext)
+  const { AppStore, GameSettingsStore, HistoryStore } = useStore()
+  const { ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     AppStore.setOnPlayGamePage(true)
     const gameDate = Date.now()
@@ -30,11 +30,11 @@ export const Game = observer(() => {
       if (ResultState.isResultReady) {
         const GameForHistory = {
           userNickname: AppStore.userNickname,
-          vehicle: GameSettingsState.activeVehicleSrc,
+          vehicle: GameSettingsStore.activeVehicleSrc,
           errorsCount: ResultState.errorsCount,
           correctWordsCount: ResultState.correctWordsCount,
           typeSpeed: ResultState.typeSpeed,
-          raceTime: GameSettingsState.activeTimeForRaceInSeconds,
+          raceTime: GameSettingsStore.activeTimeForRaceInSeconds,
           date: gameDate,
         }
         HistoryStore.updateGameHistory(GameForHistory)

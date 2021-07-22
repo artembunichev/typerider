@@ -3,13 +3,13 @@ import { observer } from 'mobx-react-lite'
 import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
 
 export const Timer = observer(() => {
-  const { AppStore } = useStore()
-  const { PlayGameState, GameSettingsState } = useContext(GameStoreContext)
+  const { AppStore, GameSettingsStore } = useStore()
+  const { PlayGameState } = useContext(GameStoreContext)
 
   useEffect(() => {
-    const time = GameSettingsState.activeTimeForRace / 1000
+    const time = GameSettingsStore.activeTimeForRace / 1000
     PlayGameState.setCurrentTime(time)
-  }, [GameSettingsState.activeTimeForRace])
+  }, [GameSettingsStore.activeTimeForRace])
 
   useEffect(() => {
     let timeInterval

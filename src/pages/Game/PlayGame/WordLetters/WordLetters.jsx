@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { WordLetter } from './WordLetter/WordLetter'
-import { GameStoreContext } from '../../../../stores/RootStore/RootStoreContext'
+import { useStore } from '../../../../stores/RootStore/RootStoreContext';
 
 export const WordLettersWrapper = styled.div`
   display: flex;
@@ -21,8 +21,8 @@ export const WordLettersContainer = styled.div.attrs((props) => ({
 `
 
 export const WordLetters = observer((props) => {
-  const { GameSettingsState } = useContext(GameStoreContext)
-  
+  const { GameSettingsStore } = useStore()
+
   const wordObject = props.wordObject
   const WordLettersList = wordObject.wordLetters.map((letter) => {
     const isLetterCompleted = wordObject.arrayOfCompletedLetters.some((id) => id === letter.id)
@@ -31,7 +31,7 @@ export const WordLetters = observer((props) => {
 
   return (
     <WordLettersWrapper>
-      <WordLettersContainer wordBorder={GameSettingsState.wordBorder}>{WordLettersList}</WordLettersContainer>
+      <WordLettersContainer wordBorder={GameSettingsStore.wordBorder}>{WordLettersList}</WordLettersContainer>
     </WordLettersWrapper>
   )
 })

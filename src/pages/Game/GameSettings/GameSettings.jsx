@@ -15,15 +15,15 @@ const Start = styled.button`
 `
 
 export const GameSettings = observer(() => {
-  const { AppStore } = useStore()
-  const { GameSettingsState, ResultState } = useContext(GameStoreContext)
+  const { AppStore, GameSettingsStore } = useStore()
+  const { ResultState } = useContext(GameStoreContext)
 
   const startGame = () => {
     AppStore.setGameMode(true)
     setTimer()
   }
   const setTimer = () => {
-    const time = GameSettingsState.activeTimeForRace
+    const time = GameSettingsStore.activeTimeForRace
     setTimeout(() => {
       ResultState.setIsResultReady(true)
       AppStore.setGameMode(false)
