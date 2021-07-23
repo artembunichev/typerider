@@ -36,7 +36,7 @@ const HeaderButton = styled.button`
 `
 
 export const Header = observer(() => {
-  const { AppStore } = useStore()
+  const { AppStore, HistoryStore } = useStore()
   const history = useHistory()
 
   const goToHistoryPage = () => {
@@ -63,7 +63,7 @@ export const Header = observer(() => {
             <Bold>Game History</Bold>
           </HeaderButton>
         )}
-        <BestScoreContainer>Best Score : {AppStore.bestScore}</BestScoreContainer>
+        <BestScoreContainer>Best Score : {HistoryStore.bestScore}</BestScoreContainer>
       </HeaderExtraSection>
     </HeaderContainer>
   )

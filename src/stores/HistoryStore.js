@@ -66,11 +66,22 @@ export class HistoryStore {
   deleteCurrentGame(gameDate) {
     this.gameHistory = this.gameHistory.filter((game) => game.date !== gameDate)
   }
-
+  
   get activeFilterValue() {
     return this.activeFilter.filter
   }
   get activeFilterName() {
     return this.activeFilter.name
+  }
+  get bestScore() {
+    if (this.gameHistory.length) {
+      return this.gameHistory.reduce((bestScore, game) => {
+        if (game.typeSpeed > bestScore) {
+          bestScore = game.typeSpeed
+        }
+        return bestScore
+      }, 0)
+    }
+    return 0
   }
 }

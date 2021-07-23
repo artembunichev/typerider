@@ -38,12 +38,10 @@ export const Game = observer(() => {
           date: gameDate,
         }
         HistoryStore.updateGameHistory(GameForHistory)
-        if (ResultState.typeSpeed > AppStore.bestScore) {
-          AppStore.updateBestScore(ResultState.typeSpeed)
-        }
       }
     }
   }, [])
+
   return (
     <GameContainer>
       <GameTitle>
