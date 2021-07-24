@@ -37,15 +37,16 @@ const HeaderButton = styled.button`
 
 export const Header = observer(() => {
   const { AppStore, HistoryStore } = useStore()
+  
   const history = useHistory()
 
   const goToHistoryPage = () => {
     history.push('/history')
-    AppStore.setUserNickname('')
   }
   const goToHomePage = () => {
     history.push('/')
   }
+
   return (
     <HeaderContainer>
       <HeaderTitle>typerider</HeaderTitle>
