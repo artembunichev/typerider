@@ -22,7 +22,7 @@ const StyledGameList = styled.div`
 
 export const GameList = (props) => {
   const GameListItems = props.sortedHistory.map((game) => {
-    return <GameBlock key={game.date} game={game} />
+    return <GameBlock key={game.date} game={game} popup={props.popup} gameForDelete={props.gameForDelete} />
   })
 
   const listLength = props.sortedHistory.length

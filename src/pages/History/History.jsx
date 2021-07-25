@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Bold, Container } from '../../Components/Styled/StyledComponents'
 import { GameList } from './GameList/GameList'
 import { HistoryFilters } from './HistoryFilters/HistoryFilters'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
+import { ConfirmPopup } from '../../Components/Common/ConfirmPopup'
 
 const HistoryContainer = styled(Container)`
   display: flex;
@@ -32,6 +33,9 @@ const NoGameHistory = styled.div`
 
 export const History = observer(() => {
   const { AppStore, HistoryStore } = useStore()
+  const [isDeleteGamePopup, setIsDeleteGamePopup] = useState(false)
+  const [isClearHistoryPopup, setIsClearHistoryPopup] = useState(false)
+  const [gameForDelete, setGameForDelete] = useState(null)
 
   useEffect(() => {
     AppStore.setOnHistoryPage(true)
@@ -48,6 +52,51 @@ export const History = observer(() => {
     return b[filter] - a[filter]
   })
 
+  //! CONFIG FOR CLEARHISTORY POPUP
+  const clearHistoryPopup = {
+    setIsPopup: setIsClearHistoryPopup,
+  }
+  const yesFunctionForClearHistory = () => {
+    HistoryStore.clearHistory()
+    setIsClearHistoryPopup(false)
+    AppStore.setIsAnyPopupOpen(false)
+  }
+  const noFunctionForClearHistory = () => {
+    setIsClearHistoryPopup(false)
+    AppStore.setIsAnyPopupOpen(false)
+  }
+  const configForClearGamePopup = {
+    isPopup: isClearHistoryPopup,
+    title: `Do you want to clear your game history (${HistoryStore.gameHistory.length} games)?`,
+    yesFunction: yesFunctionForClearHistory,
+    noFunction: noFunctionForClearHistory,
+  }
+
+  //! CONFIG FOR DELETEGAME POPUP
+  const delteGamePopup = {
+    setIsPopup: setIsDeleteGamePopup,
+  }
+  const gameForDeleteProp = {
+    setGameForDelete: setGameForDelete,
+  }
+  const yesFunctionForDeleteGame = () => {
+    HistoryStore.deleteCurrentGame(gameForDelete)
+    setIsDeleteGamePopup(false)
+    AppStore.setIsAnyPopupOpen(false)
+    setGameForDelete(null)
+  }
+  const noFunctionForDeleteGame = () => {
+    setIsDeleteGamePopup(false)
+    AppStore.setIsAnyPopupOpen(false)
+    setGameForDelete(null)
+  }
+  const configForDeleteGamePopup = {
+    isPopup: isDeleteGamePopup,
+    title: `Do you want to want to delete this game?`,
+    yesFunction: yesFunctionForDeleteGame,
+    noFunction: noFunctionForDeleteGame,
+  }
+
   return (
     <HistoryContainer>
       <HistoryTitle>
@@ -55,14 +104,16 @@ export const History = observer(() => {
       </HistoryTitle>
       {HistoryStore.gameHistory.length ? (
         <HistoryWrapper>
-          <HistoryFilters />
-          <GameList sortedHistory={sortedHistory} />
+          <HistoryFilters popup={clearHistoryPopup} />
+          <GameList sortedHistory={sortedHistory} popup={delteGamePopup} gameForDelete={gameForDeleteProp} />
         </HistoryWrapper>
       ) : (
         <NoGameHistory>
           <Bold>Your game history is empty</Bold>
         </NoGameHistory>
       )}
+      <ConfirmPopup {...configForClearGamePopup} />
+      <ConfirmPopup {...configForDeleteGamePopup} />
     </HistoryContainer>
   )
 })

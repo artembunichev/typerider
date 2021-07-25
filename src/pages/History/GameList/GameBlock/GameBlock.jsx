@@ -1,13 +1,17 @@
 /* eslint-disable react/prop-types */
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 import { dateConverter } from '../../../../assets/functions/dateConverter'
 import { TrashIcon } from '../../../../assets/images/iconComponents/Trash'
-import { ConfirmPopup } from '../../../../Components/Common/ConfirmPopup'
 import { Bold, Container } from '../../../../Components/Styled/StyledComponents'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 
-const GameBlockWithPopup = styled.div`
+const GameBlockContainer = styled.div`
+  position: relative;
+  z-index: 5;
+  display: flex;
+  background-color: #9780fb;
+  border-radius: 12px;
   margin: 9px 0px;
   &:first-child {
     margin-top: 0px;
@@ -15,13 +19,6 @@ const GameBlockWithPopup = styled.div`
   &:last-child {
     margin-bottom: 0px;
   }
-`
-const GameBlockContainer = styled.div`
-  position: relative;
-  z-index: 5;
-  display: flex;
-  background-color: #9780fb;
-  border-radius: 12px;
 `
 const GameBlockMain = styled.div`
   display: flex;
@@ -68,77 +65,52 @@ const DeleteGameContainer = styled(Container)`
 `
 
 export const GameBlock = memo((props) => {
-  const { AppStore, HistoryStore } = useStore()
-  const [isPopup, setIsPopup] = useState(false)
-  const [gameForDelete, setGameForDelete] = useState(null)
+  const { AppStore } = useStore()
   const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
+  const { setIsPopup } = props.popup
+  const { setGameForDelete } = props.gameForDelete
 
   const gameDate = dateConverter(date)
 
-  const onDeleteClick = (gameDate) => {
+  const showPopup = (gameDate) => {
     setGameForDelete(gameDate)
     setIsPopup(true)
     AppStore.setIsAnyPopupOpen(true)
   }
-  const deleteGame = (gameDate) => {
-    HistoryStore.deleteCurrentGame(gameDate)
-  }
-
-  const titleForPopup = `Do you want to want to delete this game?`
-  const yesFunction = () => {
-    deleteGame(gameForDelete)
-    setIsPopup(false)
-    AppStore.setIsAnyPopupOpen(false)
-    setGameForDelete(null)
-  }
-  const noFunction = () => {
-    setIsPopup(false)
-    AppStore.setIsAnyPopupOpen(false)
-    setGameForDelete(null)
-  }
-  const configForPopup = {
-    isPopup: isPopup,
-    title: titleForPopup,
-    yesFunction: yesFunction,
-    noFunction: noFunction,
-  }
 
   return (
-    <GameBlockWithPopup>
-      <ConfirmPopup {...configForPopup} />
-      <GameBlockContainer>
-        <GameBlockMain>
-          <GameVehicleImgContainer>
-            <GameVehicle>
-              <GameVehicleImg src={vehicle} />
-            </GameVehicle>
-          </GameVehicleImgContainer>
-          <GameBlockInfo>
-            <GameBlockInfoItem>
-              <Bold>nickname:</Bold> {userNickname}
-            </GameBlockInfoItem>
-            <GameBlockInfoItem>
-              <Bold>type speed:</Bold> {typeSpeed}
-            </GameBlockInfoItem>
-            <GameBlockInfoItem>
-              <Bold>corrent words count:</Bold> {correctWordsCount}
-            </GameBlockInfoItem>
-            <GameBlockInfoItem>
-              <Bold>errors count:</Bold> {errorsCount}
-            </GameBlockInfoItem>
-            <GameBlockInfoItem>
-              <Bold>Race time:</Bold> {raceTime} seconds
-            </GameBlockInfoItem>
-            <GameBlockInfoItem>
-              <Bold>Game date:</Bold> {gameDate}
-            </GameBlockInfoItem>
-          </GameBlockInfo>
-        </GameBlockMain>
-        <DeleteGameContainer onClick={() => onDeleteClick(date)}>
-          <TrashIcon />
-        </DeleteGameContainer>
-      </GameBlockContainer>
-    </GameBlockWithPopup>
+    <GameBlockContainer>
+      <GameBlockMain>
+        <GameVehicleImgContainer>
+          <GameVehicle>
+            <GameVehicleImg src={vehicle} />
+          </GameVehicle>
+        </GameVehicleImgContainer>
+        <GameBlockInfo>
+          <GameBlockInfoItem>
+            <Bold>nickname:</Bold> {userNickname}
+          </GameBlockInfoItem>
+          <GameBlockInfoItem>
+            <Bold>type speed:</Bold> {typeSpeed}
+          </GameBlockInfoItem>
+          <GameBlockInfoItem>
+            <Bold>corrent words count:</Bold> {correctWordsCount}
+          </GameBlockInfoItem>
+          <GameBlockInfoItem>
+            <Bold>errors count:</Bold> {errorsCount}
+          </GameBlockInfoItem>
+          <GameBlockInfoItem>
+            <Bold>Race time:</Bold> {raceTime} seconds
+          </GameBlockInfoItem>
+          <GameBlockInfoItem>
+            <Bold>Game date:</Bold> {gameDate}
+          </GameBlockInfoItem>
+        </GameBlockInfo>
+      </GameBlockMain>
+      <DeleteGameContainer onClick={() => showPopup(date)}>
+        <TrashIcon />
+      </DeleteGameContainer>
+    </GameBlockContainer>
   )
 })
 GameBlock.displayName = 'GameBlock'
