@@ -53,9 +53,6 @@ export const History = observer(() => {
   })
 
   //! CONFIG FOR CLEARHISTORY POPUP
-  const clearHistoryPopup = {
-    setIsPopup: setIsClearHistoryPopup,
-  }
   const yesFunctionForClearHistory = () => {
     HistoryStore.clearHistory()
     setIsClearHistoryPopup(false)
@@ -73,12 +70,6 @@ export const History = observer(() => {
   }
 
   //! CONFIG FOR DELETEGAME POPUP
-  const delteGamePopup = {
-    setIsPopup: setIsDeleteGamePopup,
-  }
-  const gameForDeleteProp = {
-    setGameForDelete: setGameForDelete,
-  }
   const yesFunctionForDeleteGame = () => {
     HistoryStore.deleteCurrentGame(gameForDelete)
     setIsDeleteGamePopup(false)
@@ -104,8 +95,12 @@ export const History = observer(() => {
       </HistoryTitle>
       {HistoryStore.gameHistory.length ? (
         <HistoryWrapper>
-          <HistoryFilters popup={clearHistoryPopup} />
-          <GameList sortedHistory={sortedHistory} popup={delteGamePopup} gameForDelete={gameForDeleteProp} />
+          <HistoryFilters setIsPopup={setIsClearHistoryPopup} />
+          <GameList
+            sortedHistory={sortedHistory}
+            setIsPopup={setIsDeleteGamePopup}
+            setGameForDelete={setGameForDelete}
+          />
         </HistoryWrapper>
       ) : (
         <NoGameHistory>

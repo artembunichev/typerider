@@ -67,8 +67,7 @@ const DeleteGameContainer = styled(Container)`
 export const GameBlock = memo((props) => {
   const { AppStore } = useStore()
   const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
-  const { setIsPopup } = props.popup
-  const { setGameForDelete } = props.gameForDelete
+  const { setIsPopup, setGameForDelete } = props
 
   const gameDate = dateConverter(date)
 

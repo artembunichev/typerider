@@ -22,7 +22,7 @@ const ClearHistoryIcon = styled.div`
 `
 
 export const HistoryFilters = observer((props) => {
-  const { setIsPopup } = props.popup
+  const { setIsPopup } = props
 
   const showPopup = () => {
     setIsPopup(true)
