@@ -2,17 +2,13 @@ import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { WordLetter } from './WordLetter/WordLetter'
-import { useStore } from '../../../../stores/RootStore/RootStoreContext';
+import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 
 export const WordLettersWrapper = styled.div`
   display: flex;
   justify-content: center;
 `
-export const WordLettersContainer = styled.div.attrs((props) => ({
-  style: {
-    borderColor: props.wordBorder,
-  },
-}))`
+export const WordLettersContainer = styled.div`
   display: inline-block;
   border-width: 6px;
   border-style: solid;
@@ -31,7 +27,12 @@ export const WordLetters = observer((props) => {
 
   return (
     <WordLettersWrapper>
-      <WordLettersContainer wordBorder={GameSettingsStore.wordBorder}>{WordLettersList}</WordLettersContainer>
+      <WordLettersContainer
+        style={{
+          borderColor: GameSettingsStore.wordBorder,
+        }}>
+        {WordLettersList}
+      </WordLettersContainer>
     </WordLettersWrapper>
   )
 })

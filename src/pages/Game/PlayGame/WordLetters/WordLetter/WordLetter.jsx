@@ -2,32 +2,26 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext';
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
-const WordLetterContainer = styled.div.attrs((props) => ({
-  style: {
-    background: props.completed ? `${props.letterBgc}` : 'transparent',
-  },
-}))`
+const WordLetterContainer = styled.div`
   display: inline-block;
 `
-const WordLetterWrapper = styled.span.attrs((props) => ({
-  style: {
-    color: props.completed ? props.completedLettersColor : props.lettersColor,
-  },
-}))``
+const WordLetterWrapper = styled.span``
 
 export const WordLetter = observer((props) => {
   const { GameSettingsStore } = useStore()
 
+  const wordLetterColor = {
+    color: props.completed ? GameSettingsStore.completedLettersColor : GameSettingsStore.lettersColor,
+  }
+  const wordLetterBgc = {
+    background: props.completed ? GameSettingsStore.letterBgcColor : 'transparent',
+  }
+
   return (
-    <WordLetterContainer completed={props.completed} letterBgc={GameSettingsStore.letterBgcColor}>
-      <WordLetterWrapper
-        completed={props.completed}
-        lettersColor={GameSettingsStore.lettersColor}
-        completedLettersColor={GameSettingsStore.completedLettersColor}>
-        {props.letter}
-      </WordLetterWrapper>
+    <WordLetterContainer style={wordLetterBgc}>
+      <WordLetterWrapper style={wordLetterColor}>{props.letter}</WordLetterWrapper>
     </WordLetterContainer>
   )
 })
