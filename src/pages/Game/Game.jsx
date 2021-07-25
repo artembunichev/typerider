@@ -5,6 +5,7 @@ import { useStore, GameStoreContext } from '../../stores/RootStore/RootStoreCont
 import { Bold, Container } from '../../Components/Styled/StyledComponents'
 import { GameSettings } from './GameSettings/GameSettings'
 import { PlayGame } from './PlayGame/PlayGame'
+import { generateRandomColor } from '../../assets/functions/generateRandomColor'
 
 const GameContainer = styled(Container)`
   display: flex;
@@ -37,6 +38,7 @@ export const Game = observer(() => {
           typeSpeed: ResultState.typeSpeed,
           raceTime: GameSettingsStore.activeTimeForRaceInSeconds,
           date: gameDate,
+          color: generateRandomColor(),
         }
         HistoryStore.updateGameHistory(GameForHistory)
       }

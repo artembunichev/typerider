@@ -10,7 +10,7 @@ const GameBlockContainer = styled.div`
   position: relative;
   z-index: 5;
   display: flex;
-  background-color: #9780fb;
+  background-color: ${(props) => props.blockColor};
   border-radius: 12px;
   margin: 9px 0px;
   &:first-child {
@@ -66,7 +66,7 @@ const DeleteGameContainer = styled(Container)`
 
 export const GameBlock = memo((props) => {
   const { AppStore } = useStore()
-  const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date } = props.game
+  const { userNickname, vehicle, typeSpeed, correctWordsCount, errorsCount, raceTime, date, color } = props.game
   const { setIsPopup, setGameForDelete } = props
 
   const gameDate = dateConverter(date)
@@ -78,7 +78,7 @@ export const GameBlock = memo((props) => {
   }
 
   return (
-    <GameBlockContainer>
+    <GameBlockContainer blockColor={color}>
       <GameBlockMain>
         <GameVehicleImgContainer>
           <GameVehicle>
