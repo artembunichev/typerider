@@ -22,6 +22,9 @@ export const Track = observer(() => {
 
   useEffect(() => {
     PlayGameState.updateTrackLength(trackRef.current.offsetWidth)
+    if (PlayGameState.currentLetterIndex > 0) {
+      PlayGameState.setNewVehiclePosition()
+    }
   }, [screenWidth])
 
   return (

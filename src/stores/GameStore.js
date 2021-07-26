@@ -81,6 +81,9 @@ export class GameStore {
     updateVehiclePosition(value) {
       this.vehiclePosition += value
     },
+    setNewVehiclePosition() {
+      this.vehiclePosition = this.currentWordStep * this.currentLetterIndex
+    },
     clearVehiclePosition() {
       this.vehiclePosition = 0
     },
