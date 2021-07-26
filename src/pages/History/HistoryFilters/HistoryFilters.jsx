@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { FiltersSelect } from './FiltersSelect/FiltersSelect'
 import { ClearIcon } from '../../../assets/images/iconComponents/Clear'
+import { useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const FiltersContainer = styled.div`
   position: relative;
@@ -22,10 +23,12 @@ const ClearHistoryIcon = styled.div`
 `
 
 export const HistoryFilters = observer((props) => {
+  const { AppStore } = useStore()
   const { setIsPopup } = props
 
   const showPopup = () => {
     setIsPopup(true)
+    AppStore.setIsAnyPopupOpen(true)
   }
 
   return (
