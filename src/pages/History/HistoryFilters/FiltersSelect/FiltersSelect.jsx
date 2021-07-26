@@ -6,6 +6,13 @@ import { Bold } from '../../../../Components/Styled/StyledComponents'
 import { ArrowIcon } from '../../../../assets/images/iconComponents/Arrow'
 
 const SelectWrapper = styled.div`
+  @media (max-width: 490px) {
+    width: 190px;
+  }
+  @media (max-width: 405px) {
+    width: 160px;
+  }
+  width: 210px;
   position: relative;
   z-index: ${(props) => (props.isWrapperHigher ? 10 : 1)};
   margin: 8px;
@@ -13,6 +20,9 @@ const SelectWrapper = styled.div`
 const PlaceForOptions = styled.div`
   position: absolute;
   z-index: -1;
+  @media (max-width: 440px) {
+    top: 28px;
+  }
   top: 33px;
   width: 100%;
   height: 120px;
@@ -25,9 +35,13 @@ const SelectContainer = styled.div`
   border-radius: 6px 6px 0px 0px;
 `
 const Select = styled.div`
-  width: 210px;
+  width: 100%;
+  @media (max-width: 440px) {
+    height: 25px;
+  }
   height: 30px;
-  font-size: 25px;
+  display: flex;
+  align-items: center;
   &:hover {
     cursor: pointer;
   }
@@ -38,19 +52,38 @@ const SelectValue = styled.div`
   padding: 0 6px;
 `
 const SelectValueText = styled.span`
-  font-size: 25px;
+  @media (max-width: 490px) {
+    font-size: 21px;
+  }
+  @media (max-width: 440px) {
+    font-size: 19px;
+  }
+  font-size: 23px;
   user-select: none;
 `
 const SelectArrow = styled.div`
+  svg {
+    @media (max-width: 540px) {
+      width: 18px;
+      height: 18px;
+    }
+    @media (max-width: 405px) {
+      width: 16.5px;
+      height: 16.5px;
+    }
+    width: 21px;
+    height: 21px;
+  }
   position: absolute;
   right: 6px;
-  top: 4px;
+  top: 4.5px;
   display: flex;
   align-items: center;
   transform: ${(props) => (props.directionDown ? `rotate(180deg)` : `none`)};
   transition: transform ease-out 0.33s;
 `
 const OptionsContainer = styled.div`
+  width: 100%;
   position: absolute;
   z-index: -1;
   top: ${(props) => (props.isVisible ? '-6px' : '-122px')};
@@ -59,7 +92,13 @@ const OptionsContainer = styled.div`
 `
 const Option = styled.div`
   display: flex;
-  width: 210px;
+  width: 100%;
+  @media (max-width: 490px) {
+    font-size: 19px;
+  }
+  @media (max-width: 440px) {
+    font-size: 17px;
+  }
   font-size: 23px;
   user-select: none;
   background-color: ${(props) => {

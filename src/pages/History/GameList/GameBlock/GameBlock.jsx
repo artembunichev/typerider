@@ -29,6 +29,18 @@ const GameVehicleImgContainer = styled.div`
   align-items: center;
 `
 const GameVehicle = styled.div`
+  @media (max-width: 540px) {
+    width: 118px;
+    height: 118px;
+  }
+  @media (max-width: 490px) {
+    width: 90px;
+    height: 90px;
+  }
+  @media (max-width: 390px) {
+    width: 76px;
+    height: 76px;
+  }
   width: 140px;
   height: 140px;
   background-color: #c5ddf0;
@@ -45,10 +57,53 @@ const GameBlockInfo = styled.div`
   padding: 5px 5px 5px 20px;
 `
 const GameBlockInfoItem = styled.span`
+  @media (max-width: 650px) {
+    font-size: 23px;
+  }
+  @media (max-width: 540px) {
+    font-size: 21px;
+  }
+  @media (max-width: 490px) {
+    font-size: 18px;
+  }
+  @media (max-width: 440px) {
+    font-size: 16px;
+  }
+  @media (max-width: 390px) {
+    font-size: 15px;
+  }
+  @media (max-width: 360px) {
+    font-size: 14px;
+  }
   font-size: 25px;
   margin-bottom: 4px;
 `
 const DeleteGameContainer = styled(Container)`
+  svg {
+    @media (max-width: 650px) {
+      width: 36px;
+      height: 36px;
+    }
+    @media (max-width: 540px) {
+      width: 33px;
+      height: 33px;
+    }
+    @media (max-width: 490px) {
+      width: 31px;
+      height: 31px;
+    }
+    @media (max-width: 440px) {
+      width: 29px;
+      height: 29px;
+    }
+    @media (max-width: 390px) {
+      width: 25px;
+      height: 25px;
+    }
+    width: 40px;
+    height: 40px;
+  }
+  width: 14%;
   display: flex;
   justify-content: center;
   align-items: center;

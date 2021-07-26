@@ -8,6 +8,24 @@ const GameListContainer = styled.div`
   justify-content: center;
 `
 const GameListWrapper = styled.div`
+  @media (max-width: 650px) {
+    width: 505px;
+  }
+  @media (max-width: 540px) {
+    width: 470px;
+  }
+  @media (max-width: 490px) {
+    width: 425px;
+  }
+  @media (max-width: 440px) {
+    width: 380px;
+  }
+  @media (max-width: 390px) {
+    width: 345px;
+  }
+  @media (max-width: 360px) {
+    width: 315px;
+  }
   width: 584px;
   display: flex;
   justify-content: center;
