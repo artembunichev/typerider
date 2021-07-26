@@ -17,9 +17,10 @@ export class GameStore {
     inputValue: '',
     isError: false,
     currentTime: null,
-    trackLength: 1120,
-    vehiclePosition: 0,
+    trackLength: null,
     vehicleWidth: 100,
+    vehiclePosition: 0,
+
     get currentWord() {
       return this.words[this.currentWordIndex]
     },
@@ -86,6 +87,9 @@ export class GameStore {
     updateCompletedLetters(id) {
       this.completedLetters.push(id)
     },
+    updateTrackLength(length) {
+      this.trackLength = length
+    },
   }
 
   //result
@@ -95,6 +99,7 @@ export class GameStore {
     errorWords: [],
     symbolsCount: 0,
     correctWordsCount: 0,
+
     get typeSpeed() {
       const rate = 60000 / globalThis.GameSettingsStore.activeTimeForRace
       return Math.round(this.symbolsCount * rate)
