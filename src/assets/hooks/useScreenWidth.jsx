@@ -10,6 +10,6 @@ export const useScreenWidth = () => {
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [])
-  
+
   return width
 }

@@ -3,14 +3,16 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { Vehicle } from './Vehicle/Vehicle'
 import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
-import { useScreenWidth } from '../../../../assets/hooks/ResizeHook'
+import { useScreenWidth } from '../../../../assets/hooks/useScreenWidth'
 
 const TrackContainer = styled.div`
+  display: flex;
+  justify-content: center;
   padding: 50px;
 `
 const StyledTrack = styled.div`
   position: relative;
-  width: 80%;
+  width: 100%;
   border-bottom: 3px dashed #000000;
 `
 
