@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TimeForRace } from './TimeForRace/TimeForRace'
-import { VehicleForRace } from './VehicleForRace/VehicleForRace'
+import { TimeForRace } from './SettingsForRace/TimeForRace'
+import { VehicleForRace } from './SettingsForRace/VehicleForRace'
 
 const GlobalSettingsContainer = styled.div``
 

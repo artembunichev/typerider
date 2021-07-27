@@ -1,6 +1,6 @@
 import React from 'react'
-import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
 const VehicleForRaceContainer = styled.div`
@@ -43,7 +43,7 @@ export const VehicleForRace = observer(() => {
       </VehicleForRaceButton>
     )
   })
-  
+
   return (
     <VehicleForRaceContainer>
       <VehicleForRaceList>{VehicleForRaceItems}</VehicleForRaceList>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext';
 
 const TimeForRaceContainer = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ export const TimeForRace = observer(() => {
       </TimeForRaceItem>
     )
   })
-  
+
   return (
     <TimeForRaceContainer>
       How long will your race last?

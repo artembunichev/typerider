@@ -1,7 +1,7 @@
 import React from 'react'
-import { WordLetters } from '../../../PlayGame/WordLetters/WordLetters'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
+import { useStore } from '../../../../stores/RootStore/RootStoreContext';
+import { WordLetters } from '../../PlayGame/WordLetters/WordLetters'
 
 export const WordsSettingsExample = observer(() => {
   const { GameSettingsStore } = useStore()
