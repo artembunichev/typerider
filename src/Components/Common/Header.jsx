@@ -10,9 +10,24 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 3px 22px 3px 22px;
+  @media (max-width: 470px) {
+    padding: 3px 13px 3px 13px;
+  }
 `
 const HeaderTitle = styled.span`
   font-family: 'Homemade Apple', cursive;
+  @media (max-width: 650px) {
+    font-size: 30px;
+  }
+  @media (max-width: 500px) {
+    font-size: 25px;
+  }
+  @media (max-width: 470px) {
+    font-size: 22px;
+  }
+  @media (max-width: 405px) {
+    font-size: 20px;
+  }
   font-size: 36px;
   color: #ff820d;
   user-select: none;
@@ -20,16 +35,35 @@ const HeaderTitle = styled.span`
 const HeaderExtraSection = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 10px;
 `
 const BestScoreContainer = styled.span`
+  @media (max-width: 470px) {
+    font-size: 14.5px;
+  }
+  font-size: 17px;
   color: #ff820d;
 `
 const HeaderButton = styled.button`
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
+  @media (max-width: 500px) {
+    font-size: 15px;
+    padding: 3px;
+  }
+  @media (max-width: 405px) {
+    font-size: 13.5px;
+  }
+  @media (max-width: 370px) {
+    font-size: 11px;
+  }
   font-size: 21px;
   background-color: #ff820d;
   color: #161414;
   border-radius: 6px;
   padding: 6px;
+  margin-right: 5px;
   &:hover {
     cursor: pointer;
   }
@@ -37,7 +71,7 @@ const HeaderButton = styled.button`
 
 export const Header = observer(() => {
   const { AppStore, HistoryStore } = useStore()
-  
+
   const history = useHistory()
 
   const goToHistoryPage = () => {
