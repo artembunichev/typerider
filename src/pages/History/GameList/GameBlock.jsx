@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { memo } from 'react'
 import styled from 'styled-components'
-import { dateConverter } from '../../../../assets/functions/dateConverter'
-import { TrashIcon } from '../../../../assets/images/iconComponents/Trash'
-import { Bold, Container } from '../../../../Components/Styled/StyledComponents'
-import { useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { useStore } from '../../../stores/RootStore/RootStoreContext'
+import { dateConverter } from '../../../assets/functions/dateConverter'
+import { Bold, Container } from '../../../Components/Styled/StyledComponents'
+import { TrashIcon } from '../../../assets/images/iconComponents/Trash'
 
 const GameBlockContainer = styled.div`
   position: relative;

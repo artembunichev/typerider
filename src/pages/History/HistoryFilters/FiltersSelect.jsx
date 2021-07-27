@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { useStore } from '../../../../stores/RootStore/RootStoreContext'
-import { Bold } from '../../../../Components/Styled/StyledComponents'
-import { ArrowIcon } from '../../../../assets/images/iconComponents/Arrow'
+import { observer } from 'mobx-react-lite'
+import { useStore } from '../../../stores/RootStore/RootStoreContext'
+import { Bold } from '../../../Components/Styled/StyledComponents'
+import { ArrowIcon } from '../../../assets/images/iconComponents/Arrow'
 
 const SelectWrapper = styled.div`
   @media (max-width: 490px) {
