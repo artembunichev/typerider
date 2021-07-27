@@ -108,6 +108,11 @@ export class GameStore {
       return Math.round(this.symbolsCount * rate)
     },
     get errorsPercent() {
+      if (this.errorsCount === 0 && this.symbolsCount === 0) {
+        return 0
+      } else if (this.symbolsCount === 0) {
+        return 100
+      }
       return Math.floor((this.errorsCount / this.symbolsCount) * 100)
     },
 
