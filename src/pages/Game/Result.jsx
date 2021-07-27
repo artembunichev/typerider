@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { Container, Bold } from '../../../Components/Styled/StyledComponents'
 import { useHistory } from 'react-router-dom'
-import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext } from '../../stores/RootStore/RootStoreContext'
+import { Container, Bold } from '../../Components/Styled/StyledComponents'
 
 const ResultContainer = styled(Container)`
   background-color: #ff00f2;

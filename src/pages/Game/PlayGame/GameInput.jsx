@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const StyledGameInput = styled.input`
   font-size: 45px;
-  width: 650px;
+  @media (max-width: 768px) {
+    width: 86%;
+  }
+  width: 700px;
   height: 35px;
 `
 

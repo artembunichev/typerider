@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
-import { Vehicle } from './Vehicle/Vehicle'
+import { Vehicle } from './Vehicle'
 import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { useScreenWidth } from '../../../../assets/hooks/useScreenWidth'
 

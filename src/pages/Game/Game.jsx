@@ -20,6 +20,7 @@ const GameTitle = styled.div`
   font-size: 56px;
   text-align: center;
 `
+
 export const Game = observer(() => {
   const { AppStore, GameSettingsStore, HistoryStore } = useStore()
   const { ResultState } = useContext(GameStoreContext)

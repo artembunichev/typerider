@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
-import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { useStore, GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
 
 export const Timer = observer(() => {
   const { AppStore, GameSettingsStore } = useStore()

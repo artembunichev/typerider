@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import { GameInput } from './GameInput/GameInput'
+import { GameInput } from './GameInput'
 import { Track } from './Track/Track'
-import { Timer } from './Timer/Timer'
+import { Timer } from './Timer'
 import { WordLetters } from './WordLetters/WordLetters'
-import { Error } from './Error/Error'
+import { Error } from './Error'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
 
 const PlayGameContainer = styled.div`
