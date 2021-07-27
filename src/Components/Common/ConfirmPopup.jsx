@@ -12,7 +12,7 @@ const PopupContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.534);
+  background-color: rgba(82, 82, 82, 0.315);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,11 +32,15 @@ const PopupBlock = styled.div`
   }
   width: 920px;
   height: 380px;
+  @media (max-width: 450px) {
+    max-width: 96%;
+    max-height: 80%;
+  }
   max-width: 90%;
   max-height: 90%;
   background-color: #ffffff;
   border-radius: 6px;
-  box-shadow: 0px 0px 17px -1px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 17px -1px rgba(29, 29, 29, 0.876);
   transform: ${(props) => (props.isPopup ? 'scale(1)' : 'scale(0)')};
   transition: transform 0.4s;
 `
@@ -48,10 +52,13 @@ const PopupTitle = styled.div`
   @media (max-width: 768px) {
     font-size: 4vw;
   }
+  @media (max-width: 450px) {
+    font-size: 7vw;
+  }
   @media (min-width: 2000px) {
     font-size: 1.6vw;
   }
-  font-size: 40px;
+  font-size: 35px;
   text-align: center;
   margin-bottom: 25px;
 `
@@ -70,6 +77,11 @@ const PopupButton = styled.button`
     width: 20vw;
     height: 15vh;
   }
+  @media (max-width: 450px) {
+    font-size: 4vw;
+    width: 20vw;
+    height: 8.5vh;
+  }
   @media (min-width: 2000px) {
     font-size: 1.3vw;
     width: 7vw;
@@ -79,15 +91,25 @@ const PopupButton = styled.button`
   height: 70px;
   font-size: 29px;
   margin: 0 6px;
+  border-radius: 6px;
+  transition: 0.18s ease-in;
   &:hover {
     cursor: pointer;
   }
 `
 const PopupYesButton = styled(PopupButton)`
-  background-color: #7aff5f;
+  background-color: #85ff6d;
+  box-shadow: 0px 0px 21px 0px rgba(172, 255, 155, 0.8);
+  &:hover {
+    background-color: #3bff14;
+  }
 `
 const PopupNoButton = styled(PopupButton)`
-  background-color: #ff5f5f;
+  box-shadow: 0px 0px 21px 0px rgba(255, 155, 155, 0.8);
+  background-color: #ff6d6d;
+  &:hover {
+    background-color: #ff1414;
+  }
 `
 
 export const ConfirmPopup = ({ isPopup, title, yesFunction, noFunction }) => {
