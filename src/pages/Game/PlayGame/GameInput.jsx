@@ -51,7 +51,18 @@ export const GameInput = observer(() => {
     } else {
       PlayGameState.setIsError(true)
       ResultState.updateErrorsCount()
-      ResultState.setErrorWords(PlayGameState.currentWord)
+      ResultState.setErrorWords(
+        {
+          name: PlayGameState.currentWord,
+          letters: PlayGameState.currentWordLetters.map((letter) => {
+            return {
+              ...letter,
+              isError: false,
+            }
+          }),
+        },
+        PlayGameState.currentWordLetters[PlayGameState.currentLetterIndex]
+      )
     }
   }
 

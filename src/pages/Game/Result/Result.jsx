@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
-import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
-import { GameStoreContext } from '../../stores/RootStore/RootStoreContext'
-import { Container, Bold } from '../../Components/Styled/StyledComponents'
+import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
+import { Container, Bold } from '../../../Components/Styled/StyledComponents'
+import { ErrorWords } from './ErrorWords'
 
 const ResultContainer = styled(Container)`
   background-color: #ff00f2;
 `
 const ErrorsCountContainer = styled.div``
-const ErrorWordsContainer = styled.div``
-const ErrorWord = styled.div``
 const CorrectWordsContainer = styled.div``
+
 export const Result = observer(() => {
   const { ResultState } = useContext(GameStoreContext)
 
@@ -33,14 +33,7 @@ export const Result = observer(() => {
       <ErrorsCountContainer>
         You got <Bold>{ResultState.errorsCount}</Bold> mistakes ({ResultState.errorsPercent}%)
       </ErrorsCountContainer>
-      {ResultState.errorsCount > 0 ? (
-        <ErrorWordsContainer>
-          You made a mistake in these words :{' '}
-          {ResultState.errorWords.map((error) => {
-            return <ErrorWord key={error}>{error}</ErrorWord>
-          })}
-        </ErrorWordsContainer>
-      ) : null}
+      <ErrorWords words={ResultState.errorWords} />
       {ResultState.typeSpeed}
       <button onClick={goAgain}>GO</button>
     </ResultContainer>

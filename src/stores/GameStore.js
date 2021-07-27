@@ -119,8 +119,24 @@ export class GameStore {
     updateErrorsCount() {
       this.errorsCount++
     },
-    setErrorWords(word) {
-      if (!this.errorWords.some((w) => w === word)) {
+    setErrorWords(word, errorLetter) {
+      const hasThisWord = this.errorWords.some((w) => w.name === word.name)
+      if (hasThisWord) {
+        this.errorWords.forEach((w) => {
+          if (w.name === word.name) {
+            w.letters.map((letter) => {
+              if (letter.id === errorLetter.id) {
+                letter.isError = true
+              }
+            })
+          }
+        })
+      } else {
+        word.letters.forEach((letter) => {
+          if (letter.id === errorLetter.id) {
+            letter.isError = true
+          }
+        })
         this.errorWords.push(word)
       }
     },
