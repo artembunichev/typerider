@@ -3,14 +3,48 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
 import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
-import { Container, Bold } from '../../../Components/Styled/StyledComponents'
+import { Container, Bold, Title } from '../../../Components/Styled/StyledComponents'
 import { ErrorWords } from './ErrorWords'
 
 const ResultContainer = styled(Container)`
-  background-color: #ff00f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #45678f;
 `
-const ErrorsCountContainer = styled.div``
-const CorrectWordsContainer = styled.div``
+const ResultTitle = styled(Title)`
+  font-size: 50px;
+  padding: 0 60px 15px 60px;
+  @media (max-width: 650px) {
+    font-size: 44px;
+    padding: 0 50px 15px 50px;
+  }
+  @media (max-width: 540px) {
+    font-size: 40px;
+    padding: 0 35px 10px 35px;
+  }
+  @media (max-width: 490px) {
+    font-size: 30px;
+    padding: 0 20px 8px 20px;
+  }
+  @media (max-width: 440px) {
+    font-size: 27px;
+    padding: 0 12px 8px 12px;
+  }
+  @media (max-width: 390px) {
+    font-size: 24px;
+    padding: 0 8px 8px 8px;
+  }
+  @media (max-width: 360px) {
+    font-size: 26px;
+  }
+`
+const ResultInfo = styled.div`
+  padding: 25px;
+`
+const ResultItem = styled.div`
+  font-size: 30px;
+`
 
 export const Result = observer(() => {
   const { ResultState } = useContext(GameStoreContext)
@@ -27,14 +61,19 @@ export const Result = observer(() => {
 
   return (
     <ResultContainer>
-      <CorrectWordsContainer>
-        You got <Bold>{ResultState.correctWordsCount}</Bold> correct words!
-      </CorrectWordsContainer>
-      <ErrorsCountContainer>
-        You got <Bold>{ResultState.errorsCount}</Bold> mistakes ({ResultState.errorsPercent}%)
-      </ErrorsCountContainer>
-      <ErrorWords words={ResultState.errorWords} />
-      {ResultState.typeSpeed}
+      <ResultTitle>Result</ResultTitle>
+      <ResultInfo>
+        <ResultItem>
+          You got <Bold>{ResultState.correctWordsCount}</Bold> correct words!
+        </ResultItem>
+        <ResultItem>
+          You got <Bold>{ResultState.errorsCount}</Bold> mistakes ({ResultState.errorsPercent}%)
+        </ResultItem>
+        <ErrorWords words={ResultState.errorWords} />
+        <ResultItem>
+          Type Speed: <Bold>{ResultState.typeSpeed}</Bold>
+        </ResultItem>
+      </ResultInfo>
       <button onClick={goAgain}>GO</button>
     </ResultContainer>
   )
