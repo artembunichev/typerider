@@ -48,6 +48,8 @@ export const ErrorWords = (props) => {
   const [isWordsVisible, setIsWordsVisible] = useState(false)
   const [isPositionAbsolute, setIsPositionAbsolute] = useState(true)
 
+  const sortedErrorWords = props.words.sort((a, b) => b.errorLettersCount - a.errorLettersCount)
+
   const showWords = (e) => {
     if (!isPositionAbsolute) {
       e.preventDefault()
@@ -73,7 +75,7 @@ export const ErrorWords = (props) => {
         )}
       </ErrorWordsPicker>
       <ErrorWordsContainer isWordsVisible={isWordsVisible} isPositionAbsolute={isPositionAbsolute}>
-        {props.words.map((word) => {
+        {sortedErrorWords.map((word) => {
           const key = word.letters.reduce((key, letter) => {
             key = key + letter.id
             return key

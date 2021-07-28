@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
@@ -48,6 +48,10 @@ const ResultItem = styled.div`
 
 export const Result = observer(() => {
   const { ResultState } = useContext(GameStoreContext)
+
+  useEffect(() => {
+    ResultState.setErrorLettersCountInWords()
+  }, [])
 
   const history = useHistory()
 

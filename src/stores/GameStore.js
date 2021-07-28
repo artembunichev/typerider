@@ -140,6 +140,17 @@ export class GameStore {
         this.errorWords.push(word)
       }
     },
+    setErrorLettersCountInWords() {
+      this.errorWords.forEach((word) => {
+        const errorLettersCount = word.letters.reduce((count, letter) => {
+          if (letter.isError) {
+            count = count + 1
+          }
+          return count
+        }, 0)
+        word.errorLettersCount = errorLettersCount
+      })
+    },
     setIsResultReady(value) {
       this.isResultReady = value
     },
