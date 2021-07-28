@@ -8,7 +8,7 @@ const ErrorWordsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 330px;
 `
 
 const ErrorWordsContainer = styled.ul`
