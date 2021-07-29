@@ -47,7 +47,27 @@ const HistoryTitle = styled.div`
   border-radius: 0px 0px 7px 7px;
 `
 const NoGameHistory = styled.div`
+  padding: 5px 20px;
   font-size: 32px;
+  text-align: center;
+  @media (max-width: 650px) {
+    font-size: 31px;
+  }
+  @media (max-width: 540px) {
+    font-size: 30px;
+  }
+  @media (max-width: 490px) {
+    font-size: 29px;
+  }
+  @media (max-width: 440px) {
+    font-size: 28px;
+  }
+  @media (max-width: 390px) {
+    font-size: 26px;
+  }
+  @media (max-width: 360px) {
+    font-size: 24px;
+  }
 `
 
 export const History = observer(() => {
