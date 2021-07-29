@@ -73,7 +73,7 @@ export const Result = observer(() => {
         <ResultItem>
           You got <Bold>{ResultState.errorsCount}</Bold> mistakes ({ResultState.errorsPercent}%)
         </ResultItem>
-        <ErrorWords words={ResultState.errorWords} />
+        {ResultState.errorWords.length !== 0 && <ErrorWords words={ResultState.errorWords} />}
         <ResultItem>
           Type Speed: <Bold>{ResultState.typeSpeed}</Bold>
         </ResultItem>
