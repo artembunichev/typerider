@@ -6,6 +6,7 @@ import { HistoryFilters } from './HistoryFilters/HistoryFilters'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { ConfirmPopup } from '../../Components/Common/ConfirmPopup'
+import { wordFormConverter } from '../../assets/functions/wordFormConverter'
 
 const HistoryContainer = styled(Container)`
   display: flex;
@@ -37,6 +38,7 @@ export const History = observer(() => {
   }, [])
 
   const filter = HistoryStore.activeFilterValue
+  const gameForm = wordFormConverter('game', HistoryStore.gameHistory.length)
   const sortedHistory = HistoryStore.gameHistory.slice().sort((a, b) => {
     if (filter === 'errorsCount') {
       return a[filter] - b[filter]
@@ -56,7 +58,7 @@ export const History = observer(() => {
   }
   const configForClearGamePopup = {
     isPopup: isClearHistoryPopup,
-    title: `Do you want to clear your game history (${HistoryStore.gameHistory.length} games)?`,
+    title: `Do you want to clear your game history (${HistoryStore.gameHistory.length} ${gameForm})?`,
     yesFunction: yesFunctionForClearHistory,
     noFunction: noFunctionForClearHistory,
   }
