@@ -24,7 +24,7 @@ const ErrorWordsContainer = styled.ul`
   flex-wrap: wrap;
   background-color: #314a68;
   list-style: none;
-  transition: 0.38s;
+  transition: ${(props) => `${props.animationDuration / 1000}s`};
 `
 const ErrorWordsPicker = styled.div``
 const ErrorWordsPickerTitle = styled.div`
@@ -49,6 +49,7 @@ export const ErrorWords = (props) => {
   const [isPositionAbsolute, setIsPositionAbsolute] = useState(true)
 
   const sortedErrorWords = props.words.sort((a, b) => b.errorLettersCount - a.errorLettersCount)
+  const animationDuration = 380
 
   const showWords = (e) => {
     if (!isPositionAbsolute) {
@@ -62,7 +63,7 @@ export const ErrorWords = (props) => {
     setIsWordsVisible(false)
     setTimeout(() => {
       setIsPositionAbsolute(true)
-    }, 380)
+    }, animationDuration)
   }
 
   return (
@@ -74,7 +75,10 @@ export const ErrorWords = (props) => {
           <ErrorWordsPickerTitle onClick={showWords}>Show Error Words</ErrorWordsPickerTitle>
         )}
       </ErrorWordsPicker>
-      <ErrorWordsContainer isWordsVisible={isWordsVisible} isPositionAbsolute={isPositionAbsolute}>
+      <ErrorWordsContainer
+        isWordsVisible={isWordsVisible}
+        isPositionAbsolute={isPositionAbsolute}
+        animationDuration={animationDuration}>
         {sortedErrorWords.map((word) => {
           const key = word.letters.reduce((key, letter) => {
             key = key + letter.id
