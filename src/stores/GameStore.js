@@ -115,6 +115,9 @@ export class GameStore {
       }
       return Math.floor((this.errorsCount / this.symbolsCount) * 100)
     },
+    get sortedErrorWords() {
+      return this.errorWords.slice().sort((a, b) => b.errorLettersCount - a.errorLettersCount)
+    },
 
     updateErrorsCount() {
       this.errorsCount++

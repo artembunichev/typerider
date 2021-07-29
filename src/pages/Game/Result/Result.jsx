@@ -59,7 +59,7 @@ export const Result = observer(() => {
   if (!ResultState.isResultReady) {
     history.push('/')
   }
-  
+
   const wordForm = wordFormConverter('word', ResultState.correctWordsCount)
   const mistakeForm = wordFormConverter('mistake', ResultState.errorsCount)
 
@@ -77,7 +77,7 @@ export const Result = observer(() => {
         <ResultItem>
           You got <Bold>{ResultState.errorsCount}</Bold> {mistakeForm} ({ResultState.errorsPercent}%)
         </ResultItem>
-        {ResultState.errorWords.length !== 0 && <ErrorWords words={ResultState.errorWords} />}
+        {ResultState.errorWords.length !== 0 && <ErrorWords words={ResultState.sortedErrorWords} />}
         <ResultItem>
           Type Speed: <Bold>{ResultState.typeSpeed}</Bold>
         </ResultItem>

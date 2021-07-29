@@ -48,7 +48,6 @@ export const ErrorWords = (props) => {
   const [isWordsVisible, setIsWordsVisible] = useState(false)
   const [isPositionAbsolute, setIsPositionAbsolute] = useState(true)
 
-  const sortedErrorWords = props.words.sort((a, b) => b.errorLettersCount - a.errorLettersCount)
   const animationDuration = 380
 
   const showWords = (e) => {
@@ -79,7 +78,7 @@ export const ErrorWords = (props) => {
         isWordsVisible={isWordsVisible}
         isPositionAbsolute={isPositionAbsolute}
         animationDuration={animationDuration}>
-        {sortedErrorWords.map((word) => {
+        {props.words.map((word) => {
           const key = word.letters.reduce((key, letter) => {
             key = key + letter.id
             return key
