@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
 import { Container, Bold, Title } from '../../../Components/Styled/StyledComponents'
 import { ErrorWords } from './ErrorWords'
+import { wordFormConverter } from '../../../assets/functions/wordFormConverter'
 
 const ResultContainer = styled(Container)`
   display: flex;
@@ -58,6 +59,9 @@ export const Result = observer(() => {
   if (!ResultState.isResultReady) {
     history.push('/')
   }
+  
+  const wordForm = wordFormConverter('word', ResultState.correctWordsCount)
+  const mistakeForm = wordFormConverter('mistake', ResultState.errorsCount)
 
   const goAgain = () => {
     history.push('/')
@@ -68,10 +72,10 @@ export const Result = observer(() => {
       <ResultTitle>Result</ResultTitle>
       <ResultInfo>
         <ResultItem>
-          You got <Bold>{ResultState.correctWordsCount}</Bold> correct words!
+          You got <Bold>{ResultState.correctWordsCount}</Bold> correct {wordForm}!
         </ResultItem>
         <ResultItem>
-          You got <Bold>{ResultState.errorsCount}</Bold> mistakes ({ResultState.errorsPercent}%)
+          You got <Bold>{ResultState.errorsCount}</Bold> {mistakeForm} ({ResultState.errorsPercent}%)
         </ResultItem>
         {ResultState.errorWords.length !== 0 && <ErrorWords words={ResultState.errorWords} />}
         <ResultItem>
