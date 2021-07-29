@@ -38,10 +38,40 @@ const ErrorWordsPicker = styled.div`
 `
 const ErrorWordsPickerTitle = styled.div`
   font-size: 36px;
+  @media (max-width: 1100px) {
+    font-size: 34px;
+  }
+  @media (max-width: 790px) {
+    font-size: 32px;
+  }
+  @media (max-width: 550px) {
+    font-size: 26px;
+  }
+  @media (max-width: 490px) {
+    font-size: 23px;
+  }
+  @media (max-width: 430px) {
+    font-size: 21px;
+  }
   user-select: none;
 `
 const ErrorWord = styled.li`
   font-size: 38px;
+  @media (max-width: 1100px) {
+    font-size: 36px;
+  }
+  @media (max-width: 790px) {
+    font-size: 34px;
+  }
+  @media (max-width: 550px) {
+    font-size: 28px;
+  }
+  @media (max-width: 490px) {
+    font-size: 25px;
+  }
+  @media (max-width: 430px) {
+    font-size: 23px;
+  }
   background-color: #dfdfdf;
   padding: 8px;
   margin: 6px;

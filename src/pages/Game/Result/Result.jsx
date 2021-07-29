@@ -29,6 +29,21 @@ const ResultInfo = styled.div`
   background-color: #c5e3ff;
 `
 const ResultItem = styled.div`
+  @media (max-width: 1100px) {
+    font-size: 40px;
+  }
+  @media (max-width: 790px) {
+    font-size: 36px;
+  }
+  @media (max-width: 550px) {
+    font-size: 32px;
+  }
+  @media (max-width: 490px) {
+    font-size: 27px;
+  }
+  @media (max-width: 430px) {
+    font-size: 24px;
+  }
   font-size: 46px;
   margin: 7px 0px;
   &:first-child {
@@ -40,11 +55,31 @@ const ResultItem = styled.div`
 `
 const StartNewGameButton = styled.button`
   width: 100%;
+  @media (max-width: 1100px) {
+    font-size: 26px;
+  }
+  @media (max-width: 790px) {
+    font-size: 24px;
+  }
+  @media (max-width: 550px) {
+    font-size: 22px;
+  }
+  @media (max-width: 490px) {
+    font-size: 20px;
+  }
+  @media (max-width: 430px) {
+    font-size: 19px;
+  }
   font-size: 28px;
   margin: 6px;
   padding: 5px;
   border-radius: 10px;
   background-color: #c5e3ff;
+  transition: background-color 0.3s;
+  &:hover {
+    cursor: pointer;
+    background-color: #42d3ff;
+  }
 `
 
 export const Result = observer(() => {
