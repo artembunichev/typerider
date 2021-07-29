@@ -8,7 +8,7 @@ const ErrorWordsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 330px;
+  overflow: hidden;
 `
 
 const ErrorWordsContainer = styled.ul`
@@ -18,7 +18,7 @@ const ErrorWordsContainer = styled.ul`
   opacity: ${(props) => (props.isWordsVisible ? '1' : '0')};
   top: 0px;
   justify-content: start;
-  max-width: 330px;
+  max-width: ${(props) => `${(props.resultInfoWidth / 100) * 80}px`};
   border-radius: 5px;
   padding: 6px;
   flex-wrap: wrap;
@@ -26,15 +26,22 @@ const ErrorWordsContainer = styled.ul`
   list-style: none;
   transition: ${(props) => `${props.animationDuration / 1000}s`};
 `
-const ErrorWordsPicker = styled.div``
-const ErrorWordsPickerTitle = styled.div`
-  user-select: none;
+const ErrorWordsPicker = styled.div`
+  padding: 11px;
+  background-color: ${(props) => (props.isWordsVisible ? '#979797' : '#42d3ff')};
+  border-radius: 20px;
+  margin-bottom: ${(props) => !props.isPositionAbsolute && '12px'};
   &:hover {
     cursor: pointer;
   }
+  transition: background-color 0.3s;
+`
+const ErrorWordsPickerTitle = styled.div`
+  font-size: 36px;
+  user-select: none;
 `
 const ErrorWord = styled.li`
-  font-size: 32px;
+  font-size: 38px;
   background-color: #dfdfdf;
   padding: 8px;
   margin: 6px;
@@ -67,7 +74,7 @@ export const ErrorWords = (props) => {
 
   return (
     <ErrorWordsWrapper>
-      <ErrorWordsPicker>
+      <ErrorWordsPicker isPositionAbsolute={isPositionAbsolute} isWordsVisible={isWordsVisible}>
         {isWordsVisible ? (
           <ErrorWordsPickerTitle onClick={hideWords}>Hide Error Words</ErrorWordsPickerTitle>
         ) : (
@@ -75,6 +82,7 @@ export const ErrorWords = (props) => {
         )}
       </ErrorWordsPicker>
       <ErrorWordsContainer
+        resultInfoWidth={props.resultInfoWidth}
         isWordsVisible={isWordsVisible}
         isPositionAbsolute={isPositionAbsolute}
         animationDuration={animationDuration}>

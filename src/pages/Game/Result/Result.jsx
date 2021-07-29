@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
 import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
-import { Container, Bold, Title } from '../../../Components/Styled/StyledComponents'
+import { Container, Bold } from '../../../Components/Styled/StyledComponents'
 import { ErrorWords } from './ErrorWords'
 import { wordFormConverter } from '../../../assets/functions/wordFormConverter'
 
@@ -13,45 +13,48 @@ const ResultContainer = styled(Container)`
   align-items: center;
   background-color: #45678f;
 `
-const ResultTitle = styled(Title)`
-  font-size: 50px;
-  padding: 0 60px 15px 60px;
-  @media (max-width: 650px) {
-    font-size: 44px;
-    padding: 0 50px 15px 50px;
-  }
-  @media (max-width: 540px) {
-    font-size: 40px;
-    padding: 0 35px 10px 35px;
-  }
-  @media (max-width: 490px) {
-    font-size: 30px;
-    padding: 0 20px 8px 20px;
-  }
-  @media (max-width: 440px) {
-    font-size: 27px;
-    padding: 0 12px 8px 12px;
-  }
-  @media (max-width: 390px) {
-    font-size: 24px;
-    padding: 0 8px 8px 8px;
-  }
-  @media (max-width: 360px) {
-    font-size: 26px;
-  }
-`
-const ResultInfo = styled.div`
+const ResultInfoContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 25px;
 `
+const ResultInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #c5e3ff;
+`
 const ResultItem = styled.div`
-  font-size: 30px;
+  font-size: 46px;
+  margin: 7px 0px;
+  &:first-child {
+    margin-top: 0px;
+  }
+  &:last-child {
+    margin-bottom: 0px;
+  }
+`
+const StartNewGameButton = styled.button`
+  width: 100%;
+  font-size: 28px;
+  margin: 6px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #c5e3ff;
 `
 
 export const Result = observer(() => {
   const { ResultState } = useContext(GameStoreContext)
+  const [resultInfoWidth, setResultInfoWidth] = useState(null)
+  const resultInfoRef = useRef()
 
   useEffect(() => {
     ResultState.setErrorLettersCountInWords()
+    setResultInfoWidth(resultInfoRef.current.offsetWidth)
   }, [])
 
   const history = useHistory()
@@ -69,20 +72,23 @@ export const Result = observer(() => {
 
   return (
     <ResultContainer>
-      <ResultTitle>Result</ResultTitle>
-      <ResultInfo>
-        <ResultItem>
-          You got <Bold>{ResultState.correctWordsCount}</Bold> correct {wordForm}!
-        </ResultItem>
-        <ResultItem>
-          You got <Bold>{ResultState.errorsCount}</Bold> {mistakeForm} ({ResultState.errorsPercent}%)
-        </ResultItem>
-        {ResultState.errorWords.length !== 0 && <ErrorWords words={ResultState.sortedErrorWords} />}
-        <ResultItem>
-          Type Speed: <Bold>{ResultState.typeSpeed}</Bold>
-        </ResultItem>
-      </ResultInfo>
-      <button onClick={goAgain}>GO</button>
+      <ResultInfoContainer>
+        <ResultInfo ref={resultInfoRef}>
+          <ResultItem>
+            You got <Bold>{ResultState.correctWordsCount}</Bold> correct {wordForm}!
+          </ResultItem>
+          <ResultItem>
+            You got <Bold>{ResultState.errorsCount}</Bold> {mistakeForm} ({ResultState.errorsPercent}%)
+          </ResultItem>
+          {ResultState.errorWords.length !== 0 && (
+            <ErrorWords words={ResultState.sortedErrorWords} resultInfoWidth={resultInfoWidth} />
+          )}
+          <ResultItem>
+            Type Speed: <Bold>{ResultState.typeSpeed}</Bold> sym/min
+          </ResultItem>
+        </ResultInfo>
+        <StartNewGameButton onClick={goAgain}>Start New Game</StartNewGameButton>
+      </ResultInfoContainer>
     </ResultContainer>
   )
 })
