@@ -103,7 +103,7 @@ export const History = observer(() => {
   }
   const configForDeleteGamePopup = {
     isPopup: isDeleteGamePopup,
-    title: `Do you want to want to delete this game?`,
+    title: `Do you want to delete this game from history?`,
     yesFunction: yesFunctionForDeleteGame,
     noFunction: noFunctionForDeleteGame,
   }
