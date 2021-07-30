@@ -8,21 +8,21 @@ export class GameSettingsStore {
   constructor() {
     makeAutoObservable(this)
   }
-  
+
   timeForRace = [
-    { name: '30sec', time: 30000, isActive: true },
-    { name: '60sec', time: 60000, isActive: false },
-    { name: '90sec', time: 90000, isActive: false },
+    { name: '30 sec', time: 30000, isActive: true },
+    { name: '60 sec', time: 60000, isActive: false },
+    { name: '90 sec', time: 90000, isActive: false },
   ]
   vehicles = [
     { model: 'sports car', src: SportsCar, isActive: true },
     { model: 'motorbike', src: Motorbike, isActive: false },
     { model: 'taxi', src: Taxi, isActive: false },
   ]
-  lettersColor = '#000000'
-  completedLettersColor = '#ffffff'
+  lettersColor = '#ffffff'
+  completedLettersColor = '#ff820d'
   wordBorder = '#000000'
-  letterBgcColor = '#33ffff'
+  letterBgcColor = '#000000'
   exampleWordLetters = [
     { letter: 't', id: uniqid() },
     { letter: 'y', id: uniqid() },
