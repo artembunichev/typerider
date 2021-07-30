@@ -4,14 +4,30 @@ import { observer } from 'mobx-react-lite'
 import { WordsSettings } from './WordsSettings/WordsSettings'
 import { GlobalSettings } from './GlobalSettings/GlobalSettings'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
+import { SettingsButton } from '../../../Components/Styled/StyledComponents'
 
 const GameSettingsContainer = styled.div`
-  width: 22%;
-  background-color: #ff0000;
+  height: 750px;
+  padding: 20px 25px 10px 25px;
+  background-color: #384653;
+  border-radius: 12px;
+  margin: 15px 0 15px 15px;
+  overflow-y: auto;
 `
-const Start = styled.button`
-  width: 150px;
+const StartContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+`
+const Start = styled(SettingsButton)`
+  font-size: 26px;
+  width: 220px;
   height: 45px;
+  background-color: ${(props) => props.disabled && '#888888'};
+  transition: 0.33s;
+  &:hover {
+    background-color: #888888;
+  }
 `
 
 export const GameSettings = observer(() => {
@@ -34,7 +50,11 @@ export const GameSettings = observer(() => {
     <GameSettingsContainer>
       <GlobalSettings />
       <WordsSettings />
-      <Start onClick={startGame}>Start Game</Start>
+      <StartContainer>
+        <Start onClick={startGame} disabled={AppStore.gameMode}>
+          Start Game
+        </Start>
+      </StartContainer>
     </GameSettingsContainer>
   )
 })

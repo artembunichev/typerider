@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext';
+import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
+import { SettingsButton, Bold } from '../../../../../Components/Styled/StyledComponents'
 
 const TimeForRaceContainer = styled.div`
   display: flex;
@@ -9,15 +10,19 @@ const TimeForRaceContainer = styled.div`
   align-items: center;
 `
 const TimeForRaceList = styled.div`
-  width: 75%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
+  padding: 5px 10px;
 `
-const TimeForRaceItem = styled.button`
-  width: 50px;
-  color: ${(props) => (props.active ? '#33ff00' : '#000000')};
+const TimeForRaceItem = styled(SettingsButton)`
+  font-size: 19px;
+  width: 100px;
+  margin: 0 8px;
+  color: ${(props) => (props.isActive ? '#d66e0c' : '#000000')};
+  transition: 0.33s;
   &:hover {
-    cursor: pointer;
+    color: ${(props) => !props.isActive && '#e2750e8b'};
   }
 `
 
@@ -31,17 +36,16 @@ export const TimeForRace = observer(() => {
     return (
       <TimeForRaceItem
         disabled={AppStore.gameMode}
-        active={t.isActive}
+        isActive={t.isActive}
         key={t.time}
         onClick={() => setSelectedTime(t.time)}>
-        {t.name}
+        <Bold>{t.name}</Bold>
       </TimeForRaceItem>
     )
   })
 
   return (
     <TimeForRaceContainer>
-      How long will your race last?
       <TimeForRaceList>{TimeForRaceItems}</TimeForRaceList>
     </TimeForRaceContainer>
   )

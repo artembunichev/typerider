@@ -4,8 +4,16 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
-const ColorInputWrapper = styled.div``
-const StyledColorInput = styled.input``
+const ColorInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+`
+const StyledColorInput = styled.input`
+  &:hover {
+    cursor: pointer;
+  }
+`
 
 export const ColorInput = observer(({ setColor, colorValue }) => {
   const { AppStore } = useStore()

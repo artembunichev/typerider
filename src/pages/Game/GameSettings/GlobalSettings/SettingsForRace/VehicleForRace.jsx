@@ -4,25 +4,28 @@ import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
 const VehicleForRaceContainer = styled.div`
-  padding: 25px;
+  padding: 9px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 const VehicleForRaceList = styled.div`
   width: 95%;
+  display: flex;
+  justify-content: space-around;
 `
 const VehicleForRaceButton = styled.button`
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-  margin: 0 5px 0 5px;
+  width: 90px;
+  height: 90px;
+  padding: 10px 10px 0 10px;
+  border-radius: 5px;
+  margin: 2.5px 5px 2.5px 5px;
+  background-color: ${(props) => {
+    return props.active ? '#4e6375' : '#fff'
+  }};
   &:hover {
     cursor: pointer;
   }
-  background-color: ${(props) => {
-    return props.active ? '#bebebe' : '#fff'
-  }};
 `
 const VehicleForRaceImg = styled.img``
 
