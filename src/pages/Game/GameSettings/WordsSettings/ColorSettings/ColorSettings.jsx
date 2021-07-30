@@ -1,11 +1,12 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 import { ColorInput } from './ColorInput'
 
 const ColorSettingsContainer = styled.div``
 
-export const ColorSettings = () => {
+export const ColorSettings = observer(() => {
   const { GameSettingsStore } = useStore()
 
   const setCompletedLettersColor = (e) => {
@@ -26,8 +27,8 @@ export const ColorSettings = () => {
       Color Settings
       <ColorInput setColor={setCompletedLettersColor} colorValue={GameSettingsStore.completedLettersColor} />
       <ColorInput setColor={setLettersColor} colorValue={GameSettingsStore.lettersColor} />
-      <ColorInput setColor={setWordBorder} colorValue={GameSettingsStore.wordsBgcColor} />
+      <ColorInput setColor={setWordBorder} colorValue={GameSettingsStore.wordBorder} />
       <ColorInput setColor={setBgcColor} colorValue={GameSettingsStore.letterBgcColor} />
     </ColorSettingsContainer>
   )
-}
+})
