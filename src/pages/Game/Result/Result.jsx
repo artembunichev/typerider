@@ -77,7 +77,6 @@ const StartNewGameButton = styled.button`
   background-color: #c5e3ff;
   transition: background-color 0.3s;
   &:hover {
-    cursor: pointer;
     background-color: #42d3ff;
   }
 `

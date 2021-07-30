@@ -25,6 +25,9 @@ const Global = createGlobalStyle`
   }
   button {
     border: 0;
+    &:hover {
+      cursor: pointer;
+    }
   }
   input {
     outline: none;

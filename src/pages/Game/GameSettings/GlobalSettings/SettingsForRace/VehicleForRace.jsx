@@ -23,9 +23,6 @@ const VehicleForRaceButton = styled.button`
   background-color: ${(props) => {
     return props.active ? '#4e6375' : '#fff'
   }};
-  &:hover {
-    cursor: pointer;
-  }
 `
 const VehicleForRaceImg = styled.img``
 
