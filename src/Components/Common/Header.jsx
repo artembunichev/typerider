@@ -6,10 +6,12 @@ import { Bold } from '../Styled/StyledComponents'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 
 const HeaderContainer = styled.div`
-  background-color: #161414;
+  z-index: 1;
+  background-color: #384653;
   display: flex;
   justify-content: space-between;
   padding: 3px 22px 3px 22px;
+  box-shadow: 0px 7px 9px 0px rgba(0, 46, 54, 0.65);
   @media (max-width: 470px) {
     padding: 3px 13px 3px 13px;
   }
