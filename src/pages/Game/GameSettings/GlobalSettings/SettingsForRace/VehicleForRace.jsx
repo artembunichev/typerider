@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 
 const VehicleForRaceContainer = styled.div`
-  padding: 9px;
+  padding: 9px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +15,10 @@ const VehicleForRaceList = styled.div`
   justify-content: space-around;
 `
 const VehicleForRaceButton = styled.button`
+  @media (max-width: 1400px) {
+    width: 84px;
+    height: 84px;
+  }
   width: 90px;
   height: 90px;
   padding: 10px 10px 0 10px;

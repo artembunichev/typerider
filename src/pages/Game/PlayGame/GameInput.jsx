@@ -9,6 +9,12 @@ const GameInputContainer = styled.div`
 `
 const StyledGameInput = styled.input`
   font-size: 35px;
+  @media (max-width: 1400px) {
+    width: 600px;
+  }
+  @media (max-width: 1150px) {
+    width: 540px;
+  }
   width: 700px;
   padding: 8px;
   border-radius: 11px;

@@ -5,6 +5,13 @@ import { useStore, GameStoreContext } from '../../../stores/RootStore/RootStoreC
 import { wordFormConverter } from '../../../assets/functions/wordFormConverter'
 
 const TimerContainer = styled.div`
+  @media (max-width: 1400px) {
+    font-size: 40px;
+  }
+  @media (max-width: 1200px) {
+    font-size: 36px;
+  }
+  font-size: 46px;
   display: flex;
   justify-content: center;
   padding: 8px;

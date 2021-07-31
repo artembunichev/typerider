@@ -18,11 +18,17 @@ const ColorInputContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 6px 12px 6px;
+  padding: 6px 0px 12px 0px;
   margin: 3px 0;
   border-bottom: 2px solid #fff;
 `
 const ColorInputTitle = styled.div`
+  @media (max-width: 1400px) {
+    font-size: 24px;
+  }
+  @media (max-width: 1150px) {
+    font-size: 23px;
+  }
   font-size: 26px;
 `
 

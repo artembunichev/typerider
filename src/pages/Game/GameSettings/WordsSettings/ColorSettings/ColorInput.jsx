@@ -7,7 +7,7 @@ import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 const ColorInputWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 4px;
+  margin-left: 4px;
 `
 const StyledColorInput = styled.input`
   &:hover {

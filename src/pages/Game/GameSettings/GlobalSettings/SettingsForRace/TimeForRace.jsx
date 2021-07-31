@@ -13,14 +13,19 @@ const TimeForRaceList = styled.div`
   width: 90%;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
 `
 const TimeForRaceItem = styled(SettingsButton)`
+  @media (max-width: 1400px) {
+    font-size: 17px;
+  }
+  @media (max-width: 1150px) {
+    font-size: 16px;
+  }
   font-size: 19px;
   width: 100px;
-  margin: 0 8px;
+  margin: 8px 8px;
   color: ${(props) => (props.isActive ? '#d66e0c' : '#000000')};
-  transition: 0.33s;
+  transition: color 0.33s;
   &:hover {
     color: ${(props) => !props.isActive && '#e2750e8b'};
   }

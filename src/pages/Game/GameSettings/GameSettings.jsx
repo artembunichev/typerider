@@ -7,7 +7,10 @@ import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreC
 import { SettingsButton } from '../../../Components/Styled/StyledComponents'
 
 const GameSettingsContainer = styled.div`
-  height: 750px;
+  max-height: 750px;
+  @media (max-width: 1150px) {
+    padding: 20px 17px 10px 17px;
+  }
   padding: 20px 25px 10px 25px;
   background-color: #384653;
   border-radius: 12px;
@@ -20,11 +23,16 @@ const StartContainer = styled.div`
   padding-top: 10px;
 `
 const Start = styled(SettingsButton)`
+  @media (max-width: 1400px) {
+    font-size: 23px;
+    width: 183px;
+    height: 37.5px;
+  }
   font-size: 26px;
   width: 220px;
   height: 45px;
   background-color: ${(props) => props.disabled && '#888888'};
-  transition: 0.33s;
+  transition: background-color 0.33s;
   &:hover {
     background-color: #888888;
   }

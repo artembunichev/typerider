@@ -16,16 +16,48 @@ const PlayGameContainer = styled.div`
 `
 const PlaceForWords = styled.div`
   position: relative;
+  height: 75px;
   display: flex;
   justify-content: center;
 `
 const GameWordLetters = styled.div`
+  @media (max-width: 1500px) {
+    font-size: 59px;
+  }
+  @media (max-width: 1440px) {
+    font-size: 55px;
+  }
+  @media (max-width: 1270px) {
+    font-size: 52px;
+  }
+  @media (max-width: 1200px) {
+    font-size: 47px;
+  }
+  @media (max-width: 1090px) {
+    font-size: 45px;
+  }
   font-size: 66px;
 `
 const RaceWords = styled.div`
   position: absolute;
 `
 const WordsAreHidden = styled.div`
+  @media (max-width: 1500px) {
+    font-size: 59px;
+  }
+  @media (max-width: 1440px) {
+    font-size: 51px;
+  }
+  @media (max-width: 1270px) {
+    font-size: 46px;
+  }
+  @media (max-width: 1200px) {
+    font-size: 39px;
+  }
+  @media (max-width: 1090px) {
+    font-size: 36px;
+  }
+  font-size: 66px;
   text-align: center;
 `
 

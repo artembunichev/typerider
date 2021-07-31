@@ -34,13 +34,19 @@ export const Title = styled.div`
   border-radius: 0px 0px 15px 15px;
 `
 export const SettingsMainTitle = styled.div`
+  @media (max-width: 1400px) {
+    font-size: 25px;
+  }
+  @media (max-width: 1150px) {
+    font-size: 23px;
+  }
   font-size: 26px;
   font-weight: bold;
   letter-spacing: 1.2px;
   text-align: center;
   background-color: #000000;
   border-radius: 12px;
-  padding: 7px;
+  padding: 7px 0;
   margin-bottom: 6px;
 `
 export const SettingsButton = styled.button`

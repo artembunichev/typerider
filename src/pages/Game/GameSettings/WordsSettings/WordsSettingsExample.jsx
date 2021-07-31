@@ -9,6 +9,12 @@ const ExampleContainer = styled.div`
   padding: 6px 0;
 `
 const ExampleWordLetters = styled.div`
+  @media (max-width: 1400px) {
+    font-size: 50px;
+  }
+  @media (max-width: 1150px) {
+    font-size: 45px;
+  }
   font-size: 56px;
 `
 
