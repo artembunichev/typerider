@@ -19,7 +19,7 @@ const StyledTrack = styled.div`
 const FlagContainer = styled.div`
   position: absolute;
   right: -45px;
-  bottom: 5px;
+  bottom: ${(props) => (props.isJumping ? '14px' : '5px')};
   width: 64px;
   height: 64px;
   background-image: ${(props) => `url(${props.bgImage})`};
@@ -29,7 +29,7 @@ const FlagContainer = styled.div`
   transition: bottom 0.2s;
 `
 
-export const Track = observer(() => {
+export const Track = observer(({ isFlagJumping }) => {
   const { GameSettingsStore } = useStore()
   const { PlayGameState } = useContext(GameStoreContext)
   const screenWidth = useScreenWidth()
@@ -46,7 +46,7 @@ export const Track = observer(() => {
     <TrackContainer>
       <StyledTrack ref={trackRef} length={PlayGameState.trackLength}>
         <Vehicle model={GameSettingsStore.activeVehicleModel} />
-        <FlagContainer bgImage={Flag} />
+        <FlagContainer bgImage={Flag} isJumping={isFlagJumping} />
       </StyledTrack>
     </TrackContainer>
   )

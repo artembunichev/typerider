@@ -14,7 +14,7 @@ const StyledGameInput = styled.input`
   border-radius: 11px;
 `
 
-export const GameInput = observer(() => {
+export const GameInput = observer(({ setIsFlagJumping }) => {
   const { AppStore } = useStore()
   const { PlayGameState, ResultState } = useContext(GameStoreContext)
   const inputRef = useRef()
@@ -29,6 +29,10 @@ export const GameInput = observer(() => {
     PlayGameState.clearCurrentLetterIndex()
     ResultState.updateCorrectWordsCount()
     PlayGameState.clearInputValue()
+    setIsFlagJumping(true)
+    setTimeout(() => {
+      setIsFlagJumping(false)
+    }, 300)
   }
   const updateLetter = () => {
     PlayGameState.updateVehiclePosition(PlayGameState.currentWordStep)

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { GameInput } from './GameInput'
@@ -29,6 +29,7 @@ const WordsAreHidden = styled.div`
 export const PlayGame = observer(() => {
   const { AppStore } = useStore()
   const { PlayGameState } = useContext(GameStoreContext)
+  const [isFlagJumping, setIsFlagJumping] = useState(false)
 
   return (
     <PlayGameContainer>
@@ -43,8 +44,8 @@ export const PlayGame = observer(() => {
           )}
         </RaceWords>
       </PlaceForWords>
-      <Track />
-      <GameInput />
+      <Track isFlagJumping={isFlagJumping} />
+      <GameInput setIsFlagJumping={setIsFlagJumping} />
       <Timer />
       {PlayGameState.isError ? <Error /> : null}
     </PlayGameContainer>
