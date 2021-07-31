@@ -12,18 +12,20 @@ const HistoryContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e0e3e8;
+  background-color: #4e6375;
 `
 const HistoryWrapper = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #e0e3e8;
+  background-color: inherit;
 `
 const NoGameHistory = styled.div`
   padding: 5px 20px;
   font-size: 32px;
   text-align: center;
+  color: #ffffff;
+  letter-spacing: 1.3px;
   @media (max-width: 650px) {
     font-size: 31px;
   }

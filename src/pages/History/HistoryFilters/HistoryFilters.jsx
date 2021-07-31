@@ -25,9 +25,11 @@ const FiltersTitle = styled.div`
     font-size: 24px;
   }
   font-size: 35px;
+  color: #ffffff;
 `
 const ClearHistoryIcon = styled.div`
   svg {
+    fill: #ffffff;
     @media (max-width: 490px) {
       width: 24px;
       height: 24px;
