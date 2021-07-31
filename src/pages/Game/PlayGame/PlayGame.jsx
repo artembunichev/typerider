@@ -19,6 +19,9 @@ const PlaceForWords = styled.div`
   display: flex;
   justify-content: center;
 `
+const GameWordLetters = styled.div`
+  font-size: 66px;
+`
 const RaceWords = styled.div`
   position: absolute;
 `
@@ -36,7 +39,9 @@ export const PlayGame = observer(() => {
       <PlaceForWords>
         <RaceWords>
           {AppStore.gameMode ? (
-            <WordLetters wordObject={PlayGameState.currentWordObject} fz={'66px'} />
+            <GameWordLetters>
+              <WordLetters wordObject={PlayGameState.currentWordObject} />
+            </GameWordLetters>
           ) : (
             <WordsAreHidden>
               <Bold>Words are hidden before the race!</Bold>
