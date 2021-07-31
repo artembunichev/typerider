@@ -11,7 +11,7 @@ const ResultContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #45678f;
+  background-color: #4e6375;
 `
 const ResultInfoContainer = styled(Container)`
   display: flex;

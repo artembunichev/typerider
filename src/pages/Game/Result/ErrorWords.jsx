@@ -22,7 +22,7 @@ const ErrorWordsContainer = styled.ul`
   border-radius: 5px;
   padding: 6px;
   flex-wrap: wrap;
-  background-color: #314a68;
+  background-color: #384653;
   list-style: none;
   transition: ${(props) => `${props.animationDuration / 1000}s`};
 `
