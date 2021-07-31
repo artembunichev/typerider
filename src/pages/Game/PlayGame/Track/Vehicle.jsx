@@ -7,19 +7,19 @@ const StyledVehicle = styled.div`
   position: relative;
   top: ${(props) => {
     return props.model === 'motorbike'
-      ? `${props.width / 4.2}px`
+      ? `${props.vehicleWidth / 4.2}px`
       : props.model === 'taxi'
-      ? `${props.width / 3.2}px`
-      : `${props.width / 2.87}px`
+      ? `${props.vehicleWidth / 3.2}px`
+      : `${props.vehicleWidth / 2.87}px`
   }};
   width: ${(props) => {
-    return `${props.width}px`
+    return `${props.vehicleWidth}px`
   }};
   height: ${(props) => {
-    return `${props.width}px`
+    return `${props.vehicleWidth}px`
   }};
   background-image: ${(props) => {
-    return `url('${props.src}')`
+    return `url('${props.vehicle}')`
   }};
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,8 +36,8 @@ export const Vehicle = observer((props) => {
         left: `${PlayGameState.vehiclePosition}px`,
       }}
       model={props.model}
-      src={GameSettingsStore.activeVehicleSrc}
-      width={PlayGameState.vehicleWidth}
+      vehicle={GameSettingsStore.activeVehicleSrc}
+      vehicleWidth={PlayGameState.vehicleWidth}
     />
   )
 })

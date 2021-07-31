@@ -14,6 +14,7 @@ export const WordLettersContainer = styled.div`
   border-style: solid;
   border-radius: 10px;
   text-align: center;
+  font-size: ${(props) => props.fz};
 `
 
 export const WordLetters = observer((props) => {
@@ -28,6 +29,7 @@ export const WordLetters = observer((props) => {
   return (
     <WordLettersWrapper>
       <WordLettersContainer
+        fz={props.fz}
         style={{
           borderColor: GameSettingsStore.wordBorder,
         }}>

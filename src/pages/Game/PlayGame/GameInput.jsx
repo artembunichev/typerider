@@ -3,13 +3,15 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
 
+const GameInputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
 const StyledGameInput = styled.input`
-  font-size: 45px;
-  @media (max-width: 768px) {
-    width: 86%;
-  }
+  font-size: 35px;
   width: 700px;
-  height: 35px;
+  padding: 8px;
+  border-radius: 11px;
 `
 
 export const GameInput = observer(() => {
@@ -67,12 +69,14 @@ export const GameInput = observer(() => {
   }
 
   return (
-    <StyledGameInput
-      ref={inputRef}
-      onChange={checkLetter}
-      disabled={!AppStore.gameMode}
-      value={PlayGameState.inputValue}
-      autoFocus={AppStore.gameMode}
-    />
+    <GameInputContainer>
+      <StyledGameInput
+        ref={inputRef}
+        onChange={checkLetter}
+        disabled={!AppStore.gameMode}
+        value={PlayGameState.inputValue}
+        autoFocus={AppStore.gameMode}
+      />
+    </GameInputContainer>
   )
 })

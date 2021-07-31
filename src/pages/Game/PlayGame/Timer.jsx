@@ -1,6 +1,14 @@
 import React, { useContext, useEffect } from 'react'
+import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore, GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
+import { wordFormConverter } from '../../../assets/functions/wordFormConverter'
+
+const TimerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+`
 
 export const Timer = observer(() => {
   const { AppStore, GameSettingsStore } = useStore()
@@ -23,5 +31,11 @@ export const Timer = observer(() => {
     }
   }, [AppStore.gameMode])
 
-  return <>{PlayGameState.currentTime}</>
+  const secondForm = wordFormConverter('second', PlayGameState.currentTime)
+
+  return (
+    <TimerContainer>
+      {PlayGameState.currentTime} {secondForm} left
+    </TimerContainer>
+  )
 })

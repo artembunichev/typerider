@@ -9,7 +9,7 @@ import Flag from '../../../../assets/images/flag.svg'
 const TrackContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  padding: 50px 0;
 `
 const StyledTrack = styled.div`
   position: relative;
@@ -26,6 +26,7 @@ const FlagContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotate(-13deg);
+  transition: bottom 0.2s;
 `
 
 export const Track = observer(() => {

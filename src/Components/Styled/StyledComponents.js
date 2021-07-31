@@ -25,12 +25,13 @@ export const Title = styled.div`
   @media (max-width: 360px) {
     font-size: 26px;
   }
+  z-index: 2;
   font-size: 55px;
   text-align: center;
   color: #ff820d;
-  padding: 0 8px 8px 8px;
-  background-color: #000000;
-  border-radius: 0px 0px 7px 7px;
+  padding: 0 15px 8px 15px;
+  background-color: #384653;
+  border-radius: 0px 0px 15px 15px;
 `
 export const SettingsMainTitle = styled.div`
   font-size: 26px;

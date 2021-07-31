@@ -7,10 +7,23 @@ import { Timer } from './Timer'
 import { WordLetters } from './WordLetters/WordLetters'
 import { Error } from './Error'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
+import { Bold } from '../../../Components/Styled/StyledComponents'
 
 const PlayGameContainer = styled.div`
-  background-color: #1100ff;
-  width: 78%;
+  background-color: inherit;
+  flex: 1 1 auto;
+  padding: 25px 60px 25px 25px;
+`
+const PlaceForWords = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+`
+const RaceWords = styled.div`
+  position: absolute;
+`
+const WordsAreHidden = styled.div`
+  text-align: center;
 `
 
 export const PlayGame = observer(() => {
@@ -19,11 +32,17 @@ export const PlayGame = observer(() => {
 
   return (
     <PlayGameContainer>
-      {AppStore.gameMode ? (
-        <WordLetters wordObject={PlayGameState.currentWordObject} />
-      ) : (
-        'Words are hidden before the race'
-      )}
+      <PlaceForWords>
+        <RaceWords>
+          {AppStore.gameMode ? (
+            <WordLetters wordObject={PlayGameState.currentWordObject} fz={'66px'} />
+          ) : (
+            <WordsAreHidden>
+              <Bold>Words are hidden before the race!</Bold>
+            </WordsAreHidden>
+          )}
+        </RaceWords>
+      </PlaceForWords>
       <Track />
       <GameInput />
       <Timer />
