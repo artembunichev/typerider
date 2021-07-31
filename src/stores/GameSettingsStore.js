@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
-import Motorbike from '../assets/images/Vehicle/motorbike.svg'
-import SportsCar from '../assets/images/Vehicle/sportsCar.svg'
-import Taxi from '../assets/images/Vehicle/taxi.svg'
+import Motorbike from '../assets/images/vehicle/motorbike.svg'
+import SportsCar from '../assets/images/vehicle/sportsCar.svg'
+import Taxi from '../assets/images/vehicle/taxi.svg'
 import uniqid from 'uniqid'
 
 export class GameSettingsStore {
