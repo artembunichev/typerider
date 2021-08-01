@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
-import { SettingsButton, Bold } from '../../../../../Components/Styled/StyledComponents'
+import { Bold } from '../../../../../Components/Styled/StyledComponents'
 
 const TimeForRaceContainer = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const TimeForRaceList = styled.div`
   display: flex;
   justify-content: space-between;
 `
-const TimeForRaceItem = styled(SettingsButton)`
+const TimeForRaceItem = styled.button`
   @media (max-width: 1400px) {
     font-size: 17px;
   }
@@ -24,6 +24,9 @@ const TimeForRaceItem = styled(SettingsButton)`
   @media (max-width: 490px) {
     font-size: 14px;
   }
+  border-radius: 9px;
+  background-color: #eeeeee;
+  padding: 6px;
   font-size: 19px;
   width: 100px;
   margin: 8px 8px;

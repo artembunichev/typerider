@@ -52,8 +52,16 @@ export const SettingsMainTitle = styled.div`
   padding: 7px 0;
   margin-bottom: 6px;
 `
-export const SettingsButton = styled.button`
+export const StartButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.33s;
   border-radius: 9px;
   background-color: #eeeeee;
   padding: 6px;
+  &:hover {
+    color: #ffffff;
+    background-color: #ff820d;
+  }
 `

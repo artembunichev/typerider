@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
-import { Container, Bold } from '../../Components/Styled/StyledComponents'
+import { Container, Bold, StartButton } from '../../Components/Styled/StyledComponents'
 
 const WelcomeContainer = styled(Container)`
   display: flex;
@@ -58,8 +58,7 @@ const WelcomeInput = styled.input`
   width: 500px;
   height: 46px;
 `
-const LetsGoButton = styled.button`
-  margin-top: 16px;
+const LetsGoButton = styled(StartButton)`
   @media (max-width: 540px) {
     width: 300px;
   }
@@ -73,18 +72,10 @@ const LetsGoButton = styled.button`
     height: 21px;
     font-size: 17px;
   }
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 340px;
   height: 38px;
   font-size: 22px;
-  border-radius: 9px;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #ff820d;
-    cursor: pointer;
-  }
+  margin-top: 16px;
 `
 export const Welcome = observer(() => {
   const { AppStore } = useStore()
