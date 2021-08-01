@@ -56,6 +56,19 @@ export const GameSettings = observer(() => {
 
   const startGame = () => {
     PlayGameState.setIsPreparing(true)
+    if (PlayGameState.length !== 0) {
+      PlayGameState.setVisibleNumber(PlayGameState.currentNumber)
+      const interval = setInterval(() => {
+        if (PlayGameState.currentTimeIndex === PlayGameState.timeArray.length - 1) {
+          AppStore.setGameMode(true)
+          PlayGameState.setIsPreparing(false)
+          clearInterval(interval)
+        } else {
+          PlayGameState.setCurrentTimeIndex()
+          PlayGameState.setVisibleNumber(PlayGameState.currentNumber)
+        }
+      }, 1500)
+    }
     setTimer()
   }
   const setTimer = () => {

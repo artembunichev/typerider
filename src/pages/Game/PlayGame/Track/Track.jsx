@@ -23,9 +23,6 @@ const PlaceForWarning = styled.div`
   align-items: center;
   position: relative;
   left: 50%;
-  width: 70px;
-  height: 70px;
-  background-color: red;
 `
 const FlagContainer = styled.div`
   position: absolute;
@@ -67,6 +64,21 @@ export const Track = observer(({ isFlagJumping }) => {
   const trackRef = useRef(null)
 
   useEffect(() => {
+    for (let i = PlayGameState.timeToPrepare; i > 0; i--) {
+      PlayGameState.setTimeArray({
+        text: i,
+        isVisible: false,
+      })
+      if (i === 1) {
+        PlayGameState.setTimeArray({
+          text: 'GO!',
+          isVisible: false,
+        })
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     PlayGameState.updateTrackLength(trackRef.current.offsetWidth)
     if (PlayGameState.currentLetterIndex > 0) {
       PlayGameState.setNewVehiclePosition()
@@ -76,15 +88,7 @@ export const Track = observer(({ isFlagJumping }) => {
   return (
     <TrackContainer>
       <StyledTrack ref={trackRef} length={PlayGameState.trackLength}>
-        <PlaceForWarning>
-          {PlayGameState.isPreparing ? (
-            <TimeToPrepare
-              time={PlayGameState.timeToPrepare}
-              setGameMode={AppStore.setGameMode}
-              setIsPreparing={PlayGameState.setIsPreparing}
-            />
-          ) : null}
-        </PlaceForWarning>
+        <PlaceForWarning>{(!AppStore.gameMode || PlayGameState.isPreparing) && <TimeToPrepare />}</PlaceForWarning>
         <Vehicle model={GameSettingsStore.activeVehicleModel} />
         <FlagContainer bgImage={Flag} isJumping={isFlagJumping} />
       </StyledTrack>
