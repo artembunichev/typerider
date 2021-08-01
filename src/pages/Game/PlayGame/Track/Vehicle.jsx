@@ -7,17 +7,19 @@ import { useScreenWidth } from '../../../../assets/hooks/useScreenWidth'
 const StyledVehicle = styled.div`
   position: relative;
   top: ${(props) => {
-    return props.model === 'motorbike'
-      ? `${props.vehicleWidth / 4.2}px`
-      : props.model === 'taxi'
-      ? `${props.vehicleWidth / 3.2}px`
-      : `${props.vehicleWidth / 2.87}px`
+    return props.model === 'motorbike' ? `23.8px` : props.model === 'taxi' ? `31.25px` : `34.8px`
   }};
   @media (max-width: 590px) {
+    top: ${(props) => {
+      return props.model === 'motorbike' ? `20.23px` : props.model === 'taxi' ? `27.25px` : `29.6px`
+    }};
     width: 85px;
     height: 85px;
   }
   @media (max-width: 440px) {
+    top: ${(props) => {
+      return props.model === 'motorbike' ? `18.23px` : props.model === 'taxi' ? `24.25px` : `27.6px`
+    }};
     width: 79px;
     height: 79px;
   }
