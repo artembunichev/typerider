@@ -142,16 +142,16 @@ export const GameBlock = memo((props) => {
         </GameVehicleImgContainer>
         <GameBlockInfo>
           <GameBlockInfoItem>
-            <Bold>nickname:</Bold> {userNickname}
+            <Bold>Nickname:</Bold> {userNickname}
           </GameBlockInfoItem>
           <GameBlockInfoItem>
-            <Bold>type speed:</Bold> {typeSpeed}
+            <Bold>Type speed:</Bold> {typeSpeed}
           </GameBlockInfoItem>
           <GameBlockInfoItem>
-            <Bold>corrent words count:</Bold> {correctWordsCount}
+            <Bold>Corrent words count:</Bold> {correctWordsCount}
           </GameBlockInfoItem>
           <GameBlockInfoItem>
-            <Bold>errors count:</Bold> {errorsCount}
+            <Bold>Errors count:</Bold> {errorsCount}
           </GameBlockInfoItem>
           <GameBlockInfoItem>
             <Bold>Race time:</Bold> {raceTime} seconds

@@ -44,6 +44,9 @@ const ResultItem = styled.div`
   @media (max-width: 430px) {
     font-size: 24px;
   }
+  @media (max-width: 390px) {
+    font-size: 21px;
+  }
   font-size: 46px;
   margin: 7px 0px;
   &:first-child {

@@ -10,6 +10,7 @@ const FiltersContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 7px;
 `
 const FiltersTitle = styled.div`
   @media (max-width: 650px) {
