@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
-import { Container } from '../../Components/Styled/StyledComponents'
+import { Container, Bold } from '../../Components/Styled/StyledComponents'
 
 const WelcomeContainer = styled(Container)`
   display: flex;
@@ -11,21 +11,25 @@ const WelcomeContainer = styled(Container)`
   align-items: center;
   justify-content: center;
   padding: 30px 0;
-  background-color: #93c2ff;
+  background-color: #4e6375;
 `
 const WelcomeTitle = styled.div`
+  @media (max-width: 800px) {
+    font-size: 40px;
+  }
   @media (max-width: 650px) {
-    font-size: 54px;
+    font-size: 37px;
   }
   @media (max-width: 540px) {
-    font-size: 45px;
+    font-size: 33px;
   }
-  @media (max-width: 370px) {
-    font-size: 39px;
+  @media (max-width: 440px) {
+    font-size: 27px;
   }
   font-size: 70px;
-  margin: 25px 25px 25px 8px;
+  margin: 25px;
   text-align: center;
+  color: #ffffff;
 `
 const WelcomeInput = styled.input`
   margin-top: 8px;
@@ -37,19 +41,22 @@ const WelcomeInput = styled.input`
   }
   @media (max-width: 540px) {
     width: 395px;
+    font-size: 20px;
   }
   @media (max-width: 470px) {
-    width: 350px;
-    height: 37px;
+    width: 320px;
+    height: 30px;
+    padding: 6px 11px 6px 11px;
+    font-size: 19px;
   }
   @media (max-width: 370px) {
-    width: 300px;
-    height: 33px;
+    width: 250px;
+    height: 27px;
+    padding: 5px 11px 5px 11px;
+    font-size: 16px;
   }
   width: 500px;
   height: 46px;
-  border: none;
-  outline: none;
 `
 const LetsGoButton = styled.button`
   margin-top: 16px;
@@ -57,18 +64,25 @@ const LetsGoButton = styled.button`
     width: 300px;
   }
   @media (max-width: 470px) {
-    width: 240px;
-    height: 30px;
+    width: 200px;
+    height: 25px;
+    font-size: 16px;
   }
   @media (max-width: 370px) {
-    width: 200px;
+    width: 180px;
+    height: 21px;
     font-size: 17px;
   }
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 340px;
   height: 38px;
   font-size: 22px;
   border-radius: 9px;
+  transition: background-color 0.3s;
   &:hover {
+    background-color: #ff820d;
     cursor: pointer;
   }
 `
@@ -104,7 +118,9 @@ export const Welcome = observer(() => {
         onKeyPress={onEnterPress}
         value={inputValue}
       />
-      <LetsGoButton onClick={goToGame}>Let&apos;s go!</LetsGoButton>
+      <LetsGoButton onClick={goToGame}>
+        <Bold>Let&apos;s go!</Bold>
+      </LetsGoButton>
     </WelcomeContainer>
   )
 })
