@@ -10,7 +10,6 @@ import { generateRandomColor } from '../../assets/functions/generateRandomColor'
 const GameContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  font-size: 50px;
   background-color: #4e6375;
 `
 const GameSectionContainer = styled(Container)`

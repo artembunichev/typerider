@@ -5,6 +5,7 @@ import { Vehicle } from './Vehicle'
 import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { useScreenWidth } from '../../../../assets/hooks/useScreenWidth'
 import Flag from '../../../../assets/images/flag.svg'
+import { TimeToPrepare } from './Warnings/TimeToPrepare'
 
 const TrackContainer = styled.div`
   display: flex;
@@ -15,6 +16,16 @@ const StyledTrack = styled.div`
   position: relative;
   width: 100%;
   border-bottom: 3px dashed #000000;
+`
+const PlaceForWarning = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: red;
 `
 const FlagContainer = styled.div`
   position: absolute;
@@ -50,7 +61,7 @@ const FlagContainer = styled.div`
 `
 
 export const Track = observer(({ isFlagJumping }) => {
-  const { GameSettingsStore } = useStore()
+  const { AppStore, GameSettingsStore } = useStore()
   const { PlayGameState } = useContext(GameStoreContext)
   const screenWidth = useScreenWidth()
   const trackRef = useRef(null)
@@ -65,6 +76,15 @@ export const Track = observer(({ isFlagJumping }) => {
   return (
     <TrackContainer>
       <StyledTrack ref={trackRef} length={PlayGameState.trackLength}>
+        <PlaceForWarning>
+          {PlayGameState.isPreparing ? (
+            <TimeToPrepare
+              time={PlayGameState.timeToPrepare}
+              setGameMode={AppStore.setGameMode}
+              setIsPreparing={PlayGameState.setIsPreparing}
+            />
+          ) : null}
+        </PlaceForWarning>
         <Vehicle model={GameSettingsStore.activeVehicleModel} />
         <FlagContainer bgImage={Flag} isJumping={isFlagJumping} />
       </StyledTrack>

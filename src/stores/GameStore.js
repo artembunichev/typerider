@@ -20,6 +20,8 @@ export class GameStore {
     trackLength: null,
     vehicleWidth: 100,
     vehiclePosition: 0,
+    timeToPrepare: 3,
+    isPreparing: false,
 
     get currentWord() {
       return this.words[this.currentWordIndex]
@@ -95,6 +97,9 @@ export class GameStore {
     },
     updateTrackLength(length) {
       this.trackLength = length
+    },
+    setIsPreparing(value) {
+      this.isPreparing = value
     },
   }
 

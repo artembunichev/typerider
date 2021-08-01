@@ -52,10 +52,10 @@ const Start = styled(StartButton)`
 
 export const GameSettings = observer(() => {
   const { AppStore, GameSettingsStore } = useStore()
-  const { ResultState } = useContext(GameStoreContext)
+  const { PlayGameState, ResultState } = useContext(GameStoreContext)
 
   const startGame = () => {
-    AppStore.setGameMode(true)
+    PlayGameState.setIsPreparing(true)
     setTimer()
   }
   const setTimer = () => {
