@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
+import { useStore, GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
 import { Bold } from '../../../../../Components/Styled/StyledComponents'
 
 const TimeForRaceContainer = styled.div`
@@ -39,6 +39,7 @@ const TimeForRaceItem = styled.button`
 
 export const TimeForRace = observer(() => {
   const { AppStore, GameSettingsStore } = useStore()
+  const { PlayGameState } = useContext(GameStoreContext)
 
   const setSelectedTime = (time) => {
     GameSettingsStore.setSelectedTime(time)
@@ -46,7 +47,7 @@ export const TimeForRace = observer(() => {
   const TimeForRaceItems = GameSettingsStore.timeForRace.map((t) => {
     return (
       <TimeForRaceItem
-        disabled={AppStore.gameMode}
+        disabled={AppStore.gameMode || PlayGameState.isPreparing}
         isActive={t.isActive}
         key={t.time}
         onClick={() => setSelectedTime(t.time)}>
