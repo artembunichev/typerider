@@ -10,6 +10,10 @@ const ColorInputWrapper = styled.div`
   margin-left: 4px;
 `
 const StyledColorInput = styled.input`
+  @media (max-width: 390px) {
+    width: 35px;
+    height: 20px;
+  }
   &:hover {
     cursor: pointer;
   }

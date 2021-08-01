@@ -53,6 +53,9 @@ const ErrorWordsPickerTitle = styled.div`
   @media (max-width: 430px) {
     font-size: 21px;
   }
+  @media (max-width: 390px) {
+    font-size: 19px;
+  }
   user-select: none;
 `
 const ErrorWord = styled.li`
@@ -71,6 +74,9 @@ const ErrorWord = styled.li`
   }
   @media (max-width: 430px) {
     font-size: 23px;
+  }
+  @media (max-width: 390px) {
+    font-size: 20px;
   }
   background-color: #dfdfdf;
   padding: 8px;

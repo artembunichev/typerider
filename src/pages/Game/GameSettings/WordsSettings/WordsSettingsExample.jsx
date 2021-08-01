@@ -15,6 +15,12 @@ const ExampleWordLetters = styled.div`
   @media (max-width: 1150px) {
     font-size: 45px;
   }
+  @media (max-width: 490px) {
+    font-size: 38px;
+  }
+  @media (max-width: 390px) {
+    font-size: 34px;
+  }
   font-size: 56px;
 `
 

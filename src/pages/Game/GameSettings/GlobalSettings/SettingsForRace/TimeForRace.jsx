@@ -21,6 +21,9 @@ const TimeForRaceItem = styled(SettingsButton)`
   @media (max-width: 1150px) {
     font-size: 16px;
   }
+  @media (max-width: 490px) {
+    font-size: 14px;
+  }
   font-size: 19px;
   width: 100px;
   margin: 8px 8px;

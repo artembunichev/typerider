@@ -15,6 +15,9 @@ const GameContainer = styled(Container)`
 `
 const GameSectionContainer = styled(Container)`
   display: flex;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
   color: #fff;
 `
 const GameTitleContainer = styled.div`

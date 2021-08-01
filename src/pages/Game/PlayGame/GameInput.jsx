@@ -15,6 +15,16 @@ const StyledGameInput = styled.input`
   @media (max-width: 1150px) {
     width: 540px;
   }
+  @media (max-width: 790px) {
+    width: 100%;
+    height: 38px;
+    font-size: 24px;
+    padding: 3px 11px 3px 11px;
+  }
+  @media (max-width: 470px) {
+    height: 32px;
+    padding: 3px 8px 3px 9px;
+  }
   width: 700px;
   padding: 8px;
   border-radius: 11px;

@@ -40,6 +40,9 @@ export const SettingsMainTitle = styled.div`
   @media (max-width: 1150px) {
     font-size: 23px;
   }
+  @media (max-width: 490px) {
+    font-size: 20px;
+  }
   font-size: 26px;
   font-weight: bold;
   letter-spacing: 1.2px;

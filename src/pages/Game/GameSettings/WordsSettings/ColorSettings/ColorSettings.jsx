@@ -29,6 +29,12 @@ const ColorInputTitle = styled.div`
   @media (max-width: 1150px) {
     font-size: 23px;
   }
+  @media (max-width: 490px) {
+    font-size: 19px;
+  }
+  @media (max-width: 390px) {
+    font-size: 18px;
+  }
   font-size: 26px;
 `
 

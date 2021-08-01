@@ -12,6 +12,9 @@ import { Bold } from '../../../Components/Styled/StyledComponents'
 const PlayGameContainer = styled.div`
   background-color: inherit;
   flex: 1 1 auto;
+  @media (max-width: 1000px) {
+    padding: 25px 50px;
+  }
   padding: 25px 60px 25px 25px;
 `
 const PlaceForWords = styled.div`
@@ -36,6 +39,15 @@ const GameWordLetters = styled.div`
   @media (max-width: 1090px) {
     font-size: 45px;
   }
+  @media (max-width: 1000px) {
+    font-size: 61px;
+  }
+  @media (max-width: 780px) {
+    font-size: 55px;
+  }
+  @media (max-width: 390px) {
+    font-size: 45px;
+  }
   font-size: 66px;
 `
 const RaceWords = styled.div`
@@ -56,6 +68,12 @@ const WordsAreHidden = styled.div`
   }
   @media (max-width: 1090px) {
     font-size: 36px;
+  }
+  @media (max-width: 390px) {
+    font-size: 30px;
+  }
+  @media (max-width: 360px) {
+    font-size: 28px;
   }
   font-size: 66px;
   text-align: center;

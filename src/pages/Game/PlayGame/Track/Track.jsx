@@ -20,6 +20,26 @@ const FlagContainer = styled.div`
   position: absolute;
   right: -45px;
   bottom: ${(props) => (props.isJumping ? '14px' : '5px')};
+  @media (max-width: 490px) {
+    right: -27px;
+    bottom: ${(props) => (props.isJumping ? '14px' : '4px')};
+  }
+  @media (max-width: 1000px) {
+    width: 55px;
+    height: 55px;
+  }
+  @media (max-width: 490px) {
+    width: 49px;
+    height: 49px;
+  }
+  @media (max-width: 440px) {
+    width: 43px;
+    height: 43px;
+  }
+  @media (max-width: 340px) {
+    width: 41px;
+    height: 41px;
+  }
   width: 64px;
   height: 64px;
   background-image: ${(props) => `url(${props.bgImage})`};

@@ -11,6 +11,12 @@ const TimerContainer = styled.div`
   @media (max-width: 1200px) {
     font-size: 36px;
   }
+  @media (max-width: 490px) {
+    font-size: 30px;
+  }
+  @media (max-width: 360px) {
+    font-size: 28px;
+  }
   font-size: 46px;
   display: flex;
   justify-content: center;
