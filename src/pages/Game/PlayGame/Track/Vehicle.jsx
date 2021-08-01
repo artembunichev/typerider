@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootStoreContext'
+import { useScreenWidth } from '../../../../assets/hooks/useScreenWidth'
 
 const StyledVehicle = styled.div`
   position: relative;
@@ -12,12 +13,16 @@ const StyledVehicle = styled.div`
       ? `${props.vehicleWidth / 3.2}px`
       : `${props.vehicleWidth / 2.87}px`
   }};
-  width: ${(props) => {
-    return `${props.vehicleWidth}px`
-  }};
-  height: ${(props) => {
-    return `${props.vehicleWidth}px`
-  }};
+  @media (max-width: 590px) {
+    width: 85px;
+    height: 85px;
+  }
+  @media (max-width: 440px) {
+    width: 79px;
+    height: 79px;
+  }
+  width: 100px;
+  height: 100px;
   background-image: ${(props) => {
     return `url('${props.vehicle}')`
   }};
@@ -29,9 +34,21 @@ const StyledVehicle = styled.div`
 export const Vehicle = observer((props) => {
   const { GameSettingsStore } = useStore()
   const { PlayGameState } = useContext(GameStoreContext)
+  const screenWidth = useScreenWidth()
+  const [vehicleWidth, setVehicleWidth] = useState(null)
+  const vehicleRef = useRef(null)
+
+  useEffect(() => {
+    setVehicleWidth(vehicleRef.current.offsetWidth)
+  }, [screenWidth])
+
+  useEffect(() => {
+    PlayGameState.setVehicleWidth(vehicleWidth)
+  }, [vehicleWidth])
 
   return (
     <StyledVehicle
+      ref={vehicleRef}
       style={{
         left: `${PlayGameState.vehiclePosition}px`,
       }}

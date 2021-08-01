@@ -87,6 +87,9 @@ export class GameStore {
     clearVehiclePosition() {
       this.vehiclePosition = 0
     },
+    setVehicleWidth(width) {
+      this.vehicleWidth = width
+    },
     updateCompletedLetters(id) {
       this.completedLetters.push(id)
     },
