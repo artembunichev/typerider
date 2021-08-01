@@ -21,6 +21,8 @@ export class GameStore {
     vehicleWidth: 100,
     vehiclePosition: 0,
     timeToPrepare: 3,
+    timeArray: [],
+    currentTimeIndex: 0,
     isPreparing: false,
 
     get currentWord() {
@@ -51,6 +53,9 @@ export class GameStore {
         wordLetters: this.currentWordLetters,
         arrayOfCompletedLetters: this.completedLetters,
       }
+    },
+    get currentNumber() {
+      return this.timeArray[this.currentTimeIndex].text
     },
 
     setRandomWords() {
@@ -100,6 +105,21 @@ export class GameStore {
     },
     setIsPreparing(value) {
       this.isPreparing = value
+    },
+    setTimeArray(time) {
+      this.timeArray.push(time)
+    },
+    setCurrentTimeIndex() {
+      this.currentTimeIndex++
+    },
+    setVisibleNumber(number) {
+      this.timeArray.forEach((el) => {
+        if (el.text === number) {
+          el.isVisible = true
+        } else {
+          el.isVisible = false
+        }
+      })
     },
   }
 

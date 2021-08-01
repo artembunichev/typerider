@@ -21,7 +21,7 @@ const PlaceForWarning = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   left: 50%;
   width: 70px;
   height: 70px;
