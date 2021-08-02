@@ -8,6 +8,7 @@ import Flag from '../../../../assets/images/flag.svg'
 import { TimeToPrepare } from './Warnings/TimeToPrepare'
 
 const TrackContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   padding: 10px 0 50px 0;
@@ -16,13 +17,15 @@ const StyledTrack = styled.div`
   position: relative;
   width: 100%;
   border-bottom: 3px dashed #000000;
+  padding-top: 50px;
 `
 const PlaceForWarning = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  left: 50%;
+  position: absolute;
+  width: 100%;
+  height: 58%;
 `
 const FlagContainer = styled.div`
   position: absolute;
@@ -87,8 +90,8 @@ export const Track = observer(({ isFlagJumping }) => {
 
   return (
     <TrackContainer>
+      <PlaceForWarning>{(!AppStore.gameMode || PlayGameState.isPreparing) && <TimeToPrepare />}</PlaceForWarning>
       <StyledTrack ref={trackRef} length={PlayGameState.trackLength}>
-        <PlaceForWarning>{(!AppStore.gameMode || PlayGameState.isPreparing) && <TimeToPrepare />}</PlaceForWarning>
         <Vehicle model={GameSettingsStore.activeVehicleModel} />
         <FlagContainer bgImage={Flag} isJumping={isFlagJumping} />
       </StyledTrack>

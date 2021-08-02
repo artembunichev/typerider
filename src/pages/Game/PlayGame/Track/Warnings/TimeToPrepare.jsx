@@ -5,12 +5,22 @@ import styled from 'styled-components'
 import { GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
 
 const TimeToPrepareContainer = styled.div`
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+`
+const NumbersContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  left: 0px;
 `
 const TimeToPrepareNumber = styled.div`
   position: absolute;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-width: 200px;
   top: 0px;
@@ -32,5 +42,9 @@ export const TimeToPrepare = observer(() => {
     )
   })
 
-  return <TimeToPrepareContainer>{numbers}</TimeToPrepareContainer>
+  return (
+    <TimeToPrepareContainer>
+      <NumbersContainer>{numbers}</NumbersContainer>
+    </TimeToPrepareContainer>
+  )
 })
