@@ -6,6 +6,7 @@ import { GameStoreContext, useStore } from '../../../../stores/RootStore/RootSto
 import { useScreenWidth } from '../../../../assets/hooks/useScreenWidth'
 import Flag from '../../../../assets/images/flag.svg'
 import { TimeToPrepare } from './Warnings/TimeToPrepare'
+import { Error } from './Warnings/Error'
 
 const TrackContainer = styled.div`
   position: relative;
@@ -97,7 +98,10 @@ export const Track = observer(({ isFlagJumping }) => {
 
   return (
     <TrackContainer>
-      <PlaceForWarning>{(!AppStore.gameMode || PlayGameState.isPreparing) && <TimeToPrepare />}</PlaceForWarning>
+      <PlaceForWarning>
+        {(!AppStore.gameMode || PlayGameState.isPreparing) && <TimeToPrepare />}
+        {PlayGameState.isError && <Error />}
+      </PlaceForWarning>
       <StyledTrack ref={trackRef} length={PlayGameState.trackLength}>
         <Vehicle model={GameSettingsStore.activeVehicleModel} />
         <FlagContainer bgImage={Flag} isJumping={isFlagJumping} />

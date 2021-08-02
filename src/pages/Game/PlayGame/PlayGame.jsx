@@ -5,7 +5,6 @@ import { GameInput } from './GameInput'
 import { Track } from './Track/Track'
 import { Timer } from './Timer'
 import { WordLetters } from './WordLetters/WordLetters'
-import { Error } from './Error'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
 import { Bold } from '../../../Components/Styled/StyledComponents'
 
@@ -105,7 +104,6 @@ export const PlayGame = observer(() => {
       <Track isFlagJumping={isFlagJumping} />
       <GameInput setIsFlagJumping={setIsFlagJumping} />
       <Timer />
-      {PlayGameState.isError ? <Error /> : null}
     </PlayGameContainer>
   )
 })

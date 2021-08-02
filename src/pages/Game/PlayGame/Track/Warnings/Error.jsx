@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Bold } from '../../../Components/Styled/StyledComponents'
+import { Bold } from '../../../../../Components/Styled/StyledComponents'
 
 const ErrorWrapper = styled.div`
   display: flex;
@@ -10,12 +10,12 @@ const ErrorWrapper = styled.div`
 const ErrorContainer = styled.div`
   background-color: ${(props) => (props.isLighting ? '#ff0000' : '#ffaaaa')};
   border-radius: 9px;
-  padding: 19px;
+  padding: 11px;
   transition: background-color 0.2s ease-in;
 `
 const ErrorText = styled.span`
-  color: #000000;
-  font-size: 50px;
+  color: #ffffff;
+  font-size: 37px;
   user-select: none;
 `
 
