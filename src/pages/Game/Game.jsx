@@ -31,7 +31,6 @@ export const Game = observer(() => {
     AppStore.setOnPlayGamePage(true)
     const gameDate = Date.now()
     return () => {
-      AppStore.setGameMode(false)
       AppStore.setOnPlayGamePage(false)
       if (ResultState.isResultReady) {
         const GameForHistory = {
