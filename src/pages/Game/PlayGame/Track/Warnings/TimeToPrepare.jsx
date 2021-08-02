@@ -13,19 +13,37 @@ const TimeToPrepareContainer = styled.div`
 `
 const NumbersContainer = styled.div`
   height: 100%;
-  width: 100%;
   position: relative;
-  left: 0px;
+  left: 18px;
 `
 const TimeToPrepareNumber = styled.div`
+  @media (max-width: 1440px) {
+    font-size: 90px;
+  }
+  @media (max-width: 1270px) {
+    font-size: 82px;
+  }
+  @media (max-width: 1100px) {
+    font-size: 71px;
+  }
+  @media (max-width: 1000px) {
+    font-size: 68px;
+  }
+  @media (max-width: 500px) {
+    font-size: 57px;
+  }
+  @media (max-width: 470px) {
+    font-size: 53px;
+  }
+
+  font-size: 100px;
   position: absolute;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-width: 200px;
+  width: 200px;
   top: 0px;
   left: 0px;
-  font-size: 100px;
   opacity: ${(props) => (props.isVisible ? '1' : '0')};
   transform: ${(props) => (props.isVisible ? 'scale(1)' : 'scale(0)')};
   transition: 0.75s;

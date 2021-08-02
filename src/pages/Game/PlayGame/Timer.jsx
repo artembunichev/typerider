@@ -20,7 +20,7 @@ const TimerContainer = styled.div`
   font-size: 46px;
   display: flex;
   justify-content: center;
-  padding: 8px;
+  padding: 8px 0;
 `
 
 export const Timer = observer(() => {

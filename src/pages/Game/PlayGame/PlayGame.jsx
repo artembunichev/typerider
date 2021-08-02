@@ -13,9 +13,12 @@ const PlayGameContainer = styled.div`
   background-color: inherit;
   flex: 1 1 auto;
   @media (max-width: 1000px) {
-    padding: 25px 50px;
+    padding: 25px 45px;
   }
-  padding: 25px 60px 25px 25px;
+  padding: 25px 20px 25px 25px;
+  @media (min-width: 1000px) {
+    margin-right: 37px;
+  }
 `
 const PlaceForWords = styled.div`
   position: relative;

@@ -11,12 +11,18 @@ const TrackContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  @media (min-width: 1000px) {
+    padding: 10px 30px 50px 0;
+  }
   padding: 10px 0 50px 0;
 `
 const StyledTrack = styled.div`
   position: relative;
   width: 100%;
   border-bottom: 3px dashed #000000;
+  @media (max-width: 500px) {
+    padding-top: 20px;
+  }
   padding-top: 50px;
 `
 const PlaceForWarning = styled.div`
@@ -38,6 +44,7 @@ const FlagContainer = styled.div`
   @media (max-width: 1000px) {
     width: 55px;
     height: 55px;
+    right: -35px;
   }
   @media (max-width: 490px) {
     width: 49px;
