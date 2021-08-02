@@ -85,7 +85,7 @@ export const GameSettings = observer(() => {
         <GlobalSettings />
         <WordsSettings />
         <StartContainer>
-          <Start onClick={startGame} disabled={AppStore.gameMode}>
+          <Start onClick={startGame} disabled={AppStore.gameMode | PlayGameState.isPreparing}>
             Start Game
           </Start>
         </StartContainer>
