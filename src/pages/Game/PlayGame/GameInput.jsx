@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
@@ -33,11 +33,15 @@ const StyledGameInput = styled.input`
 export const GameInput = observer(({ setIsFlagJumping }) => {
   const { AppStore } = useStore()
   const { PlayGameState, ResultState } = useContext(GameStoreContext)
+  const [isUnmounting, setIsUnmounting] = useState(false)
   const inputRef = useRef()
 
   useEffect(() => {
     inputRef.current.focus()
   }, [AppStore.gameMode])
+  useEffect(() => {
+    return () => setIsUnmounting(true)
+  }, [])
 
   const updateWord = () => {
     PlayGameState.clearVehiclePosition()
@@ -47,7 +51,9 @@ export const GameInput = observer(({ setIsFlagJumping }) => {
     PlayGameState.clearInputValue()
     setIsFlagJumping(true)
     setTimeout(() => {
-      setIsFlagJumping(false)
+      if (!isUnmounting) {
+        setIsFlagJumping(false)
+      }
     }, 300)
   }
   const updateLetter = () => {
