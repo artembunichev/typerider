@@ -30,6 +30,9 @@ const HeaderTitle = styled.span`
   @media (max-width: 405px) {
     font-size: 20px;
   }
+  @media (max-width: 370px) {
+    font-size: 16px;
+  }
   font-size: 36px;
   color: #ff820d;
   user-select: none;
@@ -43,7 +46,10 @@ const BestScoreContainer = styled.span`
   @media (max-width: 470px) {
     font-size: 14.5px;
   }
-  font-size: 17px;
+  @media (max-width: 370px) {
+    font-size: 12px;
+  }
+  font-size: 19px;
   color: #ff820d;
 `
 const HeaderButton = styled.button`
@@ -55,17 +61,18 @@ const HeaderButton = styled.button`
     padding: 3px;
   }
   @media (max-width: 405px) {
+    margin-right: 10px;
     font-size: 13.5px;
   }
   @media (max-width: 370px) {
-    font-size: 11px;
+    font-size: 12px;
   }
   font-size: 21px;
   background-color: #ff820d;
   color: #161414;
   border-radius: 6px;
   padding: 6px;
-  margin-right: 5px;
+  margin-right: 14px;
   &:hover {
     cursor: pointer;
   }
