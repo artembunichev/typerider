@@ -63,13 +63,13 @@ export const GameSettings = observer(() => {
           AppStore.setGameMode(true)
           PlayGameState.setIsPreparing(false)
           clearInterval(interval)
+          setTimer()
         } else {
           PlayGameState.setCurrentTimeIndex()
           PlayGameState.setVisibleNumber(PlayGameState.currentNumber)
         }
       }, 1500)
     }
-    setTimer()
   }
   const setTimer = () => {
     const time = GameSettingsStore.activeTimeForRace
