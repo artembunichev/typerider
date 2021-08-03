@@ -15,8 +15,10 @@ const Global = createGlobalStyle`
     box-sizing:border-box;
   }
   body{
-    overflow:${(props) => props.isAnyPopupOpen && 'hidden'};
+    overflow-x:hidden;
+    overflow-y:${(props) => props.isAnyPopupOpen && 'hidden'};
     background-color: #bdbdbd;
+    font-family: 'Crimson Pro', serif;
   }
   body > #root {
     height: 100vh;
@@ -24,6 +26,7 @@ const Global = createGlobalStyle`
     flex-direction: column;
   }
   button {
+    font-family: 'Crimson Pro', serif;
     border: 0;
     &:hover {
       cursor: pointer;
