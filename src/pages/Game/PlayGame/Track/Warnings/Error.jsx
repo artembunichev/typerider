@@ -8,13 +8,40 @@ const ErrorWrapper = styled.div`
   justify-content: center;
 `
 const ErrorContainer = styled.div`
-  background-color: ${(props) => (props.isLighting ? '#ff0000' : '#ffaaaa')};
+  background-color: ${(props) => (props.isLighting ? '#ff2727' : '#ffaaaa')};
   border-radius: 9px;
+  @media (max-width: 1400px) {
+    padding: 10px;
+  }
+  @media (max-width: 1150px) {
+    padding: 9px;
+  }
+  @media (max-width: 790px) {
+    font-size: 8px;
+  }
   padding: 11px;
   transition: background-color 0.2s ease-in;
 `
 const ErrorText = styled.span`
   color: #ffffff;
+  @media (max-width: 1400px) {
+    font-size: 32px;
+  }
+  @media (max-width: 1150px) {
+    font-size: 28px;
+  }
+  @media (max-width: 1000px) {
+    font-size: 35px;
+  }
+  @media (max-width: 790px) {
+    font-size: 30px;
+  }
+  @media (max-width: 600px) {
+    font-size: 24px;
+  }
+  @media (max-width: 390px) {
+    font-size: 18px;
+  }
   font-size: 37px;
   user-select: none;
 `

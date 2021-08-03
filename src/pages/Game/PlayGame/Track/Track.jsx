@@ -22,9 +22,9 @@ const StyledTrack = styled.div`
   width: 100%;
   border-bottom: 3px dashed #000000;
   @media (max-width: 500px) {
-    padding-top: 20px;
+    padding-top: 60px;
   }
-  padding-top: 50px;
+  padding-top: 67px;
 `
 const PlaceForWarning = styled.div`
   display: flex;
@@ -32,7 +32,16 @@ const PlaceForWarning = styled.div`
   align-items: center;
   position: absolute;
   width: 100%;
-  height: 58%;
+  @media (min-width: 390px) {
+    margin-top: 20px;
+  }
+  @media (max-with: 390px) {
+    margin-top: 15px;
+  }
+  @media (min-width: 1000px) {
+    padding-left: 30px;
+  }
+  padding-left: 0px;
 `
 const FlagContainer = styled.div`
   position: absolute;

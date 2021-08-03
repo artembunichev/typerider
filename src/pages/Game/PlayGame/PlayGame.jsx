@@ -45,10 +45,10 @@ const GameWordLetters = styled.div`
     font-size: 61px;
   }
   @media (max-width: 780px) {
-    font-size: 55px;
+    font-size: 49px;
   }
   @media (max-width: 390px) {
-    font-size: 45px;
+    font-size: 40px;
   }
   font-size: 66px;
 `
