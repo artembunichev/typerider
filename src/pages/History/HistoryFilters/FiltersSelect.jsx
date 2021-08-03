@@ -49,7 +49,7 @@ const Select = styled.div`
 const SelectValue = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 6px;
+  padding: 6px 6px 10px 6px;
 `
 const SelectValueText = styled.span`
   @media (max-width: 490px) {
