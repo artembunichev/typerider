@@ -47,6 +47,9 @@ const TimeToPrepareNumber = styled.div`
   opacity: ${(props) => (props.isVisible ? '1' : '0')};
   transform: ${(props) => (props.isVisible ? 'scale(1)' : 'scale(0)')};
   transition: 0.75s;
+  &:last-child {
+    left: -20px;
+  }
 `
 
 export const TimeToPrepare = observer(() => {
