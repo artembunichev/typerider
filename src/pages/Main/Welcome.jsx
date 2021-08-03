@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
-import { Container, Bold, StartButton } from '../../Components/Styled/StyledComponents'
+import { Container, StartButton } from '../../Components/Styled/StyledComponents'
 
 const WelcomeContainer = styled(Container)`
   display: flex;
@@ -68,7 +68,7 @@ const LetsGoButton = styled(StartButton)`
     font-size: 16px;
   }
   @media (max-width: 370px) {
-    width: 180px;
+    width: 140px;
     height: 21px;
     font-size: 17px;
   }
@@ -109,9 +109,7 @@ export const Welcome = observer(() => {
         onKeyPress={onEnterPress}
         value={inputValue}
       />
-      <LetsGoButton onClick={goToGame}>
-        <Bold>Let&apos;s go!</Bold>
-      </LetsGoButton>
+      <LetsGoButton onClick={goToGame}>Let&apos;s go!</LetsGoButton>
     </WelcomeContainer>
   )
 })
