@@ -72,6 +72,7 @@ const PopupButtons = styled.div`
   justify-content: space-between;
 `
 const PopupButton = styled.button`
+  font-family: 'Crimson Pro', serif;
   @media (max-width: 768px) {
     font-size: 2.5vw;
     width: 20vw;

@@ -77,6 +77,7 @@ const GameBlockInfoItem = styled.span`
   }
   font-size: 25px;
   margin-bottom: 4px;
+  line-height: 28px;
 `
 const DeleteGameContainer = styled(Container)`
   svg {
