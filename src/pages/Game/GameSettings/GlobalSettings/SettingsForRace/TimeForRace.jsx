@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore, GameStoreContext } from '../../../../../stores/RootStore/RootStoreContext'
-import { Bold } from '../../../../../Components/Styled/StyledComponents'
+import { Bold } from '../../../../../components/styled/styledComponents'
 
 const TimeForRaceContainer = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../../stores/RootStore/RootStoreContext'
 import { WordLetters } from '../../PlayGame/WordLetters/WordLetters'
-import { SettingsMainTitle } from '../../../../Components/Styled/StyledComponents'
+import { SettingsMainTitle } from '../../../../components/styled/styledComponents'
 
 const ExampleContainer = styled.div`
   padding: 6px 0;

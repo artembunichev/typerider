@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import { Bold } from '../Styled/StyledComponents'
+import { Bold } from '../styled/styledComponents'
 
 const PopupContainer = styled.div`
   position: fixed;

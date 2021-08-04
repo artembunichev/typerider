@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
 import { GameStoreContext } from '../../../stores/RootStore/RootStoreContext'
-import { Container, Bold } from '../../../Components/Styled/StyledComponents'
+import { Container, Bold } from '../../../components/styled/styledComponents'
 import { ErrorWords } from './ErrorWords'
 import { wordFormConverter } from '../../../assets/functions/wordFormConverter'
 

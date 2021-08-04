@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { WordsSettings } from './WordsSettings/WordsSettings'
 import { GlobalSettings } from './GlobalSettings/GlobalSettings'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
-import { StartButton } from '../../../Components/Styled/StyledComponents'
+import { StartButton } from '../../../components/styled/styledComponents'
 
 const GameSettingsWrapper = styled.div`
   @media (max-width: 1000px) {

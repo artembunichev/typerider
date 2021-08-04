@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { useStore } from '../../../../../stores/RootStore/RootStoreContext'
 import { ColorInput } from './ColorInput'
-import { SettingsMainTitle } from '../../../../../Components/Styled/StyledComponents'
+import { SettingsMainTitle } from '../../../../../components/styled/styledComponents'
 
 const ColorSettingsContainer = styled.div`
   padding-top: 12px;

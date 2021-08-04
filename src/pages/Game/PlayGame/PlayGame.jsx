@@ -6,7 +6,7 @@ import { Track } from './Track/Track'
 import { Timer } from './Timer'
 import { WordLetters } from './WordLetters/WordLetters'
 import { GameStoreContext, useStore } from '../../../stores/RootStore/RootStoreContext'
-import { Bold } from '../../../Components/Styled/StyledComponents'
+import { Bold } from '../../../components/styled/styledComponents'
 
 const PlayGameContainer = styled.div`
   background-color: inherit;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Bold } from '../../../../../Components/Styled/StyledComponents'
+import { Bold } from '../../../../../components/styled/styledComponents'
 
 const ErrorWrapper = styled.div`
   display: flex;

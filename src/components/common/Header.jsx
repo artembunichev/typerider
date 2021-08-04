@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
-import { Bold } from '../Styled/StyledComponents'
+import { Bold } from '../styled/styledComponents'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 
 const HeaderContainer = styled.div`

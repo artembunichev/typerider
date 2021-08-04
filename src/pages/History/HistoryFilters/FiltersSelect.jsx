@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
-import { Bold } from '../../../Components/Styled/StyledComponents'
+import { Bold } from '../../../components/styled/styledComponents'
 import { ArrowIcon } from '../../../assets/images/iconComponents/Arrow'
 
 const SelectWrapper = styled.div`

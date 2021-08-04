@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { TimeForRace } from './SettingsForRace/TimeForRace'
 import { VehicleForRace } from './SettingsForRace/VehicleForRace'
-import { SettingsMainTitle } from '../../../../Components/Styled/StyledComponents'
+import { SettingsMainTitle } from '../../../../components/styled/styledComponents'
 
 const GlobalSettingsContainer = styled.div``
 const GlobalSettingsItems = styled.div`

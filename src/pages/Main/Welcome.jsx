@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
 import { observer } from 'mobx-react-lite'
 import { useHistory } from 'react-router-dom'
-import { Container, StartButton } from '../../Components/Styled/StyledComponents'
+import { Container, StartButton } from '../../components/styled/styledComponents'
 
 const WelcomeContainer = styled(Container)`
   display: flex;

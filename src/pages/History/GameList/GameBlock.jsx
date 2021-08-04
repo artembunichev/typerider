@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import styled from 'styled-components'
 import { useStore } from '../../../stores/RootStore/RootStoreContext'
 import { dateConverter } from '../../../assets/functions/dateConverter'
-import { Bold, Container } from '../../../Components/Styled/StyledComponents'
+import { Bold, Container } from '../../../components/styled/styledComponents'
 import { TrashIcon } from '../../../assets/images/iconComponents/Trash'
 
 const GameBlockContainer = styled.div`

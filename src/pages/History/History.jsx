@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Bold, Container, Title } from '../../Components/Styled/StyledComponents'
+import { Bold, Container, Title } from '../../components/styled/styledComponents'
 import { GameList } from './GameList/GameList'
 import { HistoryFilters } from './HistoryFilters/HistoryFilters'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../stores/RootStore/RootStoreContext'
-import { ConfirmPopup } from '../../Components/Common/ConfirmPopup'
+import { ConfirmPopup } from '../../components/common/ConfirmPopup'
 import { wordFormConverter } from '../../assets/functions/wordFormConverter'
 
 const HistoryContainer = styled(Container)`
