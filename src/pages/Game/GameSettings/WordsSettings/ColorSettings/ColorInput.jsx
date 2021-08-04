@@ -11,8 +11,24 @@ const ColorInputWrapper = styled.div`
 `
 const StyledColorInput = styled.input`
   @media (max-width: 390px) {
-    width: 35px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
+  }
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  &::-webkit-color-swatch-wrapper {
+    border-radius: 100%;
+    background-color: #2f3a46;
+    padding: 3px;
+  }
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: 100%;
   }
   &:hover {
     cursor: pointer;
