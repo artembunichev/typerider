@@ -58,7 +58,7 @@ const GameBlockInfo = styled.div`
 `
 const GameBlockInfoItem = styled.span`
   @media (max-width: 650px) {
-    font-size: 23px;
+    font-size: 22px;
   }
   @media (max-width: 540px) {
     font-size: 21px;
@@ -68,12 +68,15 @@ const GameBlockInfoItem = styled.span`
   }
   @media (max-width: 440px) {
     font-size: 16px;
+    line-height: 20px;
   }
   @media (max-width: 390px) {
     font-size: 15px;
+    line-height: 19px;
   }
-  @media (max-width: 360px) {
+  @media (max-width: 370px) {
     font-size: 14px;
+    line-height: 15px;
   }
   font-size: 25px;
   margin-bottom: 4px;
