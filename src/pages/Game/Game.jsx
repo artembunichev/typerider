@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { useStore, GameStoreContext } from '../../stores/RootStore/RootStoreContext'
-import { Bold, Container, Title } from '../../components/styled/styledComponents'
+import { Container, Title } from '../../components/styled/styledComponents'
 import { GameSettings } from './GameSettings/GameSettings'
 import { PlayGame } from './PlayGame/PlayGame'
 import { generateRandomColor } from '../../assets/functions/generateRandomColor'
@@ -22,6 +22,9 @@ const GameSectionContainer = styled(Container)`
 const GameTitleContainer = styled.div`
   display: flex;
   justify-content: center;
+`
+const TyperiderTitle = styled.span`
+  font-family: 'Courgette', cursive;
 `
 
 export const Game = observer(() => {
@@ -52,7 +55,7 @@ export const Game = observer(() => {
     <GameContainer>
       <GameTitleContainer>
         <Title>
-          Welcome to <Bold>typerider</Bold>, {AppStore.userNickname}!
+          Welcome to <TyperiderTitle>typerider</TyperiderTitle>, {AppStore.userNickname}!
         </Title>
       </GameTitleContainer>
       <GameSectionContainer>
