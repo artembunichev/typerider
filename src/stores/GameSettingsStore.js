@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import { makePersistable } from 'mobx-persist-store'
 import Motorbike from '../assets/images/vehicle/motorbike.svg'
 import SportsCar from '../assets/images/vehicle/sportsCar.svg'
 import Taxi from '../assets/images/vehicle/taxi.svg'
@@ -7,6 +8,18 @@ import uniqid from 'uniqid'
 export class GameSettingsStore {
   constructor() {
     makeAutoObservable(this)
+    makePersistable(this, {
+      name: 'GameSettingsStore',
+      properties: [
+        'timeForRace',
+        'vehicles',
+        'lettersColor',
+        'completedLettersColor',
+        'wordBorder',
+        'letterBgcColor',
+      ],
+      storage: window.localStorage,
+    })
   }
 
   timeForRace = [
