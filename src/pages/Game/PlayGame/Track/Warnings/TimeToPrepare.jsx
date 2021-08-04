@@ -35,14 +35,13 @@ const TimeToPrepareNumber = styled.div`
   @media (max-width: 470px) {
     font-size: 53px;
   }
-
-  font-size: 100px;
+  font-size: 92px;
   position: absolute;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 200px;
-  top: 0px;
+  top: -13px;
   left: 0px;
   opacity: ${(props) => (props.isVisible ? '1' : '0')};
   transform: ${(props) => (props.isVisible ? 'scale(1)' : 'scale(0)')};
