@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
 import { WordsSettings } from './WordsSettings/WordsSettings'
@@ -54,11 +54,17 @@ export const GameSettings = observer(() => {
   const { AppStore, GameSettingsStore } = useStore()
   const { PlayGameState, ResultState } = useContext(GameStoreContext)
 
+  let interval
+
+  useEffect(() => {
+    return () => clearInterval(interval)
+  }, [])
+
   const startGame = () => {
     PlayGameState.setIsPreparing(true)
     if (PlayGameState.length !== 0) {
       PlayGameState.setVisibleNumber(PlayGameState.currentNumber)
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (PlayGameState.currentTimeIndex === PlayGameState.timeArray.length - 1) {
           AppStore.setGameMode(true)
           PlayGameState.setIsPreparing(false)

@@ -29,11 +29,13 @@ const TyperiderTitle = styled.span`
 
 export const Game = observer(() => {
   const { AppStore, GameSettingsStore, HistoryStore } = useStore()
-  const { ResultState } = useContext(GameStoreContext)
+  const { PlayGameState, ResultState } = useContext(GameStoreContext)
   useEffect(() => {
     AppStore.setOnPlayGamePage(true)
     const gameDate = Date.now()
     return () => {
+      PlayGameState.setIsPreparing(false)
+      AppStore.setGameMode(false)
       AppStore.setOnPlayGamePage(false)
       if (ResultState.isResultReady) {
         const GameForHistory = {
