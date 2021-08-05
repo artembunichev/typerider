@@ -44,12 +44,12 @@ const HeaderExtraSection = styled.div`
 `
 const BestScoreContainer = styled.span`
   @media (max-width: 470px) {
-    font-size: 14.5px;
+    font-size: 16px;
   }
   @media (max-width: 370px) {
-    font-size: 12px;
+    font-size: 14px;
   }
-  font-size: 19px;
+  font-size: 22px;
   color: #ff820d;
 `
 const HeaderButton = styled.button`
