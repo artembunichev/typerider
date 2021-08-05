@@ -33,9 +33,9 @@ const WelcomeTitle = styled.div`
 `
 const WelcomeInput = styled.input`
   margin-top: 8px;
-  font-size: 24px;
+  font-size: 32px;
   border-radius: 9px;
-  padding: 9px;
+  padding: 7px 11px 7px 11px;
   @media (max-width: 650px) {
     width: 460px;
   }
@@ -45,7 +45,6 @@ const WelcomeInput = styled.input`
   }
   @media (max-width: 470px) {
     width: 320px;
-    height: 30px;
     padding: 6px 11px 6px 11px;
     font-size: 19px;
   }
@@ -56,7 +55,6 @@ const WelcomeInput = styled.input`
     font-size: 16px;
   }
   width: 500px;
-  height: 46px;
 `
 const LetsGoButton = styled(StartButton)`
   @media (max-width: 540px) {
