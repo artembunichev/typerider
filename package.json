@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "auto-bind": "^4.0.0",
-    "axios": "^0.21.1",
     "bootstrap-icons": "^1.5.0",
     "mobx": "^6.3.2",
     "mobx-persist-store": "^1.0.3",
