@@ -33,6 +33,7 @@ const Global = createGlobalStyle`
     }
   }
   input {
+    font-weight: 300;
     outline: none;
     border: 0;
   }
