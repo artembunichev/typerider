@@ -8,7 +8,8 @@ const GameInputContainer = styled.div`
   justify-content: center;
 `
 const StyledGameInput = styled.input`
-  font-size: 35px;
+  font-size: 36px;
+  padding: 5px 12px 5px 12px;
   @media (max-width: 1400px) {
     width: 600px;
   }
@@ -17,16 +18,13 @@ const StyledGameInput = styled.input`
   }
   @media (max-width: 790px) {
     width: 100%;
-    height: 38px;
-    font-size: 24px;
+    font-size: 26px;
     padding: 3px 11px 3px 11px;
   }
   @media (max-width: 470px) {
-    height: 32px;
-    padding: 3px 8px 3px 9px;
+    padding: 3px 8px 3px 8px;
   }
   width: 700px;
-  padding: 8px;
   border-radius: 11px;
 `
 
