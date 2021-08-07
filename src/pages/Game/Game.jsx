@@ -6,6 +6,7 @@ import { Container, Title } from '../../components/styled/styledComponents'
 import { GameSettings } from './GameSettings/GameSettings'
 import { PlayGame } from './PlayGame/PlayGame'
 import { generateRandomColor } from '../../assets/functions/generateRandomColor'
+import { useHistory } from 'react-router-dom'
 
 const GameContainer = styled(Container)`
   display: flex;
@@ -30,6 +31,11 @@ const TyperiderTitle = styled.span`
 export const Game = observer(() => {
   const { AppStore, GameSettingsStore, HistoryStore } = useStore()
   const { PlayGameState, ResultState } = useContext(GameStoreContext)
+  const history = useHistory()
+
+  if (AppStore.userNickname.length === 0) {
+    history.push('/')
+  }
   useEffect(() => {
     AppStore.setOnPlayGamePage(true)
     const gameDate = Date.now()
